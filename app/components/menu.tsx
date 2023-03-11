@@ -15,6 +15,7 @@ export default function Menu({ navigation, slug }: { navigation: Navigation, slu
 			height: '100vh',
 			marginRight: '-50%',
 			transform: 'translate(-50%, -50%)',
+			backgroundColor: 'inherit',
 		},
 	};
 

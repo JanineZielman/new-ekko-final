@@ -43,7 +43,6 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
           style={customStyles}
 			  >
           <div className='toggle-menu-content'>
-            {/* <div className='toggle-menu' onClick={closeModal}></div> */}
             <div className='links'>
               {toggle.map((item, i) => {
                 return(
@@ -54,7 +53,7 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
           </div>
         </Modal>
         {filtered?.[0] ?
-          <a href={`/${slug}`} className="homebutton">{filtered[0].navName}</a>
+          <a href={``} className="homebutton">{filtered[0].navName}</a>
         :
           <a href={`/about`} className="homebutton">About</a>
         }

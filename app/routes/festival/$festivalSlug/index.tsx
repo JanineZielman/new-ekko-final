@@ -33,7 +33,7 @@ export default function Index() {
           </div>
         </div>
         <Spacer number={35} border=""/>
-				
+				<Spacer number={12} border=""/>
 			</div>
 		</Container>
   );

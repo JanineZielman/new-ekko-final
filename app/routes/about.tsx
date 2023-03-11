@@ -20,7 +20,7 @@ export default function About() {
   return (
     <Container>
       <div className="grid">
-        <Spacer number={12} border=""/>
+        <Spacer number={60} border=""/>
       </div>
     </Container>
   );
