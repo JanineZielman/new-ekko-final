@@ -1,5 +1,4 @@
 :root {
-  --primary: #00d1c9;
   --black: #000;
   --white: #fff;
   --festival: #F2D42F;
@@ -191,12 +190,6 @@ a{
   /* margin-top: -1vw; */
 }
 
-.blue-bg{
-  background-color: var(--primary);
-  padding: 1vw;
-  color: var(--white);
-}
-
 .columns{
   column-count: 2;
 }
@@ -257,16 +250,6 @@ a{
     justify-content: center;
     align-items: stretch;
     /* align-items: center; */
-  }
-}
-
-.festival.ReactModal__Body--open{
-  & .navbar {
-    & .nav-items {
-      & a span{
-      /* color: var(--primary); */
-      }
-    }
   }
 }
 
@@ -477,10 +460,6 @@ body {
     overflow: visible;
     margin-top: -1vw;
     margin-left: -1vw;
-    /* object-fit: contain;
-    & img{
-      object-fit: contain!important;
-    } */
 }
 
 .header-img{
