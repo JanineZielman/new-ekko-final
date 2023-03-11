@@ -7,6 +7,7 @@ export interface Event {
   url: string;
   organizer: { title: string }[];
   featuredImage: { url: string }[];
+  festivalSectionGraphicElements: { url: string }[];
   isMultiDay: boolean;
   date: string;
   dateEnd: string;
@@ -15,10 +16,6 @@ export interface Event {
     title: string;
     fullTitle: string;
   }[];
-	relatedLinks: {
-		linkTitle: string;
-		linkUrl: string;
-	}[];
   intro: string;
   description: string;
   ticketLink: string;
@@ -63,6 +60,9 @@ const eventFragment = gql`
     featuredImage: eventFeaturedPhoto {
       url
     }
+    festivalSectionGraphicElements{
+      url
+    }
     program {
       date
       endDate
@@ -76,10 +76,6 @@ const eventFragment = gql`
     location {
       title
       fullTitle
-    }
-		relatedLinks {
-      linkTitle
-      linkUrl
     }
     intro
     description

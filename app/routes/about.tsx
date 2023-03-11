@@ -20,24 +20,7 @@ export default function About() {
   return (
     <Container>
       <div className="grid">
-        <div className="item w6 l2 flex">
-          <div className='w2'>
-            <h1>{entry.title}</h1>
-            <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
-          </div>
-          <div className="w4">
-            <div className='header-img'>
-              <img src={entry.photo?.[0].url} alt={entry.title} />
-            </div>
-          </div>
-        </div>
-        <Spacer number={6} border="" />
-        <div className='item w3 l3'>
-          {/* Need to do this to output rich text content */}
-          <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
-        </div>
-        <Spacer number={9} border=""/>
-        <Spacer number={6} border=""/>
+        <Spacer number={12} border=""/>
       </div>
     </Container>
   );

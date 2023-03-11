@@ -43,7 +43,6 @@ export default function App() {
 
    var slug = location.pathname.slice(1).split("/")?.[0];
 
-  console.log(slug)
 
   return (
     <html lang="en">
@@ -51,9 +50,9 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className={slug[0]}>
+      <body className={slug}>
         <Nav navigation={navigation} slug={slug}/>
-        <Menu navigation={navigation}/>
+        <Menu navigation={navigation} slug={slug}/>
         <main>
           <Outlet />
         </main>

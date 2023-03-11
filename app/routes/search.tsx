@@ -30,8 +30,8 @@ export default function Oestre() {
 
   return (
     <Container>
-      <div className="grid">
-        <div className="w3 offset">
+      <div className="grid no-border">
+        <div className="w6 no-border">
           <Form className='search-bar'>
             <input
               type="search"
@@ -41,10 +41,8 @@ export default function Oestre() {
               placeholder="Search"
               autoFocus
             />
-            <img src="/search.svg"/>
           </Form>
         </div>
-        <Spacer number={3} border={''} />
         {events?.length > 0 && (
           <>
             {events.map(event => (
@@ -82,7 +80,6 @@ export default function Oestre() {
             ))}
           </>
         )}
-        <Spacer number={6} border="" />
       </div>
     </Container>
   );

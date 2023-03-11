@@ -20,23 +20,7 @@ export default function Oestre() {
   return (
     <Container>
       <div className="grid">
-        <div className='item w3 l3'>
-          <h1>{entry.title}</h1>
-          {/* Need to do this to output rich text content */}
-          <h3 dangerouslySetInnerHTML={{ __html: entry?.contact }} />
-          <Spacer number={1} border={"no-border"}/>
-        </div>
-        <div className="item w3">
-          <div className='header-img'>
-            <img src={entry.photo?.[0].url} alt={entry.title} />
-          </div>
-        </div>
-        <Spacer number={6} border={""}/>
-        <div className='item w3 l6'>
-          <div dangerouslySetInnerHTML={{ __html: entry?.content }} />
-        </div>
-        <Spacer number={18} border={""}/>
-        <Spacer number={6} border={""}/>
+        <Spacer number={60} border={""}/>
       </div>
     </Container>
   );
