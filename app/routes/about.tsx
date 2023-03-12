@@ -7,8 +7,15 @@ import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
 import Collapsible from '~/components/collapsible';
 
-export const loader: LoaderFunction = () => {
-  return fetchContentPage('about');
+
+export const loader: LoaderFunction = async () => {
+  const [about, ostre, ekko_festival_info] = await Promise.all([
+    fetchContentPage('about'),
+    fetchContentPage('ostre'),
+    fetchContentPage('ekko_festival_info')
+  ]);
+
+  return { about, ostre, ekko_festival_info };
 };
 
 export const meta: MetaFunction = ({ data }) => ({
@@ -16,17 +23,30 @@ export const meta: MetaFunction = ({ data }) => ({
 });
 
 export default function About() {
-  const { entry } = useLoaderData<PageEntry>();
+  const { about, ostre, ekko_festival_info } = useLoaderData<{ about: PageEntry; ostre: PageEntry, ekko_festival_info: PageEntry }>();
 
   return (
     <Container>
       <div className="grid">
         <Spacer number={60} border=""/>
       </div>
-      <Collapsible trigger={`EKKO`} open={false}>
-        Ekko presenterer konserter og klubb gjennom hele året og en festival hver høst. Vi arbeider for og med eksperimentell elektronisk musikk. I 2022 arrangerer vi Ekko festival nr. 19. 
-
-        Ekko har siden 2003 gjestet over 700 ulike artister fra hele verden. Her er noen navn som har spilt på festivalen: Nils Frahm, Jon Hopkins, James Holden, Holly Herndon, Planningtorock, Pantha Du Prince & The Bell Laboratory, Laurel Halo, Andrew Weatherall, DJ Harvey, Todd Terje (bestillingsverk), rRoxymore, Mykki Blanco, Suzanne Ciani, Matias Aguayo, El Perro Del Mar, Optimo DJs, C.A.R., Jenny Hval, Ata Kak, Aïsha Devi, Molly Nilsson, Stiletti-Ana, Caterina Barbieri mfl.
+      <Collapsible trigger={about.entry.title} open={false} slug={about.entry.slug}>
+        <div className='flex'>
+          <div className='contact' dangerouslySetInnerHTML={{ __html: about.entry.contact }}></div>
+          <div className='content' dangerouslySetInnerHTML={{ __html: about.entry.content }}></div>
+        </div>
+      </Collapsible>
+      <Collapsible trigger={ostre.entry.title} open={false} slug={ostre.entry.slug}>
+        <div className='flex'>
+          <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>
+          <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>
+        </div>
+      </Collapsible>
+      <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
+        <div className='flex'>
+          <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
+          <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
+        </div>
       </Collapsible>
       <div className="grid">
         <Spacer number={12} border=""/>

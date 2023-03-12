@@ -2,19 +2,27 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
+import { fetchContentPage } from '~/service/data/contentPage';
+import type { PageEntry } from '~/service/data/contentPage';
 import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
+import Collapsible from '~/components/collapsible';
 
-export const loader: LoaderFunction = ({ params }) => {
-  return fetchEvent(params.festivalSlug!);
+
+export const loader: LoaderFunction = async ({params}) => {
+  const [event, ekko_festival_info] = await Promise.all([
+    fetchEvent(params.festivalSlug!),
+    fetchContentPage('ekko_festival_info'),
+  ]);
+
+  return { event, ekko_festival_info };
 };
 
 export default function Index() {
-  const event = useLoaderData<Event>();
+  const { event, ekko_festival_info } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry }>();
 
-  console.log(event)
 
   return (
     <Container>
@@ -33,8 +41,16 @@ export default function Index() {
           </div>
         </div>
         <Spacer number={35} border=""/>
-				<Spacer number={12} border=""/>
 			</div>
+      <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
+        <div className='flex'>
+          <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
+          <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
+        </div>
+      </Collapsible>
+      <div className='grid'>
+        <Spacer number={12} border=""/>
+      </div>
 		</Container>
   );
 }

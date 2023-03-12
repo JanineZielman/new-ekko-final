@@ -3,7 +3,7 @@ import React, {useState, useEffect, useRef} from "react"
 
 import { useNavigate } from "react-router-dom";
 
-const Collapsible = ({children, trigger, open}) => {
+const Collapsible = ({children, trigger, open, slug}) => {
 	// const router = useRouter()
   const navigate = useNavigate();
   const [openDiv, setOPenDiv] = useState("");
@@ -13,7 +13,6 @@ const Collapsible = ({children, trigger, open}) => {
     setOPenDiv(open);
 		setTimeout(function() {
 			if (document.getElementById(window.location.hash.replace('#', '') + "-content")){
-        setOPenDiv(true);
 				document.getElementById(window.location.hash.replace('#', '') + "-content").style.height = document.getElementById(window.location.hash.replace('#', '') + "-content").scrollHeight + 'px';
         document.getElementById(window.location.hash.replace('#', '') + "-content").classList.add('open');
 				window.scrollTo({
@@ -36,11 +35,11 @@ const Collapsible = ({children, trigger, open}) => {
 	};
 
   return (
-    <div className="Collapsible" id={trigger}>
-			<div onClick={toggle} id={`${trigger}`} className="trigger">
+    <div className="Collapsible" id={slug}>
+			<div onClick={toggle} id={`${slug}`} className="trigger">
         <span>{trigger}</span>
       </div>
-			<div className={`content-parent ${openDiv ? "open" : "closed"}`} id={`${trigger}-content`} ref={contentRef} style={openDiv ? { height: contentRef.current?.scrollHeight +
+			<div className={`content-parent ${openDiv ? "open" : "closed"}`} id={`${slug}-content`} ref={contentRef} style={openDiv ? { height: contentRef.current?.scrollHeight +
   "px" } : { height: "0px" }}>
 				<div className='collapsible-content'>{children}</div>
 			</div>

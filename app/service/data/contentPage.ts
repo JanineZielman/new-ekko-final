@@ -2,11 +2,9 @@ import { fetchFromGraphQL, gql } from '~/service/utils';
 
 export interface PageEntry {
   entry: {
-    id: number;
+    slug: string;
     title: string;
-    url: string;
     contact: string;
-    photo: { url: string }[];
     content: string;
   };
 }
@@ -17,12 +15,9 @@ export interface PageEntry {
 const query = gql`
   query ($slug: [String]) {
     entry(slug: $slug) {
-      id
+      slug
       title
       contact
-      photo: pagePhoto {
-        url
-      }
       content: pageContent
     }
   }

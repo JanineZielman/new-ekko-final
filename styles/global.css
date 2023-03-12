@@ -50,7 +50,7 @@ body {
   }
   &.ostre{
     background-color: var(--ostre);
-    & .grid{
+    & .grid, & .Collapsible{
       background-color: var(--ostre_light);
     }
     & .ReactModal__Content{
@@ -59,7 +59,7 @@ body {
   }
   &.festival{
     background-color: var(--festival);
-    & .grid{
+    & .grid, & .Collapsible{
       background-color: var(--festival_light);
     }
     & .ReactModal__Content{
@@ -499,6 +499,8 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding: 1vw;
+    margin-bottom: -2px;
+    border-bottom: 0;
   }
   & span{
     width: 100%;
@@ -512,6 +514,14 @@ body {
       border: 2px solid var(--black);
       margin-top: -2px;
       padding-bottom: 24px;
+      border-bottom: 0;
+    }
+    & .contact{
+      width: 40%;
+    }
+    & .content{
+      width: 55%;
+      margin-right: 5%;
     }
   }
 }
