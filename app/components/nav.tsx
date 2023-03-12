@@ -34,7 +34,6 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
 
   return (
     <>
-      <div className='nav-space'></div>
       <div className="navbar hide-for-mobile">
         <div className='toggle-menu' onClick={openModal}></div>
         <Modal
