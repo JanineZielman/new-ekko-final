@@ -11,6 +11,7 @@ import Moment from 'moment';
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
+import News from '~/components/news';
 
 
 export const loader: LoaderFunction = async ({params}) => {
@@ -45,16 +46,17 @@ export default function Index() {
         </div>
         <Spacer number={35} border=""/>
 			</div>
-      <Collapsible trigger="News" open={false} slug={'news'}>
-        <div className='flex space-between'>
-          {news.events.map((item, i) => {
+      <Collapsible trigger="News" open={true} slug={'news'}>
+        <News news={news}/>
+      </Collapsible>
+      <Collapsible trigger="Billetter" open={false} slug={'billetter'}>
+        <div className='flex tickets'>
+          {event.tickets.map((ticket, i) => {
             return(
-              <div className='news-item'>
-                <img src={item.newsPhoto[0].url} alt="" />
-                <h2>{item.title}</h2>
-                <div dangerouslySetInnerHTML={{__html: item.newsIntro}}></div>
-                
-              </div>
+              <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
+                <h3>{ticket.description}</h3>
+                <p className='price-label'>{ticket.price} Kr</p>
+              </a>
             )
           })}
         </div>
