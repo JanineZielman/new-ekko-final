@@ -58,7 +58,7 @@
 		grid-column-end: span 1;
 		&.item{
 			/* border: none; */
-			/* position: static; */
+			position: static;
 		}
 	}
 	.spacer-6.w1{
@@ -117,10 +117,15 @@
 
 	.grid {
 		/* border: 0; */
+		width: 100vw;
 		margin: 0;
 		padding: 0;
 		grid-template-columns: repeat(auto-fill, minmax(16.66%, 6fr));
 		grid-auto-rows: calc(0.166 * 90vw);
+	}
+
+	.Collapsible{
+		width: 100vw;
 	}
 
 	.float{

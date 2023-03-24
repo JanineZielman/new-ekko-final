@@ -66,6 +66,7 @@ const query = gql`
           }
           ... on performance_performance_Entry {
             artist {
+              title
               ... on artists_artist_Entry {
                 featuredImage: artistFeaturedPhoto{
                   url
