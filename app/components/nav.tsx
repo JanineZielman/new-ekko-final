@@ -54,7 +54,7 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
         {filtered?.[0] ?
           <a href={``} className="homebutton">{filtered[0].navName}</a>
         :
-          <a href={`/about`} className="homebutton">About</a>
+          <a href={`/`} className="homebutton">About</a>
         }
         <div className="nav-items">
           {navigation &&

@@ -29,6 +29,9 @@ export default function Index() {
     <Container>
       <div className="grid">
         <Spacer number={60} border=""/>
+        <div className='animation'>
+          <img src="/ani.gif" alt="" />
+        </div>
       </div>
       <Collapsible trigger={about.entry.title} open={false} slug={about.entry.slug}>
         <div className='flex'>

@@ -119,7 +119,7 @@
 		/* border: 0; */
 		margin: 0;
 		padding: 0;
-		grid-auto-rows: calc(0.0833 * 90vw * 3);
+		grid-auto-rows: calc(0.0833 * 90vw * 2);
 	}
 
 	.float{

@@ -1,4 +1,5 @@
 import type { LoaderFunction } from '@remix-run/node';
+import React, { useEffect } from 'react';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
@@ -27,6 +28,10 @@ export const loader: LoaderFunction = async ({params}) => {
 export default function Index() {
   const { event, ekko_festival_info, news } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews }>();
 
+
+  event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
+
+
   console.log(news)
   return (
     <Container>
@@ -49,6 +54,7 @@ export default function Index() {
       <Collapsible trigger="News" open={true} slug={'news'}>
         <News news={news}/>
       </Collapsible>
+      
       <Collapsible trigger="Billetter" open={false} slug={'billetter'}>
         <div className='flex tickets'>
           {event.tickets.map((ticket, i) => {
