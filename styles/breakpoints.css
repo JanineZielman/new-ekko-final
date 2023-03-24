@@ -180,6 +180,14 @@
 		}
 	}
 
+	.event-highlight{
+		& img{
+			width: 100%;
+			height: 90%;
+			margin-left: 0%;
+		}
+	}
+
 	.minus-margin{
 		display: none;
 		height: 0;

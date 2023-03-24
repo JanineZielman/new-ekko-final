@@ -28,7 +28,7 @@ const query = gql`
   }
 `;
 
-export const fetchRecentNews = async (limit = Number) => {
+export const fetchRecentNews = async (limit:number) => {
   const res = await fetchFromGraphQL(query, { limit });
   const { data } = await res.json();
 

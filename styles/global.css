@@ -549,10 +549,11 @@ body {
   &.trigger{
     background-color: var(--festival_light);
   }
-  & .news-item{
-    & .info-box{
-      background: var(--festival_light);
-    }
+}
+
+.festival{
+  & .info-box{
+    background: var(--festival_light);
   }
 }
 
@@ -561,10 +562,11 @@ body {
   &.trigger{
     background-color: var(--ostre_light);
   }
-  & .news-item{
-    & .info-box{
-      background: var(--ostre_light);
-    }
+}
+
+.ostre{
+  & .info-box{
+    background: var(--ostre_light);
   }
 }
 
@@ -593,6 +595,34 @@ body {
     height: auto;
     min-height: 80px;
     width: calc(100% - 40px);
+    & p{
+      font-size: var(--body);
+      line-height: 1.2;
+    }
+  }
+}
+
+.event-highlight{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  & img{
+    width: 90%;
+    height: 90%;
+    object-fit: cover;
+    margin-left: 10%;
+  }
+  & .info-box{
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 2em;
+    position: absolute;
+    height: auto;
+    min-height: 80px;
+    width: auto;
+    bottom: 0;
+    left: 0;
     & p{
       font-size: var(--body);
       line-height: 1.2;

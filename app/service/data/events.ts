@@ -110,7 +110,7 @@ const query = gql`
   }
 `;
 
-export const fetchAllEvents = async (limit = 25) => {
+export const fetchAllEvents = async (limit:number) => {
   const res = await fetchFromGraphQL(query, { limit });
   const { data } = await res.json();
 

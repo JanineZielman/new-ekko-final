@@ -8,7 +8,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 
 export const loader: LoaderFunction = () => {
-  return fetchAllEvents();
+  return fetchAllEvents(25);
 };
 
 export default function Index() {
