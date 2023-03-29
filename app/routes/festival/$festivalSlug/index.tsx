@@ -32,7 +32,7 @@ export default function Index() {
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
 
 
-  console.log(news)
+  console.log(event)
   return (
     <Container>
 			<div className="grid">
@@ -53,6 +53,32 @@ export default function Index() {
 			</div>
       <Collapsible trigger="News" open={true} slug={'news'}>
         <News news={news}/>
+      </Collapsible>
+
+      <Collapsible trigger="Program" open={false} slug={'program'}>
+        <div className='program'>
+          {event.program.map((item, i) => {
+            return(
+              <div className='program-day'>
+                <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>
+                <div className='performances'>
+                  {event.performances.map((performance, i) => {
+                    return(
+                      <>
+                      {item.date == performance.date &&
+                        <div className='flex space-between performance'>
+                          <div className='time'>{performance.time}</div> 
+                          <div className='artist'>{performance.artist[0].title}</div>
+                        </div>
+                      }
+                      </>
+                    )
+                  })}
+                </div>
+              </div>
+            )
+          })}
+        </div>
       </Collapsible>
       
       <Collapsible trigger="Billetter" open={false} slug={'billetter'}>

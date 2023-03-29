@@ -497,8 +497,39 @@ body {
   padding: 14px!important;
 }
 
-.program-day{
-  border-bottom: 1px solid black;
+
+.program{
+  display: flex;
+  flex-wrap: wrap;
+  & .program-day{
+    width: calc(100% / 3 + 2px);
+    border: 1px solid var(--black);
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0 -1px;
+    & .date{
+      padding: 2vw;
+      border-bottom: 2px solid var(--black);
+      margin: 0 -1px;
+    }
+    & .performances{
+      padding: 1vw;
+    }
+    & .performance{
+      margin: 14px 0;
+    }
+    & .flex{
+      width: 100%;
+    }
+    & .time{
+      width: 30%;
+    }
+    & .artist{
+      width: 70%;
+    }
+  }
+  
 }
 
 .Collapsible{
