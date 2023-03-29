@@ -14,7 +14,7 @@ export default function KalenderItem({ item }: { item: any }) {
           )
         })}
       </h3>
-      <a className='tickets' href="#">Billetter</a>
+      <a className='ticket-link' href="#">Billetter</a>
     </div>
   );
 }

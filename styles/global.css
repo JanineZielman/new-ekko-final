@@ -533,6 +533,8 @@ body {
       margin-bottom: -4px;
       /* padding-bottom: 24px; */
       border-bottom: 0;
+      border-top: 0;
+    
     }
     & .contact{
       width: 40%;
@@ -705,7 +707,7 @@ footer{
   & .artists{
     width: 36%;
   }
-  & .tickets{
+  & .ticket-link{
     text-align: right;
     padding: 10px 20px;
     border: 1px solid var(--black);
