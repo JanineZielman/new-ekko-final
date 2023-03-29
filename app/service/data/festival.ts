@@ -33,6 +33,10 @@ export interface Event {
       date: string;
     }[];
   }[]
+  sections: {
+    sectionTitle: string;
+    sectionBody: string;
+  }[];
   performances: {
     title: string;
     date: string;
@@ -87,6 +91,12 @@ const eventFragment = gql`
       subDescription
       price
       ticketLink
+    }
+    sections {
+      ... on sections_entry_BlockType {
+        sectionTitle
+        sectionBody
+      }
     }
     performances {
       ... on performance_performance_Entry {

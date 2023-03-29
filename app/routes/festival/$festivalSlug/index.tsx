@@ -1,5 +1,4 @@
 import type { LoaderFunction } from '@remix-run/node';
-import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
@@ -8,7 +7,6 @@ import type { PageEntry } from '~/service/data/contentPage';
 import { fetchRecentNews } from '~/service/data/news';
 import type { RecentNews } from '~/service/data/news';
 import Moment from 'moment';
-import $ from 'jquery'; 
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -40,7 +38,7 @@ export default function Index() {
     }
   }
 
-
+  console.log(event)
 
 
   return (
@@ -137,6 +135,14 @@ export default function Index() {
           <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
         </div>
       </Collapsible>
+
+      {event.sections?.map((item:any, i:any) => {
+        return(
+          <Collapsible trigger={item.sectionTitle} open={false} slug={item.sectionTitle}>
+            <div className='content padding' dangerouslySetInnerHTML={{ __html: item.sectionBody }}></div>
+          </Collapsible>
+        )
+      })}
 
       <div className='grid'>
         <Spacer number={12} border=""/>
