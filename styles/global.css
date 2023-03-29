@@ -769,3 +769,8 @@ footer{
   top: 50%;
   transform: translateY(-50%);
 }
+
+.line-up{
+  padding: 0 1vw 1vw 1vw;
+  columns: 3;
+}

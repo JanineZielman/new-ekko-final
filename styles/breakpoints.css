@@ -17,6 +17,10 @@
 		margin-left: 2vw;
 	}
 
+	.line-up{
+		columns: 2;
+	}
+
 	.ReactModalPortal{
 		& .hide-for-mobile{
 			display: block;
@@ -247,6 +251,10 @@
 				margin: 0;
 			}
 		}
+	}
+	.line-up{
+		columns: 1;
+		padding-bottom: 2vw;
 	}
 }
 

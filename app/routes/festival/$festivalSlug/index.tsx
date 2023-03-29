@@ -61,8 +61,21 @@ export default function Index() {
         </div>
         <Spacer number={35} border=""/>
 			</div>
+
       <Collapsible trigger="News" open={true} slug={'news'}>
         <News news={news}/>
+      </Collapsible>
+
+      <Collapsible trigger="Line-up" open={false} slug={'line-up'}>
+        <div className='line-up'>
+          {event.performances.map((item, i) => {
+            return(
+              <div>
+                {item.artist[0].title}
+              </div>
+            )
+          })}
+        </div>
       </Collapsible>
 
       <Collapsible trigger="Program" open={false} slug={'program'}>
@@ -117,12 +130,14 @@ export default function Index() {
           })}
         </div>
       </Collapsible>
+
       <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
         <div className='flex'>
           <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
           <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
         </div>
       </Collapsible>
+
       <div className='grid'>
         <Spacer number={12} border=""/>
       </div>
