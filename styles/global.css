@@ -501,8 +501,10 @@ body {
 .program{
   display: flex;
   flex-wrap: wrap;
+  
   & .program-day{
     width: calc(100% / 3 + 2px);
+    /* display: inline-block; */
     border: 1px solid var(--black);
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -528,6 +530,10 @@ body {
     & .artist{
       width: 70%;
     }
+  }
+
+  & .program-location-item{
+    padding: 10px 1vw 0px 1vw;
   }
   
 }

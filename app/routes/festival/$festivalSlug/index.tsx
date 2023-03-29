@@ -1,5 +1,5 @@
 import type { LoaderFunction } from '@remix-run/node';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
@@ -8,6 +8,7 @@ import type { PageEntry } from '~/service/data/contentPage';
 import { fetchRecentNews } from '~/service/data/news';
 import type { RecentNews } from '~/service/data/news';
 import Moment from 'moment';
+import $ from 'jquery'; 
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -31,8 +32,17 @@ export default function Index() {
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
 
+  const locations: any[] = [];
 
-  console.log(event)
+  for (let i = 0; i < event.performances.length; i++) {
+    if (!locations.includes(`${event.performances[i].location[0].title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`)) {
+      locations.push(`${event.performances[i]?.location?.[0]?.title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`);
+    }
+  }
+
+
+
+
   return (
     <Container>
 			<div className="grid">
@@ -61,20 +71,34 @@ export default function Index() {
             return(
               <div className='program-day'>
                 <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>
-                <div className='performances'>
-                  {event.performances.map((performance, i) => {
-                    return(
-                      <>
-                      {item.date == performance.date &&
-                        <div className='flex space-between performance'>
-                          <div className='time'>{performance.time}</div> 
-                          <div className='artist'>{performance.artist[0].title}</div>
-                        </div>
+                {locations.map((location, i) => {
+                  const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
+                  const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                  return(
+                    <>
+                     {filteredPerformance.length > 0 &&
+                      <div className='program-location-item'>
+                        <>
+                          <div>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                        
+                          {filteredEvents.map((performance, i) => {
+                            return(
+                              <>
+                                {item.date == performance.date && 
+                                  <p className='flex space-between performance'>
+                                    <div className='time'>{performance.time}</div> 
+                                    <div className='artist'>{performance.artist[0].title}</div>
+                                  </p>
+                                }
+                              </>
+                            )
+                          })}
+                        </>
+                      </div>
                       }
-                      </>
-                    )
-                  })}
-                </div>
+                    </>
+                  )
+                })}
               </div>
             )
           })}
