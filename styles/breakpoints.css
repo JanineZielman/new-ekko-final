@@ -42,6 +42,34 @@
 		margin-top: 5px;
 	}
 
+	.agenda-item{
+		flex-wrap: wrap;
+		align-items: flex-end;
+		justify-content: space-between;
+		& .time{
+			width: auto;
+		}
+		& .title{
+			width: auto;
+		}
+		& .artists{
+			width: 80%;
+			margin-top: 14px;
+		}
+		& .tickets{
+			text-align: right;
+			padding: 5px 20px;
+			border: 1px solid var(--black);
+			border-radius: 25px;
+			height: fit-content;
+			margin: 10px 10px 0px auto;
+		}
+		& h3{
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
 }
 
 @media (max-width:600px){
