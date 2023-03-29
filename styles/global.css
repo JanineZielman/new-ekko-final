@@ -50,7 +50,7 @@ body {
   }
   &.ostre{
     background-color: var(--ostre);
-    & .grid, & .Collapsible{
+    & .grid, & .Collapsible, & .intro-section{
       background-color: var(--ostre_light);
     }
     & .ReactModal__Content{
@@ -59,7 +59,7 @@ body {
   }
   &.festival{
     background-color: var(--festival);
-    & .grid, & .Collapsible{
+    & .grid, & .Collapsible, & .intro-section{
       background-color: var(--festival_light);
     }
     & .ReactModal__Content{
@@ -68,9 +68,6 @@ body {
   }
 }
 
-.times {
-  font-family: 'Times New Roman', Times, serif;
-}
 
 h1 {
   font-size: var(--h1);
@@ -363,7 +360,7 @@ body {
   justify-content: center;
 }
 
-.overflow{
+/* .overflow{
   & .img-wrapper{
     margin-left: -8vw;
     width: calc(100% + 8vw);
@@ -372,20 +369,21 @@ body {
     margin-left: -8vw;
     width: calc(100% + 6vw);
   }
-}
+} */
 
-.img-wrapper{
+/* .img-wrapper{
   position: relative;
-  width: 100%;
+  width: calc(100% + 2vw);
   padding-top: 75%;
   overflow: hidden;
+  margin: -1vw;
   & img{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
-}
+} */
 
 .video-wrapper{
   position: relative;
@@ -422,12 +420,13 @@ body {
     &.no-border{
       border: none;
     }
-    overflow: visible;
+    overflow: hidden;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding: 1vw;
     object-fit: cover;
+    height: 100%;
 
     &.w6{
       padding-top: 0;
@@ -751,6 +750,9 @@ footer{
     border-radius: 25px;
     height: 100%;
   }
+  & .no-ticket{
+    width: 100px;
+  }
   & h3{
     display: flex;
     flex-direction: column;
@@ -777,4 +779,58 @@ footer{
 
 .padding{
   padding: 0 1vw 1vw 1vw;
+}
+
+.artists-section{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.artist-item{
+  display: block;
+  width: calc(100% / 3 + 2px);
+  border: 1px solid var(--black);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0 -1px;
+  & .info-bar{
+    padding: 1vw;
+  }
+  & .img-wrapper{
+    width: 100%;
+    margin: 0;
+    & img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+.img-wrapper{
+  & img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+
+
+.intro-section{
+  width: calc(90vw + 2px);
+  border: 1px solid var(--black);
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  display: flex;
+  & .info-wrapper{
+    width: calc(50% - 2vw);
+    padding: 1vw;
+  }
+  & .img-wrapper{
+    width: 50%;
+  }
 }

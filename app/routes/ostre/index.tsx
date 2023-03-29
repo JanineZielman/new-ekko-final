@@ -74,7 +74,9 @@ export default function Oestre() {
       <Collapsible trigger="Upcoming" open={false} slug={'upcoming'}>
         {filteredEvents.slice(0,5).map((item,i) => {
             return(
-              <KalenderItem item={item}/>
+              <a href={`/ostre/${item.slug}`}>
+                <KalenderItem item={item}/>
+              </a>
             )
           })}
           

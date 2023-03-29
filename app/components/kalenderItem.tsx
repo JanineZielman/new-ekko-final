@@ -14,7 +14,11 @@ export default function KalenderItem({ item }: { item: any }) {
           )
         })}
       </h3>
-      <a className='ticket-link' href="#">Billetter</a>
+      {item.ticketLink?.includes('https') ?
+        <a className='ticket-link' href={item.ticketLink} target="_blank">Billetter</a>
+        :
+        <div className='no-ticket'></div>
+      }
     </div>
   );
 }

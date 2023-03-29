@@ -14,6 +14,7 @@ export interface Event {
     title: string;
     fullTitle: string;
   }[];
+  ticketLink: string;
   performances:{
     title: string;
     slug: string;
@@ -54,6 +55,7 @@ const query = gql`
           fullTitle
         }
         date @formatDateTime(format: "n/d/yy")
+        ticketLink
         performances {
           title
           slug

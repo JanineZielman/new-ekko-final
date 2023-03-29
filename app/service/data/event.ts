@@ -18,6 +18,7 @@ export interface Event {
   description: string;
   ticketLink: string;
   ticketDescription: string;
+  openingTime: string;
   performances: {
     slug: string;
     fullTitle: string;
@@ -46,8 +47,9 @@ const eventFragment = gql`
       url
     }
     isMultiDay
-    date @formatDateTime(format: "d/n")
-    dateEnd @formatDateTime(format: "d/n")
+    date
+    dateEnd
+    openingTime
     location {
       title
       fullTitle
@@ -60,9 +62,9 @@ const eventFragment = gql`
       ... on performance_performance_Entry {
         slug
         fullTitle
-        date @formatDateTime(format: "d/n")
-        time @formatDateTime(format: "G:i")
-        timeEnd @formatDateTime(format: "G:i")
+        date
+        time
+        timeEnd
         location {
           title
           fullTitle
