@@ -35,7 +35,7 @@ export default function Oestre() {
   let filteredEvents = [];
   var currentTime = new Date();
 
-  filteredEvents = events.events.filter((item: any) => {
+  filteredEvents = events.events.reverse().filter((item: any) => {
     var itemDate = new Date(item.date);
     return itemDate.getTime() >= currentTime.getTime();
   });
@@ -46,13 +46,13 @@ export default function Oestre() {
     <Container>
       <div className="grid">
         <Spacer number={72} border={""}/>
-        {filteredEvents.slice(filteredEvents.length - 5, filteredEvents.length - 4).map((item,i) => {
+        {filteredEvents.slice(0,1).map((item,i) => {
           return(
             <div className='event-highlight'>
               <img src={item.featuredImage?.[0]?.url} alt="" />
               <div className='info-box'>
                 <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
-                <h2>{item.title}:</h2>
+                <h2>{item.title}</h2>
                 <h2 className='artists'>
                   {item.performances.map((performance,j) => {
                     return(
@@ -69,6 +69,29 @@ export default function Oestre() {
       </div>
       <Collapsible trigger="News" open={false} slug={'news'}>
         <News news={news}/>
+      </Collapsible>
+      <Collapsible trigger="Upcoming" open={false} slug={'upcoming'}>
+      {filteredEvents.map((item,i) => {
+          return(
+            <div className='agenda-item'>
+              <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
+             
+                
+                <p className='title'>{item.title}</p>
+                <h3 className='artists'>
+                  {item.performances.map((performance,j) => {
+                    return(
+                      <span>
+                        {performance.artist[0].title}
+                      </span>
+                    )
+                  })}
+                </h3>
+                <a className='tickets' href="#">Billetter</a>
+         
+            </div>
+          )
+        })}
       </Collapsible>
       <Collapsible trigger={ostre.entry.title} open={false} slug={ostre.entry.slug}>
         <div className='flex'>
