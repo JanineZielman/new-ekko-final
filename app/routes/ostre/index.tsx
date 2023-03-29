@@ -13,6 +13,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
+import KalenderItem from '~/components/kalenderItem';
 
 
 export const loader: LoaderFunction = async ({params}) => {
@@ -73,23 +74,7 @@ export default function Oestre() {
       <Collapsible trigger="Upcoming" open={false} slug={'upcoming'}>
         {filteredEvents.slice(0,5).map((item,i) => {
             return(
-              <div className='agenda-item'>
-                <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
-              
-                  
-                  <p className='title'>{item.title}</p>
-                  <h3 className='artists'>
-                    {item.performances.map((performance,j) => {
-                      return(
-                        <span>
-                          {performance.artist[0].title}
-                        </span>
-                      )
-                    })}
-                  </h3>
-                  <a className='tickets' href="#">Billetter</a>
-          
-              </div>
+              <KalenderItem item={item}/>
             )
           })}
           

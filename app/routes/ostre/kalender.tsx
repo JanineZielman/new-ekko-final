@@ -7,6 +7,7 @@ import Moment from 'moment';
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
+import KalenderItem from '~/components/kalenderItem';
 
 export const loader: LoaderFunction = () => {
   return fetchAllEvents(25);
@@ -15,40 +16,46 @@ export const loader: LoaderFunction = () => {
 export default function Index() {
   let { events } = useLoaderData<AllEvents>();
 
-  let filteredEvents = [];
+  let filteredEvents: any[] = [];
   var currentTime = new Date();
+  let months = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
 
   filteredEvents = events.reverse().filter((item: any) => {
     var itemDate = new Date(item.date);
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+
   return (
     <Container>
 
-      <Collapsible trigger="March" open={true} slug={'march'}>
-        {filteredEvents.map((item,i) => {
-          return(
-            <div className='agenda-item'>
-              <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
-            
-                
-                <p className='title'>{item.title}</p>
-                <h3 className='artists'>
-                  {item.performances.map((performance,j) => {
-                    return(
-                      <span>
-                        {performance.artist[0].title}
-                      </span>
-                    )
-                  })}
-                </h3>
-                <a className='tickets' href="#">Billetter</a>
-        
-            </div>
-          )
+      {months.map((item, i) => {
+        let content;
+        {filteredEvents.map((event,j) => {
+          if (Moment(event.date).format("MMMM") == item) {
+            content = true;
+          }
         })}
-      </Collapsible>
+        return(
+          <>
+            {content &&
+              <Collapsible trigger={item} open={true} slug={item}>
+                {filteredEvents.map((event,j) => {
+                  return(
+                    <>
+                      { (Moment(event.date).format("MMMM") == item) && 
+                        <KalenderItem item={event}/>
+                      }
+                    </>
+                  )
+                })}
+              </Collapsible>
+            }
+          </>
+        )
+      })}
+
       <div className="grid">
         <Spacer number={12} border={""}/>
       </div>
