@@ -71,27 +71,33 @@ export default function Oestre() {
         <News news={news}/>
       </Collapsible>
       <Collapsible trigger="Upcoming" open={false} slug={'upcoming'}>
-      {filteredEvents.map((item,i) => {
-          return(
-            <div className='agenda-item'>
-              <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
-             
-                
-                <p className='title'>{item.title}</p>
-                <h3 className='artists'>
-                  {item.performances.map((performance,j) => {
-                    return(
-                      <span>
-                        {performance.artist[0].title}
-                      </span>
-                    )
-                  })}
-                </h3>
-                <a className='tickets' href="#">Billetter</a>
-         
-            </div>
-          )
-        })}
+        {filteredEvents.slice(0,5).map((item,i) => {
+            return(
+              <div className='agenda-item'>
+                <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
+              
+                  
+                  <p className='title'>{item.title}</p>
+                  <h3 className='artists'>
+                    {item.performances.map((performance,j) => {
+                      return(
+                        <span>
+                          {performance.artist[0].title}
+                        </span>
+                      )
+                    })}
+                  </h3>
+                  <a className='tickets' href="#">Billetter</a>
+          
+              </div>
+            )
+          })}
+          
+          <div className="grid">
+            <Spacer number={12} border={""}/>
+            <a className='show-all-button' href="/ostre/kalender"><h2>Full kalendar</h2></a>
+          </div>
+          
       </Collapsible>
       <Collapsible trigger={ostre.entry.title} open={false} slug={ostre.entry.slug}>
         <div className='flex'>
