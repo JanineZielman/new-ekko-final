@@ -533,6 +533,10 @@ body {
     padding: 1vw;
     margin-bottom: -2px;
     border-bottom: 0;
+    & span{
+      margin-left: 4vw;
+      text-transform: uppercase;
+    }
   }
   & span{
     width: 100%;
@@ -765,6 +769,11 @@ footer{
 .line-up{
   padding: 0 1vw 1vw 1vw;
   columns: 3;
+}
+
+.lineup-item{
+  line-height: 1.5;
+  padding-left: 2vw;
 }
 
 .padding{

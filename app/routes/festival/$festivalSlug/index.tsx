@@ -21,12 +21,15 @@ export const loader: LoaderFunction = async ({params}) => {
     fetchRecentNews(2),
   ]);
 
-  return { event, ekko_festival_info, news };
+  const slug = params.festivalSlug;
+
+  return { event, ekko_festival_info, news, slug };
 };
 
 export default function Index() {
-  const { event, ekko_festival_info, news } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews }>();
+  const { event, ekko_festival_info, news, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews, slug: String }>();
 
+  console.log(slug)
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
 
@@ -37,9 +40,6 @@ export default function Index() {
       locations.push(`${event.performances[i]?.location?.[0]?.title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`);
     }
   }
-
-  console.log(event)
-
 
   return (
     <Container>
@@ -68,8 +68,8 @@ export default function Index() {
         <div className='line-up'>
           {event.performances.map((item, i) => {
             return(
-              <div>
-                {item.artist[0].title}
+              <div className='lineup-item'>
+                <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
               </div>
             )
           })}
@@ -96,10 +96,10 @@ export default function Index() {
                             return(
                               <>
                                 {item.date == performance.date && 
-                                  <p className='flex space-between performance'>
+                                  <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
                                     <div className='time'>{performance.time}</div> 
                                     <div className='artist'>{performance.artist[0].title}</div>
-                                  </p>
+                                  </a>
                                 }
                               </>
                             )
@@ -138,7 +138,7 @@ export default function Index() {
 
       {event.sections?.map((item:any, i:any) => {
         return(
-          <Collapsible trigger={item.sectionTitle} open={false} slug={item.sectionTitle}>
+          <Collapsible trigger={item.sectionTitle} open={false} slug={item.sectionTitle.toLowerCase()}>
             <div className='content padding' dangerouslySetInnerHTML={{ __html: item.sectionBody }}></div>
           </Collapsible>
         )
