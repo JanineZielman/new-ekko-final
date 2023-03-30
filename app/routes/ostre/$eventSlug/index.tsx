@@ -19,18 +19,26 @@ export default function Index() {
 
   return (
     <Container>
-      <div className="intro-section">
+      <div className="intro-section fake-grid">
         <div className='info-wrapper'>
-          <p>{Moment(event.date).format("D.M.  dddd")} {Moment(event.openingTime).format("HH:mm")}</p>
-          <h1>{event.title} <br/>
-            {event.performances.map((performance:any,j:any) => {
-              return(
-                <div>
-                  {performance.artist[0].title}
-                </div>
-              )
-            })}
-          </h1>
+          <div>
+            <p>{Moment(event.date).format("D.M.  dddd")} {Moment(event.openingTime).format("HH:mm")}</p>
+            <h2>{event.title}</h2>
+            <h1>
+              {event.performances.map((performance:any,j:any) => {
+                return(
+                  <div>
+                    {performance.artist[0].title}
+                  </div>
+                )
+              })}
+            </h1>
+          </div>
+          <h3 className='margin-bottom'>
+            {event.ticketLink?.includes('https') &&
+              <a className='ticket-link white-button' href={event.ticketLink} target="_blank">Billetter</a>
+            }
+          </h3>
         </div>
         <div className='img-wrapper'>
           {event.featuredImage[0] && 
@@ -39,12 +47,25 @@ export default function Index() {
         </div>
       </div>
 
+      <div className='fake-grid'>
+        <div className='flex space-between event-info'>
+          <div className='info-text'>
+            <p>{event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</p>
+            <p>{Moment(event.openingTime).format("HH:mm")} - {Moment(event.closingTime).format("HH:mm")}</p>
+            <p>{event.ticketDescription}</p>
+          </div>
+          <div className='intro-text'>
+            <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
+          </div>
+        </div>
+      </div>
+
  
       {event.performances?.length > 0 &&
-          <Collapsible trigger={'Line-up'} open={true} slug={'line-up'}>
+          <Collapsible trigger={'Artists'} open={true} slug={'artists'}>
             <div className='artists-section'>
               {event.performances.map((performance, i) => (
-                <Link to={`/event/${event.slug}/${performance.slug}`} className='artist-item'>
+                <Link to={`/ostre/${event.slug}/${performance.slug}`} className='artist-item'>
                   <div className='img-wrapper artist'>
                     {performance.artist?.[0].featuredImage[0] ?
                       <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0].title} />
@@ -53,7 +74,10 @@ export default function Index() {
                     }
                   </div>
                   <div className='info-bar'>
-                    <h4>{performance.artist?.[0].title}</h4>
+                    <h2>{performance.artist?.[0].title}</h2>
+                    <div>{`(${performance.artist?.[0].artistMeta})`}</div>
+                    <br/>
+                    <p>{Moment(performance.time).format("HH:mm")}</p>
                     {/* <p>{performance.time}, {performance.location?.[0]?.title}</p> */}
                   </div>
                 </Link>

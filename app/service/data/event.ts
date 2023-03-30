@@ -19,6 +19,7 @@ export interface Event {
   ticketLink: string;
   ticketDescription: string;
   openingTime: string;
+  closingTime: string;
   performances: {
     slug: string;
     fullTitle: string;
@@ -50,6 +51,7 @@ const eventFragment = gql`
     date
     dateEnd
     openingTime
+    closingTime
     location {
       title
       fullTitle
