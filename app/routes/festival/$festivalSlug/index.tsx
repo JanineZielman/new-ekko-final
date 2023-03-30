@@ -45,13 +45,13 @@ export default function Index() {
     <Container>
 			<div className="grid">
         <Spacer number={3} border=""/>
-        <div className='item w1'>
+        <div className='item w1 overflow'>
           <div className='float graphic-element'>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
           </div>
         </div>
         <Spacer number={20} border=""/>
-        <div className='item w1'>
+        <div className='item w1 overflow'>
           <div className='float'>
             <h2>{event.title}</h2>
             <h2 dangerouslySetInnerHTML={{ __html: event.intro }}></h2>
