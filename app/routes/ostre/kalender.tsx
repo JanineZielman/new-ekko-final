@@ -45,7 +45,11 @@ export default function Index() {
                   return(
                     <>
                       { (Moment(event.date).format("MMMM") == item) && 
-                        <KalenderItem item={event}/>
+                        <div>
+                          <a href={`/ostre/${event.slug}`}>
+                            <KalenderItem item={event}/>
+                          </a>
+                        </div>
                       }
                     </>
                   )
