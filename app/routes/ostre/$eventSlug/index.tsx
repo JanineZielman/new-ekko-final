@@ -60,24 +60,21 @@ export default function Index() {
         </div>
       </div>
 
- 
       {event.performances?.length > 0 &&
         <Collapsible trigger={'Artists'} open={true} slug={'artists'}>
           <div className='artists-section'>
             {event.performances.map((performance, i) => (
               <Link to={`/ostre/${event.slug}/${performance.slug}`} className='artist-item'>
                 <div className='img-wrapper artist'>
-                  {performance.artist?.[0].featuredImage[0] ?
+                  {performance.artist?.[0].featuredImage[0] &&
                     <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0].title} />
-                  :
-                    <img src={event.featuredImage[0].url} alt={event.title} />
                   }
                 </div>
                 <div className='info-bar'>
                   <h2>{performance.artist?.[0].title}</h2>
-                  <div>{`(${performance.artist?.[0].artistMeta})`}</div>
+                  {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
                   <br/>
-                  <p>{Moment(performance.time).format("HH:mm")}</p>
+                  {performance.time &&<p>{Moment(performance.time).format("HH:mm")}</p>}
                 </div>
               </Link>
             ))}

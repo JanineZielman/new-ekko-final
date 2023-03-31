@@ -41,15 +41,13 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
-  console.log(filteredEvents);
-
   return (
     <Container back={false}>
       <div className="grid">
         <Spacer number={72} border={""}/>
         {filteredEvents.slice(-1).map((item,i) => {
           return(
-            <div className='event-highlight'>
+            <a className='event-highlight' href={`/ostre/${item.slug}`}>
               <img src={item.featuredImage?.[0]?.url} alt="" />
               <div className='info-box'>
                 <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).format("HH:mm")}</p>
@@ -64,7 +62,7 @@ export default function Oestre() {
                   })}
                 </h2>
               </div>
-            </div>
+            </a>
           )
         })}
       </div>

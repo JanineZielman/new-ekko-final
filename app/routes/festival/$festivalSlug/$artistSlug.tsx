@@ -45,17 +45,15 @@ export default function Index() {
           </h3>
 				</div>
 
-
-  
-          <div className='img-wrapper'>
-            <img src={artist.artist[0].featuredImage[0]?.url}/>
-            <div className="flex space-between white-bg">
-              <div className="info">
-                <h4>{artist.artist[0].title}</h4>
-                <p>{artist.time}, {artist.location[0].title}</p>
-              </div>
+        <div className='img-wrapper'>
+          <img src={artist.artist[0].featuredImage[0]?.url}/>
+          <div className="flex space-between white-bg">
+            <div className="info">
+              <h4>{artist.artist[0].title}</h4>
+              <p>{artist.time}, {artist.location[0].title}</p>
             </div>
           </div>
+        </div>
 
       </div>
 
