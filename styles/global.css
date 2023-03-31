@@ -37,6 +37,10 @@ main{
   margin-top: 80px;
 }
 
+* {
+  overflow-wrap: break-word;
+}
+
 input:focus, textarea:focus, select:focus{
   outline: none;
 }
@@ -729,6 +733,9 @@ footer{
   border-bottom: 1px solid var(--black);
   width: 96%;
   padding: 2%;
+  &:hover{
+    background-color: var(--ostre_light);
+  }
   & .time{
     width: 20%;
   }
