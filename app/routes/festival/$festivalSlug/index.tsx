@@ -42,7 +42,7 @@ export default function Index() {
   }
 
   return (
-    <Container>
+    <Container back={false}>
 			<div className="grid">
         <Spacer number={3} border=""/>
         <div className='item w1 overflow'>
@@ -62,6 +62,10 @@ export default function Index() {
 
       <Collapsible trigger="News" open={true} slug={'news'}>
         <News news={news}/>
+        <div className="grid">
+          <Spacer number={12} border={""}/>
+          <a className='show-all-button' href="/news"><h2>Show all</h2></a>
+        </div>
       </Collapsible>
 
       <Collapsible trigger="Line-up" open={false} slug={'line-up'}>

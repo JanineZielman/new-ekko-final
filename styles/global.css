@@ -41,6 +41,10 @@ input:focus, textarea:focus, select:focus{
   outline: none;
 }
 
+p a{
+  text-decoration: underline;
+}
+
 body {
   font-family: ReplicaLL;
   background-color: var(--white);
@@ -497,7 +501,14 @@ body {
       padding: 1vw;
     }
     & .performance{
-      margin: 14px 0;
+      margin: 10px 0;
+      padding: 4px 4px;
+      box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      &:hover{
+        background-color: var(--white);
+      }
     }
     & .flex{
       width: 100%;
@@ -513,6 +524,7 @@ body {
   & .program-location-item{
     padding: 10px 1vw 0px 1vw;
   }
+
   
 }
 
@@ -774,6 +786,13 @@ footer{
 .lineup-item{
   line-height: 1.5;
   padding-left: 2vw;
+  & a{
+    width: 100%;
+    display: block;
+  }
+  &:hover{
+    background-color: var(--white);
+  }
 }
 
 .padding{

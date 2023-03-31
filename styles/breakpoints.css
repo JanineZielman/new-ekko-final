@@ -233,6 +233,13 @@
 		}
 	}
 
+	.program{
+		flex-direction: column;
+		& .program-day{
+			width: 100%;
+		}
+	}
+
 	.event-highlight{
 		& img{
 			width: 100%;
