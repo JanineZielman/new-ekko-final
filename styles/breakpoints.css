@@ -156,6 +156,11 @@
 		grid-auto-rows: calc(0.166 * 90vw);
 	}
 
+	.fake-grid{
+		width: 100vw;
+		margin: 0;
+	}
+
 	.Collapsible{
 		width: 100vw;
 	}
