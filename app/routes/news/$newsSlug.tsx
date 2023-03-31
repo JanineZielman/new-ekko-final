@@ -19,25 +19,22 @@ export default function Index() {
   const {  news } = useLoaderData<{ news: NewsEntry }>();
 
   return (
-    <Container>
-      <div className="grid">
-        <div className="item w5 l2 padding">
-						<h1 className='big'>{news.entry.title}</h1> 
+    <Container back={false}>
+      <div className="fake-grid">
+        <div className="padding">
+						<h1>{news.entry.title}</h1> 
 						<h3><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
 				</div>
 
-				<Spacer number={2} border=""/>
-
-				<div className='item w5 l3'>
+				<div className=''>
 					{news.entry.newsPhoto[0] ? 
 							<div className='img-wrapper'><img src={news.entry.newsPhoto[0]?.url} alt={news.entry.title} /></div>
 							: <div className='img-wrapper'><img src={news.entry.pagePhoto[0]?.url} alt={news.entry.title} /></div>
 						}
 				</div>
 
-				<Spacer number={3} border=""/>
 
-				<div className='item w5 l6 text-block padding'>
+				<div className='text-block padding'>
 					{news.entry.complexContent?.map(block => {
 						if (block.blockType === 'text') {
 							return (
@@ -46,8 +43,9 @@ export default function Index() {
 						}
 					})}
 				</div>
-
-        <Spacer number={6} border=""/>
+      </div>
+			<div className='grid'>
+        <Spacer number={12} border=""/>
       </div>
     </Container>
   );

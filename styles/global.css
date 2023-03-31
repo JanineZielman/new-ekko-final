@@ -799,12 +799,12 @@ footer{
   padding: 0 1vw 1vw 1vw;
 }
 
-.artists-section{
+.artists-section, .news-section{
   display: flex;
   flex-wrap: wrap;
 }
 
-.artist-item{
+.artist-item, .news-grid-item{
   display: block;
   width: calc(100% / 3 );
   border: 1px solid var(--black);

@@ -56,7 +56,7 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
         :
           <a href={`/`} className="homebutton">About</a>
         }
-        <div className="nav-items">
+        <div className="nav-items" >
           {navigation &&
             filtered.map((item, i) => {
               return (

@@ -15,8 +15,6 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Index() {
   const event = useLoaderData<Event>();
 
-  console.log(event)
-
   return (
     <Container back="/ostre">
       <div className="intro-section fake-grid">

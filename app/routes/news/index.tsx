@@ -9,7 +9,7 @@ import Spacer from '~/components/spacer';
 
 export const loader: LoaderFunction = async () => {
   const [news] = await Promise.all([
-    fetchRecentNews(),
+    fetchRecentNews(25),
   ]);
 
   return { news };
@@ -19,12 +19,11 @@ export default function Index() {
   const { news } = useLoaderData<{ news: RecentNews }>();
 
   return (
-    <Container>
-      <div className="grid">
-
+    <Container back={false}>
+      <div className="fake-grid news-section">
         {news?.events?.map((item, i) => {
           return (
-            <Link to={`/news/${item.slug}`} key={`news-${i}`} className="item w3 artist">
+            <Link to={`/news/${item.slug}`} key={`news-${i}`} className="news-grid-item">
               {item.newsPhoto[0] ? 
                 <div className='img-wrapper'><img src={item.newsPhoto[0]?.url} alt={item.title} /></div>
                 : <div className='img-wrapper'><img src={item.pagePhoto[0]?.url} alt={item.title} /></div>
@@ -35,12 +34,9 @@ export default function Index() {
             </Link>
           );
         })}
-
-				{news?.events?.length % 2 != 0 &&
-          <Spacer number={3} border=""/>
-        }
-
-        <Spacer number={6} border=""/>
+      </div>
+      <div className="grid">
+        <Spacer number={12} border={""}/>
       </div>
     </Container>
   );

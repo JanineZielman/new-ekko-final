@@ -27,8 +27,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
-  console.log(artist)
-
   return (
     <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">
