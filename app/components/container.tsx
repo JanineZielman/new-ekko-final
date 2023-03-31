@@ -1,7 +1,10 @@
-export default function Container({ children }: { children: any }) {
+export default function Container({ children, back }: { children: any, back:any }) {
   return(
-    <div className="container">
-      {children}
-    </div>
+    <>
+      {back && <a href={back} className="back-button">back</a>}
+      <div className="container">
+        {children}
+      </div>
+    </>
   ) 
 }

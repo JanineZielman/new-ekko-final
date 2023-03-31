@@ -18,7 +18,7 @@ export default function Index() {
   console.log(event)
 
   return (
-    <Container>
+    <Container back="/ostre">
       <div className="intro-section fake-grid">
         <div className='info-wrapper'>
           <div>

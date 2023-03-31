@@ -30,7 +30,7 @@ export default function Index() {
   console.log(artist)
 
   return (
-    <Container>
+    <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
 					<div>
@@ -59,17 +59,6 @@ export default function Index() {
 
       </div>
 
-        {/* {artist.artist[0].complexContent?.map(block => {
-          if (block.blockType === 'embed') {
-            return (
-              <div dangerouslySetInnerHTML={{ __html: block.code }}></div>
-            );
-          }
-          if (block.blockType === 'video') {
-            // TODO: handle video embeds based on their url
-          }
-        })} */}
-
       <Collapsible trigger={'More about the artist'} open={false} slug={'about'}>
         {artist.artist[0].complexContent?.map(block => {
           if (block.blockType === 'text') {
@@ -87,7 +76,6 @@ export default function Index() {
           }
         })}
       </Collapsible>
-
 
       <Collapsible trigger={'Line-up'} open={false} slug={'line-up'}>
         <div className='artists-section'>

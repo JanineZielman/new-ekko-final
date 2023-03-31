@@ -36,7 +36,7 @@ export default function Oestre() {
   let filteredEvents = [];
   var currentTime = new Date();
 
-  filteredEvents = events.events.reverse().filter((item: any) => {
+  filteredEvents = events.events.filter((item: any) => {
     var itemDate = new Date(item.date);
     return itemDate.getTime() >= currentTime.getTime();
   });
@@ -44,10 +44,10 @@ export default function Oestre() {
   console.log(filteredEvents);
 
   return (
-    <Container>
+    <Container back={false}>
       <div className="grid">
         <Spacer number={72} border={""}/>
-        {filteredEvents.slice(0,1).map((item,i) => {
+        {filteredEvents.slice(-1).map((item,i) => {
           return(
             <div className='event-highlight'>
               <img src={item.featuredImage?.[0]?.url} alt="" />
@@ -72,11 +72,13 @@ export default function Oestre() {
         <News news={news}/>
       </Collapsible>
       <Collapsible trigger="Upcoming" open={false} slug={'upcoming'}>
-        {filteredEvents.slice(0,5).map((item,i) => {
+        {filteredEvents.slice(-5).reverse().map((item,i) => {
             return(
-              <a href={`/ostre/${item.slug}`}>
-                <KalenderItem item={item}/>
-              </a>
+              <div>
+                <a href={`/ostre/${item.slug}`}>
+                  <KalenderItem item={item}/>
+                </a>
+              </div>
             )
           })}
           

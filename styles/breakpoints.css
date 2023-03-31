@@ -3,6 +3,17 @@
 		display: none;
 	}
 
+	main{
+		margin-top: 65px;
+	}
+
+	.back-button{
+		position: absolute;
+		left: 2vw;
+		top: 24px;
+		z-index: 9;
+	}
+
 	.navbar {
 		justify-content: flex-end;
 		margin-left: 2vw;
