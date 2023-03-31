@@ -6,7 +6,7 @@ export default function News({news, page} : {news:any, page:any}) {
       <div className='flex space-between'>
         {news.events.map((item:any, i:any) => {
           return(
-            <a className='news-item' key={`news${i}`} href={`${page}/news/${item.slug}`}>
+            <a className='news-item' key={`news${i}`} href={`/${page}/news/${item.slug}`}>
               <img src={item.newsPhoto[0].url} alt="" />
               <div className='info-box'>
                 <h2>{item.title}</h2>

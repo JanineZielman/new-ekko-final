@@ -23,7 +23,7 @@ export default function Index() {
       <div className="fake-grid news-section">
         {news?.events?.map((item, i) => {
           return (
-            <Link to={`/news/${item.slug}`} key={`news-${i}`} className="news-grid-item">
+            <Link to={`/ostre/news/${item.slug}`} key={`news-${i}`} className="news-grid-item">
               {item.newsPhoto[0] ? 
                 <div className='img-wrapper'><img src={item.newsPhoto[0]?.url} alt={item.title} /></div>
                 : <div className='img-wrapper'><img src={item.pagePhoto[0]?.url} alt={item.title} /></div>
