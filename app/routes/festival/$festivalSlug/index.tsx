@@ -59,7 +59,7 @@ export default function Index() {
 			</div>
 
       <Collapsible trigger="News" open={true} slug={'news'}>
-        <News news={news} page={`ostre`}/>
+        <News news={news} page={`festival`}/>
         <div className="grid">
           <Spacer number={12} border={""}/>
           <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>
