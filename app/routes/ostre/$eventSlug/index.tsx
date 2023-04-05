@@ -15,12 +15,24 @@ export const loader: LoaderFunction = ({ params }) => {
 export default function Index() {
   const event = useLoaderData<Event>();
 
+  event.performances.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    if (first < 6){
+      first = first + 24;
+    }
+    if (second < 6){
+      second = second + 24;
+    }
+    return first - second
+  });
+
   return (
     <Container back="/ostre">
       <div className="intro-section fake-grid">
         <div className='info-wrapper'>
           <div>
-            <p>{Moment(event.date).format("D.M.  dddd")} {Moment(event.openingTime).format("HH:mm")}</p>
+            <p>{Moment(event.date).format("D.M.  dddd")} {Moment(event.openingTime).utcOffset('+0000').format("HH:mm")}</p>
             <h2>{event.title}</h2>
             <h1>
               {event.performances.map((performance:any,j:any) => {
@@ -49,7 +61,7 @@ export default function Index() {
         <div className='flex space-between event-info'>
           <div className='info-text'>
             <p>{event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</p>
-            <p>{Moment(event.openingTime).format("HH:mm")} - {Moment(event.closingTime).format("HH:mm")}</p>
+            <p>{Moment(event.openingTime).utcOffset('+0000').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0000').format("HH:mm")}`}</p>
             <p>{event.ticketDescription}</p>
           </div>
           <div className='intro-text'>
@@ -72,7 +84,7 @@ export default function Index() {
                   <h2>{performance.artist?.[0].title}</h2>
                   {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
                   <br/>
-                  {performance.time &&<p>{Moment(performance.time).format("HH:mm")}</p>}
+                  {performance.time &&<p>{Moment(performance.time).utcOffset('+0000').format("HH:mm")}</p>}
                 </div>
               </Link>
             ))}

@@ -103,8 +103,8 @@ const eventFragment = gql`
 				title
         slug
         date
-        time @formatDateTime(format: "G:i")
-        timeEnd @formatDateTime(format: "G:i")
+        time
+        timeEnd
         location {
           title
           fullTitle

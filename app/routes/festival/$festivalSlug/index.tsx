@@ -99,7 +99,7 @@ export default function Index() {
                               <>
                                 {item.date == performance.date && 
                                   <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
-                                    <div className='time'>{performance.time}</div> 
+                                    <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
                                     <div className='artist'>{performance.artist[0].title}</div>
                                   </a>
                                 }

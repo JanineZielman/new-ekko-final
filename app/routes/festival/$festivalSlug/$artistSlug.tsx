@@ -27,12 +27,24 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
+  event.performances.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    if (first < 6){
+      first = first + 24;
+    }
+    if (second < 6){
+      second = second + 24;
+    }
+    return first - second
+  });
+
   return (
     <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
 					<div>
-            <p>{Moment(event.date).format("D.M.  dddd")} {artist.time}</p>
+            <p>{Moment(event.date).format("D.M.  dddd")} {Moment(artist.time).utcOffset('+0100').format("HH:mm")}</p>
             <br/>
 						<h1>{artist.artist[0].title}</h1>
 					</div>
@@ -45,12 +57,6 @@ export default function Index() {
 
         <div className='img-wrapper'>
           <img src={artist.artist[0].featuredImage[0]?.url}/>
-          <div className="flex space-between white-bg">
-            <div className="info">
-              <h4>{artist.artist[0].title}</h4>
-              <p>{artist.time}, {artist.location[0].title}</p>
-            </div>
-          </div>
         </div>
 
       </div>
@@ -80,12 +86,12 @@ export default function Index() {
               <>
                 {performance.date == artist.date &&
                   <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
-                    <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>
+                    {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
                     <div className='info-bar'>
                       <h2>{performance.artist[0].title}</h2>
                       {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
                       <br/>
-                      <p>{performance.time}</p>
+                      <p>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</p>
                     </div>
                   </Link>
                 }
