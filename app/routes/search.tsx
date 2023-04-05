@@ -44,7 +44,7 @@ export default function Search() {
             autoFocus
           />
         </Form>
-        {events?.length > 0 && (
+        {events?.length > 0 ? (
           <>
             {events.map(event => (
               <>
@@ -60,9 +60,14 @@ export default function Search() {
               </>
             ))}
           </>
-        )}
+        )
+        :
+        <div className='grid'>
+          <Spacer number={48} border=""/>
+        </div>
+      }
       </div>
-      <div className='grid'>
+      <div className='grid no-margin-top'>
         <Spacer number={12} border=""/>
       </div>
     </Container>
