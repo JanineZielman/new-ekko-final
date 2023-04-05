@@ -1,14 +1,6 @@
 import { fetchFromGraphQL, gql } from '~/service/utils';
 
 export interface SearchResults {
-  artists: {
-    id: number;
-    slug: string;
-    title: string;
-    url: string;
-    featuredImage: { url: string }[];
-    meta?: string;
-  }[];
   events: {
     id: number;
     slug: string;
@@ -17,23 +9,26 @@ export interface SearchResults {
     type: 'event' | 'festival';
     featuredImage: { url: string }[];
     date: string;
+    performances:{
+      title: string;
+      slug: string;
+      date: string;
+      time: string;
+      timeEnd: string;
+      location: {
+        title: string;
+        fullTitle: string;
+      }[];
+      artist: {
+        title: string;
+        featuredImage: { url: string }[];
+      }[];
+    }[];
   }[];
 }
 
 const query = gql`
   query Search($query: String!) {
-    artists: entries(search: $query, section: "artists") {
-      id
-      slug
-      url
-      title
-      ... on artists_artist_Entry {
-        featuredImage: artistFeaturedPhoto {
-          url
-        }
-        meta: artistMeta
-      }
-    }
     events: entries(search: $query, section: "events", orderBy: "date DESC") {
       id
       slug
@@ -44,13 +39,55 @@ const query = gql`
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n/Y")
+        date
+        performances {
+          title
+          slug
+          date
+          time
+          timeEnd
+          location {
+            title
+            fullTitle
+          }
+          ... on performance_performance_Entry {
+            artist {
+              title
+              ... on artists_artist_Entry {
+                featuredImage: artistFeaturedPhoto{
+                  url
+                }
+              }
+            }
+          }
+        }
       }
       ... on events_festival_Entry {
         featuredImage: eventFeaturedPhoto {
           url
         }
-        date @formatDateTime(format: "d/n/Y")
+        date
+        performances {
+          title
+          slug
+          date
+          time
+          timeEnd
+          location {
+            title
+            fullTitle
+          }
+          ... on performance_performance_Entry {
+            artist {
+              title
+              ... on artists_artist_Entry {
+                featuredImage: artistFeaturedPhoto{
+                  url
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
