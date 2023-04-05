@@ -1,9 +1,9 @@
 import type { Navigation } from '~/service/data/global';
 import { Link } from '@remix-run/react';
 import Modal from 'react-modal';
-import React from 'react';
+import React, {useEffect} from 'react';
 
-export default function Nav({ navigation, slug }: { navigation: Navigation, slug: String }) {
+export default function Nav({ navigation, slug, fullSlug }: { navigation: Navigation, slug: String, fullSlug: String }) {
   const filtered = navigation.nodes?.filter(nav => nav.navHandle == slug);
 
   const toggle = navigation.nodes?.filter(nav => nav.navHandle == 'toggle');
@@ -21,6 +21,25 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
       backgroundColor: 'inherit',
 		},
 	};
+
+
+
+  useEffect(() => {
+    var navItems = document.getElementById("nav-items");
+    var btns = navItems?.getElementsByClassName("nav-link");
+    if (btns) {
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(e) {
+          
+          var allActive = document.getElementsByClassName("active");
+          for (var i = 0; i < allActive.length; ++i) {
+            allActive[i].classList.remove('active') 
+          }
+          e.target.classList.add('active');
+        });
+      }
+    }
+  })
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -56,18 +75,22 @@ export default function Nav({ navigation, slug }: { navigation: Navigation, slug
         :
           <a href={`/`} className="homebutton">About</a>
         }
-        <div className="nav-items" >
-          {navigation &&
-            filtered.map((item, i) => {
-              return (
-                item.title && (
-                  <a key={`navlink-${i}`} href={item.url}>
-                    <span>{item.title}</span>
-                  </a>
-                )
-              );
-            })}
-        </div>
+        {fullSlug.slice(1).split("/")?.[1] ?
+          <></>
+        :
+          <div className="nav-items" id="nav-items">
+            {navigation &&
+              filtered.map((item, i) => {
+                return (
+                  item.title && (
+                    <a key={`navlink-${i}`} href={item.url} id={`${item.title.toLowerCase()}-nav`} className='nav-link'>
+                      <span>{item.title}</span>
+                    </a>
+                  )
+                );
+              })}
+          </div>
+        }
         <Link className='search-link' to="/search">
           Søk
         </Link>

@@ -29,8 +29,6 @@ export default function Search() {
   const { events } = useLoaderData<SearchResults>();
   const [searchParams] = useSearchParams();
 
-  console.log(events)
-
   return (
     <Container back={false}>
       <div className="fake-grid">

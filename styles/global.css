@@ -340,7 +340,7 @@ body {
   position: fixed;
   width: 100vw;
   background-color: inherit;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   padding: 10px 0;
 
@@ -351,6 +351,10 @@ body {
     max-width: 1000px;
     padding: 14px 0;
     margin-left: 2vw;
+
+    & .active{
+      text-decoration: underline;
+    }
 
     & a {
       font-size: var(--h4);
@@ -770,7 +774,7 @@ footer{
   border: 1px solid var(--black);
   width: fit-content;
   position: absolute;
-  z-index: 9;
+  z-index: 2;
   right: 24px;
   white-space: nowrap;
   top: 50%;

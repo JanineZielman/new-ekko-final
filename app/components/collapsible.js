@@ -19,9 +19,10 @@ const Collapsible = ({children, trigger, open, slug}) => {
 					top: document.getElementById(window.location.hash.replace('#', ''))?.offsetTop,
 					behavior: 'smooth'
 				});
+				
 			}
 		}, 100);
-	},[])
+	})
 
 
 	const toggle = (e) => {

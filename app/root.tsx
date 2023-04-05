@@ -42,6 +42,7 @@ export default function App() {
    let location = useLocation();
 
    var slug = location.pathname.slice(1).split("/")?.[0];
+   var fullSlug = location.pathname;
 
 
   return (
@@ -51,8 +52,8 @@ export default function App() {
         <Links />
       </head>
       <body className={slug}>
-        <Nav navigation={navigation} slug={slug}/>
-        <Menu navigation={navigation} slug={slug}/>
+        <Nav navigation={navigation} slug={slug} fullSlug={fullSlug}/>
+        <Menu navigation={navigation} slug={slug} fullSlug={fullSlug}/>
         <main>
           <Outlet />
         </main>

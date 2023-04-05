@@ -3,7 +3,7 @@ import Nav from './nav';
 import Modal from 'react-modal';
 import React from 'react';
 
-export default function Menu({ navigation, slug }: { navigation: Navigation, slug: String }) {
+export default function Menu({ navigation, slug, fullSlug}: { navigation: Navigation, slug: String, fullSlug:String }) {
 
 	const customStyles = {
 		content: {
@@ -40,7 +40,7 @@ export default function Menu({ navigation, slug }: { navigation: Navigation, slu
 					style={customStyles}
 			>
 				<div className='close-menu' onClick={closeModal}>X</div>
-				<Nav navigation={navigation} slug={slug}/>
+				<Nav navigation={navigation} slug={slug} fullSlug={fullSlug}/>
 			</Modal>
 		</div>
   );
