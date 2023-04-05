@@ -19,7 +19,7 @@ export default function Index() {
   const {  news } = useLoaderData<{ news: NewsEntry }>();
 
   return (
-    <Container back={false}>
+    <Container back={'/ostre/news'}>
       <div className="fake-grid">
         <div className="padding">
 						<h1>{news.entry.title}</h1> 

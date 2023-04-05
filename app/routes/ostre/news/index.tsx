@@ -19,7 +19,7 @@ export default function Index() {
   const { news } = useLoaderData<{ news: RecentNews }>();
 
   return (
-    <Container back={false}>
+    <Container back={'/ostre'}>
       <div className="fake-grid news-section">
         {news?.events?.map((item, i) => {
           return (

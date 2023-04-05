@@ -75,7 +75,7 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
         :
           <a href={`/`} className="homebutton">About</a>
         }
-        {fullSlug.slice(1).split("/")?.[1] ?
+        {(fullSlug.slice(1).split("/")?.[1]) && (fullSlug.slice(1).split("/")?.[1] == 'festival' || fullSlug.slice(1).split("/")?.[2]) ?
           <></>
         :
           <div className="nav-items" id="nav-items">
