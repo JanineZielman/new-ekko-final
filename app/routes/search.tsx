@@ -7,7 +7,7 @@ import { Form, useLoaderData, useSearchParams, Link } from '@remix-run/react';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
-import KalenderItem from '~/components/kalenderItem';
+import ArchiveItem from '~/components/archiveItem';
 import type { SearchResults } from '~/service/data/search';
 import { fetchSearchResults } from '~/service/data/search';
 
@@ -48,11 +48,11 @@ export default function Search() {
               <>
                 {event.type == 'festival' ?
                   <Link to={`/${event.type}/${event.slug}`} key={`event-${event.slug}`}>
-                    <KalenderItem item={event}/>
+                    <ArchiveItem item={event}/>
                   </Link>
                 :
                   <Link to={`/ostre/${event.slug}`} key={`event-${event.slug}`}>
-                    <KalenderItem item={event}/>
+                    <ArchiveItem item={event}/>
                   </Link>
                 }
               </>

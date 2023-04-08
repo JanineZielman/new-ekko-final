@@ -58,96 +58,106 @@ export default function Index() {
         <Spacer number={35} border=""/>
 			</div>
 
-      <Collapsible trigger="News" open={true} slug={'news'}>
-        <News news={event.linkednews} page={`festival`}/>
-        <div className="grid">
-          <Spacer number={12} border={""}/>
-          <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>
-        </div>
-      </Collapsible>
+      {event.linkednews.length > 0 &&
+        <Collapsible trigger="News" open={true} slug={'news'}>
+          <News news={event.linkednews} page={`festival`}/>
+          <div className="grid">
+            <Spacer number={12} border={""}/>
+            <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>
+          </div>
+        </Collapsible>
+      }
 
-      <Collapsible trigger="Line-up" open={false} slug={'line-up'}>
-        <div className='line-up'>
-          {event.performances.map((item, i) => {
-            return(
-              <div className='lineup-item'>
-                <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
-              </div>
-            )
-          })}
-        </div>
-      </Collapsible>
-
-      <Collapsible trigger="Artists" open={false} slug={'artists'}>
-        <div className='artists-section'>
-          {event.performances.map((performance, i) => {
-            return(
-              <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
-                {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
-                <div className='info-bar'>
-                  <h2>{performance.artist[0].title}</h2>
-                  {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
-                  <br/>
-                  <p>{Moment(performance.date).format("ddd D.M.")} {Moment(performance.time).utcOffset('+0100').format("HH:mm")}</p>
+      {event.performances.length > 0 &&
+        <Collapsible trigger="Line-up" open={false} slug={'line-up'}>
+          <div className='line-up'>
+            {event.performances.map((item, i) => {
+              return(
+                <div className='lineup-item'>
+                  <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
                 </div>
-              </Link>
-            )
-          })}
-        </div>
-      </Collapsible>
+              )
+            })}
+          </div>
+        </Collapsible>
+      }
 
-      <Collapsible trigger="Program" open={false} slug={'program'}>
-        <div className='program'>
-          {event.program.map((item, i) => {
-            return(
-              <div className='program-day'>
-                <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>
-                {locations.map((location, i) => {
-                  const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
-                  const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
-                  return(
-                    <>
-                     {filteredPerformance.length > 0 &&
-                      <div className='program-location-item'>
-                        <>
-                          <div>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
-                        
-                          {filteredEvents.map((performance, i) => {
-                            return(
-                              <>
-                                {item.date == performance.date && 
-                                  <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
-                                    <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
-                                    <div className='artist'>{performance.artist[0].title}</div>
-                                  </a>
-                                }
-                              </>
-                            )
-                          })}
-                        </>
-                      </div>
-                      }
-                    </>
-                  )
-                })}
-              </div>
-            )
-          })}
-        </div>
-      </Collapsible>
+      {event.performances.length > 0 &&
+        <Collapsible trigger="Artists" open={false} slug={'artists'}>
+          <div className='artists-section'>
+            {event.performances.map((performance, i) => {
+              return(
+                <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
+                  {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
+                  <div className='info-bar'>
+                    <h2>{performance.artist[0].title}</h2>
+                    {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+                    <br/>
+                    <p>{Moment(performance.date).format("ddd D.M.")} {Moment(performance.time).utcOffset('+0100').format("HH:mm")}</p>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </Collapsible>
+      }
+
+      {event.program.length > 0 &&
+        <Collapsible trigger="Program" open={false} slug={'program'}>
+          <div className='program'>
+            {event.program.map((item, i) => {
+              return(
+                <div className='program-day'>
+                  {item.date && <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>}
+                  {locations.map((location, i) => {
+                    const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
+                    const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                    return(
+                      <>
+                      {filteredPerformance.length > 0 &&
+                        <div className='program-location-item'>
+                          <>
+                            <div>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                          
+                            {filteredEvents.map((performance, i) => {
+                              return(
+                                <>
+                                  {item.date == performance.date && 
+                                    <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
+                                      <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                      <div className='artist'>{performance.artist[0].title}</div>
+                                    </a>
+                                  }
+                                </>
+                              )
+                            })}
+                          </>
+                        </div>
+                        }
+                      </>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
+        </Collapsible>
+      }
       
-      <Collapsible trigger="Billetter" open={false} slug={'billetter'}>
-        <div className='flex tickets'>
-          {event.tickets.map((ticket, i) => {
-            return(
-              <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
-                <h3>{ticket.description}</h3>
-                <p className='price-label'>{ticket.price} Kr</p>
-              </a>
-            )
-          })}
-        </div>
-      </Collapsible>
+      {event.tickets.length > 0 &&
+        <Collapsible trigger="Billetter" open={false} slug={'billetter'}>
+          <div className='flex tickets'>
+            {event.tickets.map((ticket, i) => {
+              return(
+                <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
+                  <h3>{ticket.description}</h3>
+                  <p className='price-label'>{ticket.price} Kr</p>
+                </a>
+              )
+            })}
+          </div>
+        </Collapsible>
+      }
 
       <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
         <div className='flex'>
