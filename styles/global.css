@@ -49,6 +49,11 @@ p a{
   text-decoration: underline;
 }
 
+body,html{
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   font-family: ReplicaLL;
   background-color: var(--white);
