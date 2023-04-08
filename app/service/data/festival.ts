@@ -12,6 +12,14 @@ export interface Event {
   date: string;
   dateEnd: string;
 	lineup: string;
+  linkednews: {
+    id: number;
+    slug: string;
+    title: string;
+    newsPhoto: { url: string }[];
+		pagePhoto: { url: string }[];
+    newsIntro: string;
+  }[];
   location: {
     title: string;
     fullTitle: string;
@@ -60,6 +68,18 @@ const eventFragment = gql`
   fragment eventData on events_festival_Entry {
     organizer {
       title
+    }
+    linkednews{
+      id
+      slug
+      title
+      newsIntro
+			newsPhoto {
+				url
+			}
+			pagePhoto {
+				url
+			}
     }
     featuredImage: eventFeaturedPhoto {
       url

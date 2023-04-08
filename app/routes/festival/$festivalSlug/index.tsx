@@ -4,8 +4,6 @@ import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
-import { fetchRecentNews } from '~/service/data/news';
-import type { RecentNews } from '~/service/data/news';
 import Moment from 'moment';
 
 import Container from '~/components/container';
@@ -15,24 +13,21 @@ import News from '~/components/news';
 
 
 export const loader: LoaderFunction = async ({params}) => {
-  const [event, ekko_festival_info, news] = await Promise.all([
+  const [event, ekko_festival_info] = await Promise.all([
     fetchEvent(params.festivalSlug!),
     fetchContentPage('ekko_festival_info'),
-    fetchRecentNews(2),
   ]);
 
   const slug = params.festivalSlug;
 
-  return { event, ekko_festival_info, news, slug };
+  return { event, ekko_festival_info, slug };
 };
 
 export default function Index() {
-  const { event, ekko_festival_info, news, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews, slug: String }>();
+  const { event, ekko_festival_info, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews, slug: String }>();
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
   event.performances.sort(function(a,b){
-    // Turn your strings into dates, and then subtract them
-    // to get a value that is either negative, positive, or zero.
     return new Date(a.date) - new Date(b.date);
   });
 
@@ -64,7 +59,7 @@ export default function Index() {
 			</div>
 
       <Collapsible trigger="News" open={true} slug={'news'}>
-        <News news={news} page={`festival`}/>
+        <News news={event.linkednews} page={`festival`}/>
         <div className="grid">
           <Spacer number={12} border={""}/>
           <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>

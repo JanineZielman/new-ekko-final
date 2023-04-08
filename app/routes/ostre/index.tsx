@@ -41,6 +41,7 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+
   return (
     <Container back={false}>
       <div className="grid">
@@ -67,7 +68,7 @@ export default function Oestre() {
         })}
       </div>
       <Collapsible trigger="News" open={false} slug={'news'}>
-        <News news={news} page={`ostre`}/>
+        <News news={news.events} page={`ostre`}/>
         <div className="grid">
           <Spacer number={12} border={""}/>
           <a className='show-all-button' href="/ostre/news"><h2>Show all</h2></a>
