@@ -30,6 +30,11 @@ export default function Index() {
   const { event, ekko_festival_info, news, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews, slug: String }>();
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
+  event.performances.sort(function(a,b){
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return new Date(a.date) - new Date(b.date);
+  });
 
   const locations: any[] = [];
 
@@ -73,6 +78,24 @@ export default function Index() {
               <div className='lineup-item'>
                 <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
               </div>
+            )
+          })}
+        </div>
+      </Collapsible>
+
+      <Collapsible trigger="Artists" open={false} slug={'artists'}>
+        <div className='artists-section'>
+          {event.performances.map((performance, i) => {
+            return(
+              <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
+                {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
+                <div className='info-bar'>
+                  <h2>{performance.artist[0].title}</h2>
+                  {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+                  <br/>
+                  <p>{Moment(performance.date).format("ddd D.M.")} {Moment(performance.time).utcOffset('+0100').format("HH:mm")}</p>
+                </div>
+              </Link>
             )
           })}
         </div>
