@@ -821,6 +821,19 @@ footer{
   flex-wrap: wrap;
 }
 
+#arena-content{
+  & .content{
+    width: 98%;
+    margin-right: 0;
+  }
+  & p{
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--h3);
+    width: 100%;
+  }
+}
+
 .artist-item, .news-grid-item{
   display: block;
   width: calc(100% / 3 );

@@ -191,6 +191,12 @@
 		width: 100%;
 	}
 
+	#arena-content{
+		& p{
+			display: block;
+		}
+	}
+
 	.float{
 		top: 40vh;
 	}
