@@ -10,6 +10,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
+import ImageSlider from '~/components/imageSlider';
 
 
 export const loader: LoaderFunction = async ({params}) => {
@@ -173,6 +174,16 @@ export default function Index() {
           </Collapsible>
         )
       })}
+
+      <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
+        {event.gallery && <ImageSlider item={event.gallery}/>}
+        <div className="grid">
+          <Spacer number={12} border={""}/>
+          <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+        </div>
+      </Collapsible>
+
+
 
       <div className='grid'>
         <Spacer number={12} border=""/>

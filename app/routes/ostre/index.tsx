@@ -14,6 +14,7 @@ import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
 import KalenderItem from '~/components/kalenderItem';
+import ImageSlider from '~/components/imageSlider';
 
 
 export const loader: LoaderFunction = async ({params}) => {
@@ -40,7 +41,6 @@ export default function Oestre() {
     var itemDate = new Date(item.date);
     return itemDate.getTime() >= currentTime.getTime();
   });
-
 
   return (
     <Container back={false}>
@@ -91,12 +91,22 @@ export default function Oestre() {
           </div>
           
       </Collapsible>
+
       <Collapsible trigger={ostre.entry.title} open={false} slug={ostre.entry.slug}>
         <div className='flex'>
           <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>
           <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>
         </div>
       </Collapsible>
+
+      <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
+        {ostre.entry.gallery && <ImageSlider item={ostre.entry.gallery}/>}
+        <div className="grid">
+          <Spacer number={12} border={""}/>
+          <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+        </div>
+      </Collapsible>
+
       <div className="grid">
         <Spacer number={12} border={""}/>
       </div>

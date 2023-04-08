@@ -925,3 +925,38 @@ footer{
   position: fixed;
   left: 1vw;
 }
+
+
+.slick-slider{
+  height: 500px;
+  position: relative;
+  & .slick-list{
+    height: 100%;
+  }
+  & .slick-track{
+    height: 100%;
+  }
+  & .slick-next{
+    right: 14px;
+    z-index: 999;
+  }
+  & .slick-prev{
+    left: 14px;
+    z-index: 999;
+  }
+}
+.slick-slide{
+  height: 100%;
+  & div{
+    height: 100%;
+    & div{
+      height: 100%;
+    }
+  }
+  & img{
+    width: 98%;
+    height: 100%;
+    object-fit: cover;
+    margin-left: 1%;
+  }
+}

@@ -12,6 +12,7 @@ export interface Event {
   date: string;
   dateEnd: string;
 	lineup: string;
+  gallery: {url:string}[];
   linkednews: {
     id: number;
     slug: string;
@@ -80,6 +81,9 @@ const eventFragment = gql`
 			pagePhoto {
 				url
 			}
+    }
+    gallery {
+      url
     }
     featuredImage: eventFeaturedPhoto {
       url

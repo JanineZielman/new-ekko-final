@@ -6,6 +6,7 @@ export interface PageEntry {
     title: string;
     contact: string;
     content: string;
+    gallery: {url: string}[];
   };
 }
 
@@ -19,6 +20,9 @@ const query = gql`
       title
       contact
       content: pageContent
+      gallery {
+        url
+      }
     }
   }
 `;
