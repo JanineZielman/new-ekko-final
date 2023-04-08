@@ -176,7 +176,7 @@ export default function Index() {
       })}
 
       <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
-        {event.gallery && <ImageSlider item={event.gallery}/>}
+        {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
         <div className="grid">
           <Spacer number={12} border={""}/>
           <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
