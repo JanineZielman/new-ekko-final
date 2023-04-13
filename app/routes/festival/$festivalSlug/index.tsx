@@ -93,8 +93,6 @@ export default function Index() {
                   <div className='info-bar'>
                     <h2>{performance.artist[0].title}</h2>
                     {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
-                    <br/>
-                    <p>{Moment(performance.date).format("ddd D.M.")} {Moment(performance.time).utcOffset('+0100').format("HH:mm")}</p>
                   </div>
                 </Link>
               )

@@ -44,9 +44,10 @@ export default function Index() {
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
 					<div>
-            <p>{Moment(event.date).format("D.M.  dddd")} {Moment(artist.time).utcOffset('+0100').format("HH:mm")}</p>
+            <p>{Moment(event.date).format("dddd D.M.")} {Moment(artist.time).utcOffset('+0100').format("HH:mm")}</p>
             <br/>
 						<h1>{artist.artist[0].title}</h1>
+            {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
 					</div>
           <h3 className='margin-bottom'>
             {event.ticketLink?.includes('https') &&

@@ -57,7 +57,7 @@ input:focus, textarea:focus, select:focus{
 p a{
   text-decoration: underline;
   &:hover{
-    opacity: 0.7;
+    opacity: 0.5;
   }
 }
 
@@ -98,6 +98,10 @@ h1 {
   font-size: var(--h1);
   margin: 14px 0;
   font-weight: 500;
+  & span{
+    font-size: var(--body);
+    display: block;
+  }
 }
 h2 {
   font-size: var(--h2);
@@ -539,7 +543,7 @@ body {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       &:hover{
-        background-color: var(--white);
+        opacity: 0.5;
       }
     }
     & .flex{
@@ -775,12 +779,19 @@ footer{
   & .artists{
     width: 36%;
   }
+  & .ticket-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100px;
+  }
   & .ticket-link{
     text-align: right;
     padding: 10px 20px;
     border: 1px solid var(--black);
     border-radius: 25px;
     height: 100%;
+    width: fit-content;
   }
   & .no-ticket{
     width: 100px;
@@ -838,7 +849,7 @@ footer{
     display: block;
   }
   &:hover{
-    background-color: var(--white);
+    opacity: 0.5;
   }
 }
 
@@ -849,6 +860,20 @@ footer{
 .artists-section, .news-section{
   display: flex;
   flex-wrap: wrap;
+}
+
+.news-page{
+  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-wrap{
+  width: 48%;
+}
+
+.news-text-block{
+  width: 48%;
 }
 
 #arena-content{
@@ -871,7 +896,7 @@ footer{
   margin-left: -1px;
   margin-right: -1px;
   & .info-bar{
-    padding: 1vw;
+    padding: 1vw 1vw 1vw 1vw;
   }
   & .img-wrapper{
     width: 100%;
@@ -881,7 +906,7 @@ footer{
       height: 100%;
       object-fit: cover;
       object-position: center;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4 / 4;
     }
   }
 }

@@ -32,13 +32,14 @@ export default function Index() {
       <div className="intro-section fake-grid">
         <div className='info-wrapper'>
           <div>
-            <p>{Moment(event.date).format("D.M.  dddd")} {Moment(event.openingTime).utcOffset('+0000').format("HH:mm")}</p>
+            <p>{Moment(event.date).format("dddd D.M.")} {Moment(event.openingTime).utcOffset('+0000').format("HH:mm")}</p>
             <h2>{event.title}</h2>
             <h1>
               {event.performances.map((performance:any,j:any) => {
                 return(
                   <div>
                     {performance.artist[0].title}
+                    {performance.artist?.[0].artistMeta && <span>{`(${performance.artist?.[0].artistMeta})`}</span>}
                   </div>
                 )
               })}
@@ -71,15 +72,10 @@ export default function Index() {
       </div>
 
       {event.performances?.length > 0 &&
-        <Collapsible trigger={'Artists'} open={true} slug={'artists'}>
+        <Collapsible trigger={'Line-up'} open={true} slug={'line-up'}>
           <div className='artists-section'>
             {event.performances.map((performance, i) => (
               <Link to={`/ostre/${event.slug}/${performance.slug}`} className='artist-item'>
-                <div className='img-wrapper artist'>
-                  {performance.artist?.[0].featuredImage[0] &&
-                    <img src={performance.artist?.[0].featuredImage[0].url} alt={performance.artist[0].title} />
-                  }
-                </div>
                 <div className='info-bar'>
                   <h2>{performance.artist?.[0].title}</h2>
                   {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}

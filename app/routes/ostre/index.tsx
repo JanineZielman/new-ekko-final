@@ -51,7 +51,7 @@ export default function Oestre() {
             <a className='event-highlight' href={`/ostre/${item.slug}`}>
               <img src={item.featuredImage?.[0]?.url} alt="" />
               <div className='info-box'>
-                <p className='time'>{Moment(item.date).format("D.M.  dddd")} {Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
+                <p className='time'>{Moment(item.date).format("dddd D.M.")} {Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
                 <h2>{item.title}</h2>
                 <h2 className='artists'>
                   {item.performances.map((performance,j) => {

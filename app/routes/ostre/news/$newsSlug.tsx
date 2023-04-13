@@ -20,21 +20,25 @@ export default function Index() {
 
   return (
     <Container back={'/ostre/news'}>
-      <div className="fake-grid">
-        <div className="padding">
-						<h1>{news.entry.title}</h1> 
-						<h3><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
+      <div className="fake-grid news-page">
+        
+				<div className='left-wrap'>
+					<div className="padding">
+							<h1>{news.entry.title}</h1> 
+							<h3><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
+					</div>
+
+					<div className='news-page-img'>
+						{news.entry.newsPhoto[0] ? 
+								<div className='img-wrapper'><img src={news.entry.newsPhoto[0]?.url} alt={news.entry.title} /></div>
+								: <div className='img-wrapper'><img src={news.entry.pagePhoto[0]?.url} alt={news.entry.title} /></div>
+							}
+					</div>
 				</div>
 
-				<div className=''>
-					{news.entry.newsPhoto[0] ? 
-							<div className='img-wrapper'><img src={news.entry.newsPhoto[0]?.url} alt={news.entry.title} /></div>
-							: <div className='img-wrapper'><img src={news.entry.pagePhoto[0]?.url} alt={news.entry.title} /></div>
-						}
-				</div>
 
-
-				<div className='text-block padding'>
+				<div className='text-block padding news-text-block'>
+					<br/>
 					{news.entry.complexContent?.map(block => {
 						if (block.blockType === 'text') {
 							return (

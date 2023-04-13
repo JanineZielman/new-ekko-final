@@ -76,6 +76,21 @@
 		columns: 2;
 	}
 
+	.news-page{
+		justify-content: center;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	
+	.left-wrap{
+		width: 100%;
+	}
+	
+	.news-text-block{
+		width: 100%;
+	}
+
 	.ReactModalPortal{
 		z-index: 888;
 		& .hide-for-desktop{

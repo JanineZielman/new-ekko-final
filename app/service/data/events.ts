@@ -15,6 +15,7 @@ export interface Event {
     fullTitle: string;
   }[];
   ticketLink: string;
+  ticketDescription: string;
   performances:{
     title: string;
     slug: string;
@@ -56,6 +57,7 @@ const query = gql`
         }
         date
         ticketLink
+        ticketDescription
         performances {
           title
           slug
