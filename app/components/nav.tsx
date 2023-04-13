@@ -22,8 +22,6 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
 		},
 	};
 
-
-
   useEffect(() => {
     var navItems = document.getElementById("nav-items");
     var btns = navItems?.getElementsByClassName("nav-link");

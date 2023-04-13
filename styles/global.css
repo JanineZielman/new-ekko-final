@@ -304,8 +304,8 @@ a{
 
 .close-menu{
   position: absolute;
-  top: 24px;
-  right: 24px;
+  top: 0px;
+  right: 10px;
   width: 40px;
   height: 40px;
   font-size: 50px;
@@ -973,10 +973,13 @@ footer{
 
 .embed{
   margin-top: 24px;
+  display: inline;
+  margin-right: 1%;
   & iframe{
-    width: 100%;
-    height: 100%;
+    width: 48%;
+    height: 48%;
     aspect-ratio:  16 / 9;
+    margin-top: 24px;
   }
 }
 

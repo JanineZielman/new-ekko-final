@@ -72,7 +72,7 @@ export default function Index() {
       </div>
 
       {event.performances?.length > 0 &&
-        <Collapsible trigger={'Line-up'} open={true} slug={'line-up'}>
+        <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
           <div className='artists-section'>
             {event.performances.map((performance, i) => (
               <Link to={`/ostre/${event.slug}/${performance.slug}`} className='artist-item'>

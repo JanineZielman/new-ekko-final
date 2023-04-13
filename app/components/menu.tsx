@@ -7,19 +7,22 @@ export default function Menu({ navigation, slug, fullSlug}: { navigation: Naviga
 
 	const customStyles = {
 		content: {
-			top: '50%',
-			left: '50%',
-			right: 'auto',
-			bottom: 'auto',
-			width: '100vw',
-			height: '100vh',
-			marginRight: '-50%',
-			transform: 'translate(-50%, -50%)',
+			top: '0',
+			left: '0',
+			// right: 'auto',
+			// bottom: 'auto',
+			width: '100%',
+			height: '50px',
+			// marginRight: '-50%',
+			// transform: 'translate(-50%, -50%)',
 			backgroundColor: 'inherit',
+			padding: 0,
 		},
 	};
 
 	const [modalIsOpen, setIsOpen] = React.useState(false);
+
+	const filtered = navigation.nodes?.filter(nav => nav.navHandle == slug);
 
   function openModal() {
     setIsOpen(true);
@@ -28,10 +31,16 @@ export default function Menu({ navigation, slug, fullSlug}: { navigation: Naviga
   function closeModal() {
     setIsOpen(false);
   }
+
+	console.log(navigation)
   return (
 		<div className='menu hide-for-desktop'>
 			<div className='navbar'>
-				<a href="/" className="homebutton"></a>
+				{filtered?.[0] ?
+          <a href={``} className="homebutton">{filtered[0].navName}</a>
+        :
+          <a href={`/`} className="homebutton">{navigation.nodes[0].title}</a>
+        }
 				<div className='open-menu' onClick={openModal}></div>
 			</div>
 			<Modal
