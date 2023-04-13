@@ -61,6 +61,16 @@ export default function Index() {
 
       </div>
 
+      <div className='fake-grid'>
+        <div className='flex space-between event-info'>
+          <div className='info-text'>
+            <p>{artist.location?.[0]?.title}{artist.location?.[1]?.title ? `, ${artist.location?.[1]?.title}` : ''}</p>
+            <p>{Moment(artist.time).utcOffset('+0100').format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).utcOffset('+0100').format("HH:mm")}`}</p>
+            <p>{event.ticketDescription}</p>
+          </div>
+        </div>
+      </div>
+
       <Collapsible trigger={'More about the artist'} open={false} slug={'about'}>
         {artist.artist[0].complexContent?.map(block => {
           if (block.blockType === 'text') {

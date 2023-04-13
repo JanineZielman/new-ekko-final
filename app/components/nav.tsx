@@ -73,7 +73,7 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
         {filtered?.[0] ?
           <a href={``} className="homebutton">{filtered[0].navName}</a>
         :
-          <a href={`/`} className="homebutton">About</a>
+          <a href={`/`} className="homebutton">{navigation.nodes[0].title}</a>
         }
         {(fullSlug.slice(1).split("/")?.[0] == 'ostre' && fullSlug.slice(1).split("/")?.[1]) || (fullSlug.slice(1).split("/")?.[1] == 'festival' || fullSlug.slice(1).split("/")?.[2] ) ?
           <></>
