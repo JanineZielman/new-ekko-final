@@ -30,7 +30,7 @@ export default function Index() {
       <div className="grid">
         <Spacer number={60} border=""/>
         <div className='animation'>
-          <img src="/ani.gif" alt="" />
+          <iframe src="/p5" frameBorder="0"></iframe>
         </div>
       </div>
       <Collapsible trigger={about.entry.title} open={false} slug={about.entry.slug}>

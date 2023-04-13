@@ -89,14 +89,14 @@ export default function Index() {
         })}
       </Collapsible>
 
-      <Collapsible trigger={'Line-up'} open={false} slug={'line-up'}>
+      <Collapsible trigger={'Dagens Program'} open={false} slug={'dagens-program'}>
         <div className='artists-section'>
           {event.performances.map((performance, i) => {
             return(
               <>
                 {performance.date == artist.date &&
                   <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
-                    {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
+                    {/* {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>} */}
                     <div className='info-bar'>
                       <h2>{performance.artist[0].title}</h2>
                       {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
