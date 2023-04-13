@@ -53,8 +53,9 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
 
   return (
     <>
+      <div className='toggle-menu hide-for-desktop' onClick={openModal}></div>
       <div className="navbar hide-for-mobile">
-        <div className='toggle-menu' onClick={openModal}></div>
+        <div className='toggle-menu hide-for-mobile' onClick={openModal}></div>
         <Modal
 					isOpen={modalIsOpen}
 					onRequestClose={closeModal}

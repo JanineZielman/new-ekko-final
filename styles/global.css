@@ -254,7 +254,7 @@ a{
 }
 
 .ReactModal__Overlay{
-  z-index: 999;
+  z-index: 888;
   position: fixed;
   top: 0;
   height: 100vh;
@@ -269,11 +269,6 @@ a{
     align-items: stretch;
     /* align-items: center; */
   }
-}
-
-/* Festival */
-.festival{
-  
 }
 
 /* Menu */
@@ -324,7 +319,10 @@ body {
 }
 
 .toggle-menu-content{
-  padding: 1vw;
+  padding: 0 3vw 1vw 1vw;
+  margin-top: 22px;
+  border-bottom: 2px solid var(--black);
+  border-right: 2px solid var(--black);
   & .links{
     display: flex;
     flex-direction: column;
@@ -333,6 +331,9 @@ body {
     padding-top: 14px;
     & a{
       margin-bottom: 14px;
+      &:hover{
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -959,11 +960,11 @@ footer{
   }
   & .slick-next{
     right: 14px;
-    z-index: 999;
+    z-index: 777;
   }
   & .slick-prev{
     left: 14px;
-    z-index: 999;
+    z-index: 777;
   }
 }
 .slick-slide{
