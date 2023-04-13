@@ -13,7 +13,6 @@ const Collapsible = ({children, trigger, open, slug}) => {
 					top: document.getElementById(window.location.hash.replace('#', ''))?.offsetTop,
 					behavior: 'smooth'
 				});
-				console.log(document.getElementsByClassName('open')[0]);
 			}
 		}, 100);
 	})

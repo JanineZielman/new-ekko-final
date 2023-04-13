@@ -33,16 +33,25 @@
 		margin-top: 65px;
 	}
 
+	.open-menu{
+		margin-right: 14px;
+	}
+
+
 	.back-button{
-		position: absolute;
-		left: 2vw;
-		top: 24px;
+		position: fixed;
+		bottom: 0;
+		left: 0;
 		z-index: 9;
+		background-color: var(--white);
+		padding: 0 14px;
+		border-top: 2px solid var(--black);
+		border-right: 2px solid var(--black);
 	}
 
 	.navbar {
 		justify-content: flex-end;
-		margin-left: 2vw;
+		/* margin-left: 2vw; */
 		background-color: var(--white);
 		& .nav-items{
 			flex-direction: column;
@@ -50,11 +59,11 @@
 		}
 	}
 
-	.festival .navbar{
+	.festival .navbar, .festival .back-button{
 		background-color: var(--festival);
 	}
 
-	.ostre .navbar{
+	.ostre .navbar, .ostre .back-button{
 		background-color: var(--ostre);
 	}
 

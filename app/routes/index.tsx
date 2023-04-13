@@ -25,7 +25,6 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Index() {
   const { about, ostre, ekko_festival_info } = useLoaderData<{ about: PageEntry; ostre: PageEntry, ekko_festival_info: PageEntry }>();
 
-  console.log(ekko_festival_info)
   return (
     <Container back={false}>
       <div className="grid">

@@ -946,6 +946,7 @@ footer{
 .back-button{
   position: fixed;
   left: 1vw;
+  font-size: 40px;
 }
 
 
