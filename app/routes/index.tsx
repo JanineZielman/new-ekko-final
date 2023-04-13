@@ -25,8 +25,9 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Index() {
   const { about, ostre, ekko_festival_info } = useLoaderData<{ about: PageEntry; ostre: PageEntry, ekko_festival_info: PageEntry }>();
 
+  console.log(ekko_festival_info)
   return (
-    <Container>
+    <Container back={false}>
       <div className="grid">
         <Spacer number={60} border=""/>
         <div className='animation'>
@@ -44,12 +45,14 @@ export default function Index() {
           <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>
           <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>
         </div>
+        <a className='show-all-button-simple' href="/ostre"><h2>Read more</h2></a>
       </Collapsible>
       <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
         <div className='flex'>
           <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
           <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
         </div>
+        <a className='show-all-button-simple' href={`/festival/${ekko_festival_info.entry.linkedFestival[0]?.slug}`}><h2>Read more</h2></a>
       </Collapsible>
       <div className="grid">
         <Spacer number={12} border=""/>

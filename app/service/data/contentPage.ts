@@ -7,6 +7,9 @@ export interface PageEntry {
     contact: string;
     content: string;
     gallery: {url: string}[];
+    linkedFestival: {
+      slug: string;
+    }[];
   };
 }
 
@@ -22,6 +25,9 @@ const query = gql`
       content: pageContent
       gallery {
         url
+      }
+      linkedFestival{
+        slug
       }
     }
   }

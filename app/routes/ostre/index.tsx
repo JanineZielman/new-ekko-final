@@ -74,7 +74,7 @@ export default function Oestre() {
           <a className='show-all-button' href="/ostre/news"><h2>Show all</h2></a>
         </div>
       </Collapsible>
-      <Collapsible trigger="Upcoming" open={false} slug={'upcoming'}>
+      <Collapsible trigger="Calendar" open={false} slug={'calendar'}>
         {filteredEvents.slice(-5).reverse().map((item,i) => {
             return(
               <div>
