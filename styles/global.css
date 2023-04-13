@@ -576,14 +576,16 @@ body {
   & .content-parent{
     overflow: hidden;
     transition: all 0.4s ease;
+    height: 0;
     &.open{
       /* padding: 1vw; */
       border: 2px solid var(--black);
       margin-top: -2px;
-      margin-bottom: -4px;
+      /* margin-bottom: -4px; */
       /* padding-bottom: 24px; */
       border-bottom: 0;
       border-top: 0;
+      height: 100%;
     
     }
     & .contact{
