@@ -49,8 +49,6 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
     setIsOpen(false);
   }
 
-  console.log(filtered[0])
-
   return (
     <>
       <div className='toggle-menu hide-for-desktop' onClick={openModal}></div>

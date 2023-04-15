@@ -7,6 +7,7 @@ import Moment from 'moment';
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
+import ImageSlider from '~/components/imageSlider';
 
 export const loader: LoaderFunction = ({ params }) => {
   return fetchEvent(params.eventSlug!);
@@ -87,6 +88,17 @@ export default function Index() {
           </div>
         </Collapsible>
       }
+
+      {event.gallery.length > 0 &&
+        <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
+          <ImageSlider item={event.gallery}/>
+          <div className="grid">
+            <Spacer number={12} border={""}/>
+            <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+          </div>
+        </Collapsible>
+      }
+
       <div className='grid'>
         <Spacer number={12} border=""/>
       </div>

@@ -6,9 +6,15 @@ export interface PageEntry {
     title: string;
     contact: string;
     content: string;
+    date: string;
     gallery: {url: string}[];
-    linkedFestival: {
+    linkedEvents: {
       slug: string;
+    }[];
+    performances: {
+      artist: {
+        title: string;
+      }[];
     }[];
   };
 }
@@ -23,8 +29,33 @@ const query = gql`
       title
       contact
       content: pageContent
-      gallery {
-        url
+      linkedEvents {
+        slug
+        ... on events_event_Entry {
+          slug
+          gallery {
+            url
+          }
+          date
+          title
+          performances {
+            ... on performance_performance_Entry {
+              artist {
+                ... on artists_artist_Entry {
+                  title
+                }
+              }
+            }
+          }
+        }
+        ... on events_festival_Entry {
+          gallery {
+            url
+          }
+          date
+          title
+          slug
+        }
       }
       linkedFestival{
         slug

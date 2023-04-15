@@ -1028,4 +1028,43 @@ footer{
     object-fit: cover;
     margin-left: 1%;
   }
+  opacity: 0.5;
+  &.slick-current{
+    opacity: 1;
+    & .info-box{
+      opacity: 1;
+    }
+  }
+  & .info-box{
+    opacity: 0;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 2em;
+    position: absolute;
+    height: auto;
+    min-height: 80px;
+    width: fit-content;
+    max-width: 50vw;
+    bottom: 0;
+    & p{
+      font-size: var(--body);
+      line-height: 1.2;
+    }
+  }
+ 
+}
+
+
+.slick-dots li button:before, .slick-next:before, .slick-prev:before{
+  font-family: ReplicaLL!important;
+}
+
+.slick-next:before, .slick-prev:before{
+  color: var(--black)!important;
+  font-size: 48px!important;
+}
+
+.slick-next, .slick-prev{
+  width: 50px!important;
+  height: 50px!important;
 }

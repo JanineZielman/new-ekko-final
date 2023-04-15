@@ -14,6 +14,9 @@ export interface Event {
     title: string;
     fullTitle: string;
   }[];
+  gallery: {
+    url: string;
+  }[];
   intro: string;
   description: string;
   ticketLink: string;
@@ -55,6 +58,9 @@ const eventFragment = gql`
     location {
       title
       fullTitle
+    }
+    gallery{
+      url
     }
     intro
     description

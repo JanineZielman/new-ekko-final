@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import Moment from 'moment';
 
 export default function ImageSlider({ item }) {
   var settings = {
@@ -6,17 +7,39 @@ export default function ImageSlider({ item }) {
     infinite: true,
     speed: 500,
     centerMode: true,
-    centerPadding: "60px",
+    centerPadding: "20%",
     slidesToShow: 1,
     slidesToScroll: 1
   };
+  
   return (
     <Slider {...settings}>
       {item.map((slide, i) => {
         return(
-          <div className="slide-wrapper">
-            <img src={slide.url}/>
-          </div>
+          slide.gallery ?
+            slide.gallery.map((slideItem, i) => (
+              <div className="slide-wrapper">
+                <img src={slideItem.url}/>
+                <a className='info-box' href={`${slide.performances ? `/ostre/${slide.slug}` : `/festival/${slide.slug}`}`}>
+                  <p className='time'>{Moment(item.date).format("dddd D.M. yy")}</p>
+                  <h2>{slide.title}</h2>
+                  <h2 className='artists'>
+                    {slide.performances?.map((performance,j) => {
+                      return(
+                        <span>
+                          {performance.artist[0].title}
+                        </span>
+                      )
+                    })}
+                  </h2>
+                </a>
+              </div>
+            ))
+          :
+            <div className="slide-wrapper">
+              <img src={slide.url}/>
+            </div>
+            
         )
       })}
     </Slider>
