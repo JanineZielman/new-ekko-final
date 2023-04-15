@@ -138,6 +138,10 @@ a{
   color: var(--black);
 }
 
+.bold{
+  font-weight: bold;
+}
+
 .big {
   font-size: 5vw;
   line-height: 1;
@@ -259,6 +263,7 @@ a{
     font-size: var(--h2);
     width: 100%;
     text-transform: capitalize;
+    background-color: inherit;
   }
   & img{
     height: 50px;
@@ -528,6 +533,7 @@ body {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     margin: 0 -1px;
+    padding-bottom: 14px;
     & .date{
       padding: 2vw;
       border-bottom: 2px solid var(--black);
@@ -537,7 +543,7 @@ body {
       padding: 1vw;
     }
     & .performance{
-      margin: 10px 0;
+      margin: 0px 0;
       padding: 4px 4px;
       box-sizing: border-box;
       -moz-box-sizing: border-box;

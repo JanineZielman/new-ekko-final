@@ -116,7 +116,7 @@ export default function Index() {
                       {filteredPerformance.length > 0 &&
                         <div className='program-location-item'>
                           <>
-                            <div>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                            <div className='bold'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
                           
                             {filteredEvents.map((performance, i) => {
                               return(

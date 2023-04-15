@@ -100,7 +100,7 @@ export default function Oestre() {
       </Collapsible>
 
       <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
-        {ostre.entry.gallery.length > 0 && <ImageSlider item={ostre.entry.gallery}/>}
+        {/* {ostre.entry.gallery.length > 0 && <ImageSlider item={ostre.entry.gallery}/>} */}
         <div className="grid">
           <Spacer number={12} border={""}/>
           <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>

@@ -32,7 +32,6 @@ export default function Menu({ navigation, slug, fullSlug}: { navigation: Naviga
     setIsOpen(false);
   }
 
-	console.log(navigation)
   return (
 		<div className='menu hide-for-desktop'>
 			<div className='navbar'>
@@ -49,7 +48,9 @@ export default function Menu({ navigation, slug, fullSlug}: { navigation: Naviga
 					style={customStyles}
 			>
 				<div className='close-menu' onClick={closeModal}>X</div>
-				<Nav navigation={navigation} slug={slug} fullSlug={fullSlug}/>
+				<div onClick={closeModal}>
+					<Nav navigation={navigation} slug={slug} fullSlug={fullSlug}/>
+				</div>
 			</Modal>
 		</div>
   );

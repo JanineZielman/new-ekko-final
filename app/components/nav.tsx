@@ -49,6 +49,8 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
     setIsOpen(false);
   }
 
+  console.log(filtered[0])
+
   return (
     <>
       <div className='toggle-menu hide-for-desktop' onClick={openModal}></div>
@@ -90,9 +92,16 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
               })}
           </div>
         }
-        <Link className='search-link' to="/search">
-          Søk
-        </Link>
+         {filtered?.[0] ?
+          <Link className='search-link' to={`${filtered[0].navHandle}/search`}>
+            Søk
+          </Link>
+        :
+          <Link className='search-link' to="/search">
+            Søk
+          </Link>
+        }
+        
       </div>
     </>
   );
