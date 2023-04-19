@@ -62,9 +62,9 @@ export default function Index() {
       <div className='fake-grid'>
         <div className='flex space-between event-info'>
           <div className='info-text'>
-            <p>{event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</p>
-            <p>{Moment(event.openingTime).utcOffset('+0000').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0000').format("HH:mm")}`}</p>
-            <p>{event.ticketDescription}</p>
+            <p>Sted: {event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</p>
+            <p>Tid: {Moment(event.openingTime).utcOffset('+0000').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0000').format("HH:mm")}`}</p>
+            <p>{event.ticketDescription && `Billetter: ${event.ticketDescription}`}</p>
           </div>
           <div className='intro-text'>
             <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
