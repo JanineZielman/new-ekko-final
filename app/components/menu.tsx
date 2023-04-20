@@ -12,7 +12,7 @@ export default function Menu({ navigation, slug, fullSlug}: { navigation: Naviga
 			// right: 'auto',
 			// bottom: 'auto',
 			width: '100%',
-			height: '50px',
+			height: '300px',
 			// marginRight: '-50%',
 			// transform: 'translate(-50%, -50%)',
 			backgroundColor: 'inherit',

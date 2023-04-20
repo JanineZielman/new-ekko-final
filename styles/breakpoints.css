@@ -96,11 +96,12 @@
 
 	.ReactModalPortal{
 		z-index: 888;
+		height: auto;
 		& .hide-for-desktop{
 			display: none;
 		}
 		& .navbar{
-			display: flex;
+			display: block;
 			flex-wrap: wrap;
 			justify-content: space-between;
 			align-items: flex-start;
