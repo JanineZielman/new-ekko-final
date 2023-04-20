@@ -2,13 +2,10 @@ import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
 import Container from '~/components/container';
-import Spacer from '~/components/spacer';
-import { fetchContentPage } from '~/service/data/contentPage';
-import type { PageEntry } from '~/service/data/contentPage';
-import Collapsible from '~/components/collapsible';
 import React, {useEffect} from 'react';
 import type { Navigation } from '~/service/data/global';
 import { getNavigation } from '~/service/data/global';
+import { Link } from '@remix-run/react';
 
 
 export const loader: LoaderFunction = async () => {
@@ -21,6 +18,8 @@ export const loader: LoaderFunction = async () => {
 
 export default function Index() {
   const { navigation } = useLoaderData<{ navigation: Navigation }>();
+
+  const toggle = navigation.nodes?.filter(nav => nav.navHandle == 'toggle');
 
   console.log(navigation)
 
@@ -36,6 +35,11 @@ export default function Index() {
     });
   }, [])
 
+  console.log(toggle.filter(word => word.url.includes('festival'))[0].url)
+
+
+  
+
   return (
     <Container back={false}>
       <div className="grid gravity-grid" id="wrapper">
@@ -43,9 +47,40 @@ export default function Index() {
         <div className='gravity'>
           {navigation.nodes.map((item, i) => {
             return(
-              <div id="gravity" className={`gravity-item ${item.navName} ${item.title}`}>
-                {item.title}
-              </div>
+              <>
+                {item.navName == 'Toggle' ?
+                  <div id="gravity" className={`gravity-item ${item.navName} ${item.title}`} 
+                  onClick={
+                    goTo => {
+                      window.location = `${item.url}`;
+                    }
+                  }>
+                    {item.title}
+                  </div>
+                :
+                  <>
+                    {item.navHandle == 'festival' ?
+                      <div id="gravity" className={`gravity-item ${item.navName} ${item.title}`} 
+                        onClick={
+                          goTo => {
+                            window.location = `${toggle.filter(word => word.url.includes('festival'))[0].url}/${item.url}`;
+                          }
+                        }>
+                          {item.title}
+                      </div>
+                    :
+                      <div id="gravity" className={`gravity-item ${item.navName} ${item.title}`} 
+                        onClick={
+                          goTo => {
+                            window.location = `${item.navHandle}/${item.url}`;
+                          }
+                        }>
+                          {item.title}
+                      </div>
+                    }
+                  </>
+                }
+              </>
             )
           })}
         </div>

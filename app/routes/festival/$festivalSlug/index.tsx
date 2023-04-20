@@ -25,7 +25,7 @@ export const loader: LoaderFunction = async ({params}) => {
 };
 
 export default function Index() {
-  const { event, ekko_festival_info, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, news: RecentNews, slug: String }>();
+  const { event, ekko_festival_info, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String }>();
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
   event.performances.sort(function(a,b){
