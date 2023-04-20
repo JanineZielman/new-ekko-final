@@ -19,6 +19,12 @@
 		display: none;
 	}
 
+	.gravity{
+		& .gravity-item{
+			padding: 14px 50px;
+		}
+	}
+
 	.toggle-menu{
 		position: fixed;
 		top: 14px;

@@ -1082,44 +1082,49 @@ footer{
 
 .gravity{
   position: absolute;
-  top: -15vh;
+  top: -10vh;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  height: auto;
+  height: 300px;
   width: 80vw;
   z-index: 0;
   margin-left: 2vw;
   & .gravity-item{
-    padding: 0.5vw 0;
-    border-radius: 0%;
-    width: 90vw;
+    padding: 24px 100px;
+    border-radius: 25px;
+    width: fit-content;
     /* aspect-ratio: 1/1; */
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: black;
+    color: white;
     white-space: nowrap;
     font-size: var(--h2);
     cursor: pointer;
     border: 2px solid black;
+    transform: translate(-50%, -50%);
+    transition: 0.4s ease;
+    z-index: 0;
     &:hover{
-      opacity: 0.8;
-      z-index: 999;
+      /* opacity: 0.8; */
+      font-size: var(--h1);
     }
-    &.Festival{
+    &.Festival:hover{
       background-color: var(--festival_light);
     }
-    &.Østre{
+    &.Østre:hover{
       background-color: var(--ostre_light);
     }
     &.Toggle{
-      font-size: var(--h1);
-      &.Festival{
-        background-color: var(--festival);
-      }
-      &.Østre{
-        background-color: var(--ostre);
+      &:hover{
+        &.Festival{
+          background-color: var(--festival);
+        }
+        &.Østre{
+          background-color: var(--ostre);
+        }
       }
     }
     &.Foreningen{
