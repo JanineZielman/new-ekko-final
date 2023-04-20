@@ -6,55 +6,49 @@ import Spacer from '~/components/spacer';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
 import Collapsible from '~/components/collapsible';
+import React, {useEffect} from 'react';
+import type { Navigation } from '~/service/data/global';
+import { getNavigation } from '~/service/data/global';
 
 
 export const loader: LoaderFunction = async () => {
-  const [about, ostre, ekko_festival_info] = await Promise.all([
-    fetchContentPage('about'),
-    fetchContentPage('ostre'),
-    fetchContentPage('ekko_festival_info')
+  const [navigation] = await Promise.all([
+    getNavigation()
   ]);
 
-  return { about, ostre, ekko_festival_info };
+  return { navigation };
 };
 
-export const meta: MetaFunction = ({ data }) => ({
-  title: (data as PageEntry).entry?.title,
-});
-
 export default function Index() {
-  const { about, ostre, ekko_festival_info } = useLoaderData<{ about: PageEntry; ostre: PageEntry, ekko_festival_info: PageEntry }>();
+  const { navigation } = useLoaderData<{ navigation: Navigation }>();
+
+  console.log(navigation)
+
+  useEffect(() => {
+    $(document).ready(() => {
+      $('.gravity').jGravity({ // jGravity works best when targeting the body
+        target: 'div#gravity', // Enter your target critera e.g. 'div, p, span', 'h2' or 'div#specificDiv', or even 'everything' to target everything in the body
+        ignoreClass: 'ignoreMe', // Specify if you would like to use an ignore class, and then specify the class
+        weight: 25, // Enter any number 1-100 ideally (25 is default), you can also use 'heavy' or 'light'
+        depth: 1, // Enter a value between 1-10 ideally (1 is default), this is used to prevent targeting structural divs or other items which may break layout in jGravity
+        drag: true // Decide if users can drag elements which have been effected by jGravity
+      });
+    });
+  }, [])
 
   return (
     <Container back={false}>
-      <div className="grid">
-        <Spacer number={60} border=""/>
-        <div className='animation'>
-          <iframe src="/p5" frameBorder="0"></iframe>
+      <div className="grid gravity-grid" id="wrapper">
+        {/* <Spacer number={72} border=""/> */}
+        <div className='gravity'>
+          {navigation.nodes.map((item, i) => {
+            return(
+              <div id="gravity" className={`gravity-item ${item.navName} ${item.title}`}>
+                {item.title}
+              </div>
+            )
+          })}
         </div>
-      </div>
-      <Collapsible trigger={about.entry.title} open={false} slug={about.entry.slug}>
-        <div className='flex'>
-          <div className='contact' dangerouslySetInnerHTML={{ __html: about.entry.contact }}></div>
-          <div className='content' dangerouslySetInnerHTML={{ __html: about.entry.content }}></div>
-        </div>
-      </Collapsible>
-      <Collapsible trigger={ostre.entry.title} open={false} slug={ostre.entry.slug}>
-        <div className='flex'>
-          <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>
-          <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>
-        </div>
-        <a className='show-all-button-simple' href="/ostre"><h2>Read more</h2></a>
-      </Collapsible>
-      <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
-        <div className='flex'>
-          <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
-          <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
-        </div>
-        <a className='show-all-button-simple' href={`/festival/${ekko_festival_info.entry.linkedFestival[0]?.slug}`}><h2>Read more</h2></a>
-      </Collapsible>
-      <div className="grid">
-        <Spacer number={12} border=""/>
       </div>
     </Container>
   );

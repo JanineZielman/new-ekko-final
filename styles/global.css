@@ -1071,3 +1071,57 @@ footer{
   width: 50px!important;
   height: 50px!important;
 }
+
+.gravity-grid{
+  width: 100vw;
+  height: 90vh;
+  overflow: hidden;
+  border: none;
+  position: relative;
+}
+
+.gravity{
+  position: absolute;
+  top: -15vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  height: auto;
+  width: 80vw;
+  z-index: 0;
+  & .gravity-item{
+    padding: 0.5vw 0;
+    border-radius: 0%;
+    width: 100vw;
+    /* aspect-ratio: 1/1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    white-space: nowrap;
+    font-size: var(--h2);
+    cursor: pointer;
+    border: 2px solid black;
+    &:hover{
+      opacity: 0.5;
+    }
+    &.Festival{
+      background-color: var(--festival_light);
+    }
+    &.Østre{
+      background-color: var(--ostre_light);
+    }
+    &.Toggle{
+      font-size: var(--h1);
+      &.Festival{
+        background-color: var(--festival);
+      }
+      &.Østre{
+        background-color: var(--ostre);
+      }
+    }
+    &.Foreningen{
+      display: none;
+    }
+  }
+}

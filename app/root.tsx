@@ -61,6 +61,8 @@ export default function App() {
           type="text/css"
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossOrigin="anonymous"></script>
+        <script src="/jGravity.js"></script>
       </head>
       <body className={slug}>
         <Nav navigation={navigation} slug={slug} fullSlug={fullSlug}/>
