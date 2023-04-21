@@ -383,6 +383,32 @@
 		columns: 1;
 		padding-bottom: 2vw;
 	}
+	.main-images{
+		& h2{
+			font-size: var(--h2);
+		}
+		& .wrap{
+			height: 40%;
+		}
+		& .kalender-img {
+			top: -5%;
+			left: -5%;
+		}
+		& .festival-img {
+			top: 10%;
+			right: -10%;
+			left: auto;
+		}
+		& .ostre-img {
+			top: 30%;
+			left: -10%;
+			height: 50%;
+		}
+		& .ekko-img {
+			top: 60%;
+			right: 0%;
+		}
+	}
 }
 
 

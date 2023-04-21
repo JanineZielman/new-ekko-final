@@ -1,6 +1,6 @@
 :root {
   --black: #000;
-  --white: #fff;
+  --white: rgb(230,230,230);
   --festival: #F2D42F;
   --festival_light: #EFDA6A;
   --ostre: #3EF22F;
@@ -1087,14 +1087,87 @@ footer{
   height: 50px!important;
 }
 
-.main-image{
+.main-images{
   width: 100%;
   position: absolute;
   height: 100%;
   object-fit: contain;
+  & h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--white);
+    font-weight: 300;
+    z-index: 2;
+    font-size: 2.5vw;
+  }
+  & .wrap{
+    position: absolute;
+    height: 50%;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    &:hover{
+      & img{
+        transform: rotate(90deg);
+      }
+    }
+  }
+  & img{
+    width: auto;
+    height: 100%;
+    transition: all 0.4s ease;
+  }
+  & .kalender-img {
+    top: 0;
+    left: 5%;
+    animation: float-1 12s ease-in-out infinite alternate;
+  }
+  & .festival-img {
+    top: 50%;
+    left: 8%;
+    animation: float-2 8s ease-in-out infinite alternate;
+    animation-direction: reverse;
+  }
+  & .ostre-img {
+    top: -10%;
+    left: 25%;
+    height: 105%;
+    animation: float-3 10s ease-in-out infinite alternate;
+    animation-direction: reverse;
+  }
+  & .ekko-img {
+    top: 5%;
+    right: 10%;
+    animation: float-2 10s ease-in-out infinite alternate;
+  }
 }
 
 .min-height{
   height: 75vh;
   border: none;
+}
+
+@keyframes float-1 {
+	0%   { transform: translate(0px);}
+	25%  { transform: translate(-10px, 2px); }
+  50%  { transform: translate(-5px, 0px); }
+  75%  { transform: translate(-10px, -2px); }
+  100%  { transform: translate(0px); }
+}
+
+@keyframes float-2 {
+	0%   { transform: translate(0px);}
+	25%  { transform: translate(2px, -10px); }
+  50%  { transform: translate(2px, 0px); }
+  75%  { transform: translate(2px, 10px); }
+  100%  { transform: translate(0px); }
+}
+
+@keyframes float-3 {
+	0%   { transform: translate(0px);}
+	25%  { transform: translate(10px, -10px); }
+  50%  { transform: translate(-10px, 10px); }
+  75%  { transform: translate(10px, 10px); }
+  100%  { transform: translate(0px); }
 }
