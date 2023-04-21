@@ -257,7 +257,8 @@ a{
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid black;
-  width: 100%;
+  width: 90vw;
+  height: 50px;
   & input{
     border: none;
     font-size: var(--h2);
@@ -1091,4 +1092,9 @@ footer{
   position: absolute;
   height: 100%;
   object-fit: contain;
+}
+
+.min-height{
+  height: 75vh;
+  border: none;
 }

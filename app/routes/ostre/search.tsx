@@ -31,19 +31,19 @@ export default function Search() {
 
   return (
     <Container back={false}>
-      <div className="fake-grid">
-        <Form className='search-bar'>
-          <input
-            type="search"
-            name="q"
-            id=""
-            defaultValue={searchParams.get('q') ?? ''}
-            placeholder="Search"
-            autoFocus
-          />
-        </Form>
+      <Form className='search-bar'>
+        <input
+          type="search"
+          name="q"
+          id=""
+          defaultValue={searchParams.get('q') ?? ''}
+          placeholder="Search"
+          autoFocus
+        />
+      </Form>
+      
         {events?.length > 0 ? (
-          <>
+          <div className="fake-grid">
             {events.map(event => (
               <>
                 {event.type == 'festival' ?
@@ -57,17 +57,14 @@ export default function Search() {
                 }
               </>
             ))}
-          </>
+            <div className='grid no-margin-top'>
+              <Spacer number={12} border=""/>
+            </div>
+          </div>
         )
         :
-        <div className='grid'>
-          <Spacer number={48} border=""/>
-        </div>
+        <div className='min-height'></div>
       }
-      </div>
-      <div className='grid no-margin-top'>
-        <Spacer number={12} border=""/>
-      </div>
     </Container>
   );
 }
