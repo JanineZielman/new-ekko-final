@@ -45,8 +45,12 @@ export default function Index() {
                 )
               })}
             </h1>
+            <br/>
+            <div className='intro-text'>
+              <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
+            </div>
           </div>
-          <h3 className='margin-bottom'>
+          <h3 className='ticket-wrapper'>
             {event.ticketLink?.includes('https') &&
               <a className='ticket-link white-button' href={event.ticketLink} target="_blank">Billetter</a>
             }
@@ -67,7 +71,7 @@ export default function Index() {
             <p>{event.ticketDescription && `Billetter: ${event.ticketDescription}`}</p>
           </div>
           <div className='intro-text'>
-            <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
+            <div dangerouslySetInnerHTML={{__html: event.description}}></div>
           </div>
         </div>
       </div>
