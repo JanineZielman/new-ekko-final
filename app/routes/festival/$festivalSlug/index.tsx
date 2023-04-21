@@ -4,6 +4,8 @@ import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
+import type { Navigation } from '~/service/data/global';
+import { getNavigation } from '~/service/data/global';
 import Moment from 'moment';
 
 import Container from '~/components/container';
@@ -14,18 +16,19 @@ import ImageSlider from '~/components/imageSlider';
 
 
 export const loader: LoaderFunction = async ({params}) => {
-  const [event, ekko_festival_info] = await Promise.all([
+  const [event, ekko_festival_info, navigation] = await Promise.all([
     fetchEvent(params.festivalSlug!),
     fetchContentPage('ekko_festival_info'),
+    getNavigation()
   ]);
 
   const slug = params.festivalSlug;
 
-  return { event, ekko_festival_info, slug };
+  return { event, ekko_festival_info, slug, navigation };
 };
 
 export default function Index() {
-  const { event, ekko_festival_info, slug } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String }>();
+  const { event, ekko_festival_info, slug, navigation } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String, navigation: Navigation }>();
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
   event.performances.sort(function(a,b){
@@ -39,6 +42,8 @@ export default function Index() {
       locations.push(`${event.performances[i]?.location?.[0]?.title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`);
     }
   }
+
+  console.log(event)
 
   return (
     <Container back={false}>
@@ -59,129 +64,121 @@ export default function Index() {
         <Spacer number={35} border=""/>
 			</div>
 
-      {event.linkednews.length > 0 &&
-        <Collapsible trigger="News" open={true} slug={'news'}>
-          <News news={event.linkednews} page={`festival`}/>
-          <div className="grid">
-            <Spacer number={12} border={""}/>
-            <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>
-          </div>
-        </Collapsible>
-      }
-
-      {event.performances.length > 0 &&
-        <Collapsible trigger="Line-up" open={false} slug={'line-up'}>
-          <div className='line-up'>
-            {event.performances.map((item, i) => {
-              return(
-                <div className='lineup-item'>
-                  <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
-                </div>
-              )
-            })}
-          </div>
-        </Collapsible>
-      }
-
-      {event.performances.length > 0 &&
-        <Collapsible trigger="Artists" open={false} slug={'artists'}>
-          <div className='artists-section'>
-            {event.performances.map((performance, i) => {
-              return(
-                <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
-                  {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
-                  <div className='info-bar'>
-                    <h2>{performance.artist[0].title}</h2>
-                    {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+      {navigation.nodes.filter(word => word.navHandle == 'festival').map((item, i) => {
+        return(
+          <Collapsible trigger={item.title} open={false} slug={item.url.replace('#', '')}>
+            <>
+              {item.url == '#nyheter' && event.linkednews.length > 0 &&
+                <>
+                  <News news={event.linkednews} page={`festival`}/>
+                  <div className="grid">
+                    <Spacer number={12} border={""}/>
+                    <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>
                   </div>
-                </Link>
-              )
-            })}
-          </div>
-        </Collapsible>
-      }
-
-      {event.program.length > 0 &&
-        <Collapsible trigger="Program" open={false} slug={'program'}>
-          <div className='program'>
-            {event.program.map((item, i) => {
-              return(
-                <div className='program-day'>
-                  {item.date && <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>}
-                  {locations.map((location, i) => {
-                    const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
-                    const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                </>
+              }
+              {item.url == "#program" && event.program.length > 0 &&
+                <div className='program'>
+                  {event.program.map((item, i) => {
                     return(
-                      <>
-                      {filteredPerformance.length > 0 &&
-                        <div className='program-location-item'>
-                          <>
-                            <div className='bold'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
-                          
-                            {filteredEvents.map((performance, i) => {
-                              return(
+                      <div className='program-day'>
+                        {item.date && <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>}
+                        {locations.map((location, i) => {
+                          const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
+                          const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                          return(
+                            <>
+                            {filteredPerformance.length > 0 &&
+                              <div className='program-location-item'>
                                 <>
-                                  {item.date == performance.date && 
-                                    <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
-                                      <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
-                                      <div className='artist'>{performance.artist[0].title}</div>
-                                    </a>
-                                  }
+                                  <div className='bold'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                                
+                                  {filteredEvents.map((performance, i) => {
+                                    return(
+                                      <>
+                                        {item.date == performance.date && 
+                                          <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
+                                            <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                            <div className='artist'>{performance.artist[0].title}</div>
+                                          </a>
+                                        }
+                                      </>
+                                    )
+                                  })}
                                 </>
-                              )
-                            })}
-                          </>
-                        </div>
-                        }
-                      </>
+                              </div>
+                              }
+                            </>
+                          )
+                        })}
+                      </div>
                     )
                   })}
                 </div>
-              )
-            })}
-          </div>
-        </Collapsible>
-      }
-      
-      {event.tickets.length > 0 &&
-        <Collapsible trigger="Billetter" open={false} slug={'billetter'}>
-          <div className='flex tickets'>
-            {event.tickets.map((ticket, i) => {
-              return(
-                <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
-                  <h3>{ticket.description}</h3>
-                  <p className='price-label'>{ticket.price} Kr</p>
-                </a>
-              )
-            })}
-          </div>
-        </Collapsible>
-      }
-
-      <Collapsible trigger={ekko_festival_info.entry.title} open={false} slug={ekko_festival_info.entry.slug}>
-        <div className='flex'>
-          <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
-          <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
-        </div>
-      </Collapsible>
-
-      {event.sections?.map((item:any, i:any) => {
-        return(
-          <Collapsible trigger={item.sectionTitle} open={false} slug={item.sectionTitle.toLowerCase()}>
-            <div className='content padding' dangerouslySetInnerHTML={{ __html: item.sectionBody }}></div>
+              }
+              {item.url == "#line-up" && event.performances.length > 0 &&
+                <div className='line-up'>
+                  {event.performances.map((item, i) => {
+                    return(
+                      <div className='lineup-item'>
+                        <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
+                      </div>
+                    )
+                  })}
+                </div>
+              }
+              {item.url == "#artister" && event.performances.length > 0 &&
+                <div className='artists-section'>
+                  {event.performances.map((performance, i) => {
+                    return(
+                      <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
+                        {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
+                        <div className='info-bar'>
+                          <h2>{performance.artist[0].title}</h2>
+                          {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+                        </div>
+                      </Link>
+                    )
+                  })}
+                </div>
+              }
+              {item.url == "#billetter" && event.tickets.length > 0 &&
+                <div className='flex tickets'>
+                  {event.tickets.map((ticket, i) => {
+                    return(
+                      <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
+                        <h3>{ticket.description}</h3>
+                        <p className='price-label'>{ticket.price} Kr</p>
+                      </a>
+                    )
+                  })}
+                </div>
+              }
+              {item.url == "#info" && 
+                <div className='flex'>
+                  <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
+                </div>
+              }
+              {item.url == "#arena" && 
+                <div className='content padding' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+              }
+              {item.url == "#frivillig" && 
+                <div className='content padding' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+              }
+              {item.url == "#arkiv" && 
+                <>
+                  {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
+                  <div className="grid">
+                    <Spacer number={12} border={""}/>
+                    <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+                  </div>
+                </>
+              }
+            </>
           </Collapsible>
         )
       })}
-
-      <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
-        {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
-        <div className="grid">
-          <Spacer number={12} border={""}/>
-          <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
-        </div>
-      </Collapsible>
-
-
 
       <div className='grid'>
         <Spacer number={12} border=""/>
