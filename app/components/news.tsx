@@ -12,7 +12,6 @@ export default function News({news, page} : {news:any, page:any}) {
                 <h2>{item.title}</h2>
                 <div dangerouslySetInnerHTML={{__html: item.newsIntro}}></div>
               </div>
-              
             </a>
           )
         })}

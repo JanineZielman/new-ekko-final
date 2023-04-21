@@ -8,6 +8,8 @@ import { fetchRecentNews } from '~/service/data/news';
 import type { RecentNews } from '~/service/data/news';
 import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
+import type { Navigation } from '~/service/data/global';
+import { getNavigation } from '~/service/data/global';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -18,13 +20,14 @@ import ImageSlider from '~/components/imageSlider';
 
 
 export const loader: LoaderFunction = async ({params}) => {
-  const [ostre, news, events] = await Promise.all([
+  const [ostre, news, events, navigation] = await Promise.all([
     fetchContentPage('ostre'),
     fetchRecentNews(2),
     fetchAllEvents(25),
+    getNavigation()
   ]);
 
-  return { ostre, news, events };
+  return { ostre, news, events, navigation };
 };
 
 export const meta: MetaFunction = ({ data }) => ({
@@ -32,7 +35,7 @@ export const meta: MetaFunction = ({ data }) => ({
 });
 
 export default function Oestre() {
-  const { ostre, news, events } = useLoaderData<{ ostre: PageEntry, news: RecentNews, events: AllEvents }>();
+  const { ostre, news, events, navigation } = useLoaderData<{ ostre: PageEntry, news: RecentNews, events: AllEvents, navigation: Navigation }>();
 
   let filteredEvents = [];
   var currentTime = new Date();
@@ -67,45 +70,56 @@ export default function Oestre() {
           )
         })}
       </div>
-      <Collapsible trigger="News" open={false} slug={'news'}>
-        <News news={news.events} page={`ostre`}/>
-        <div className="grid">
-          <Spacer number={12} border={""}/>
-          <a className='show-all-button' href="/ostre/news"><h2>Show all</h2></a>
-        </div>
-      </Collapsible>
-      <Collapsible trigger="Calendar" open={false} slug={'calendar'}>
-        {filteredEvents.slice(-5).reverse().map((item,i) => {
-            return(
-              <div>
-                <a href={`/ostre/${item.slug}`}>
-                  <KalenderItem item={item}/>
-                </a>
-              </div>
-            )
-          })}
-          
-          <div className="grid">
-            <Spacer number={12} border={""}/>
-            <a className='show-all-button' href="/ostre/kalender"><h2>Full kalendar</h2></a>
-          </div>
-          
-      </Collapsible>
-
-      <Collapsible trigger={ostre.entry.title} open={false} slug={ostre.entry.slug}>
-        <div className='flex'>
-          <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>
-          <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>
-        </div>
-      </Collapsible>
-
-      <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
-        {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>}
-        <div className="grid">
-          <Spacer number={12} border={""}/>
-          <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
-        </div>
-      </Collapsible>
+      {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
+        return(
+          <Collapsible trigger={item.title} open={false} slug={item.url.replace('#', '')}>
+            <>
+              {item.url == '#nyheter' && 
+                <>
+                  <News news={news.events} page={`ostre`}/>
+                  <div className="grid">
+                    <Spacer number={12} border={""}/>
+                    <a className='show-all-button' href="/ostre/news"><h2>Show all</h2></a>
+                  </div>
+                </>
+              }
+              {item.url == '#kalender' && 
+                <>
+                  {filteredEvents.slice(-5).reverse().map((item,i) => {
+                    return(
+                      <div>
+                        <a href={`/ostre/${item.slug}`}>
+                          <KalenderItem item={item}/>
+                        </a>
+                      </div>
+                    )
+                  })}
+                  
+                  <div className="grid">
+                    <Spacer number={12} border={""}/>
+                    <a className='show-all-button' href="/ostre/kalender"><h2>Full kalendar</h2></a>
+                  </div>
+                </>
+              }
+              {item.url == '#info' && 
+                <div className='flex'>
+                  {ostre.entry.contact && <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>}
+                  {ostre.entry.content && <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>}
+                </div>
+              }
+              {item.url == '#arkiv' && 
+                <>
+                  {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>}
+                  <div className="grid">
+                    <Spacer number={12} border={""}/>
+                    <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+                  </div>
+                </>
+              }
+            </>
+          </Collapsible>
+        )
+      })}
 
       <div className="grid">
         <Spacer number={12} border={""}/>

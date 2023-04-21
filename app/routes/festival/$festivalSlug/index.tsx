@@ -43,8 +43,6 @@ export default function Index() {
     }
   }
 
-  console.log(event)
-
   return (
     <Container back={false}>
 			<div className="grid">
@@ -156,8 +154,8 @@ export default function Index() {
               }
               {item.url == "#info" && 
                 <div className='flex'>
-                  <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>
-                  <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>
+                  {ekko_festival_info.entry.contact && <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>}
+                  {ekko_festival_info.entry.content && <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>}
                 </div>
               }
               {item.url == "#arena" && 
