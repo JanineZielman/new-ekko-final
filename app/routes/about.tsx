@@ -27,28 +27,7 @@ export default function Index() {
 
   return (
     <Container back={false}>
-      <div className="grid">
-        <Spacer number={60} border=""/>
-        <div className='main-images'>
-          {/* <a className="kalender-img wrap" href="/ostre/kalender">
-            <h2>Kalender</h2>
-            <img src="/1@4x-8.png"/>
-          </a> */}
-          <a className="festival-img wrap" href={`/festival/${ekko_festival_info.entry.linkedFestival[0]?.slug}`}>
-            <h2>Festival</h2>
-            <img src="/2@4x-8.png"/>
-          </a>
-          <a className="ostre-img wrap" href="/ostre">
-            <h2>Østre</h2>
-            <img src="/3@4x-8.png"/>
-          </a>
-          <a className="ekko-img wrap" href="/about">
-            <h2>Foreningen Ekko</h2>
-            <img src="/4@4x-8.png"/>
-          </a>
-        </div>
-      </div>
-      {/* <Collapsible trigger={about.entry.title} open={false} slug={about.entry.slug}>
+      <Collapsible trigger={about.entry.title} open={true} slug={about.entry.slug}>
         <div className='flex'>
           <div className='contact' dangerouslySetInnerHTML={{ __html: about.entry.contact }}></div>
           <div className='content' dangerouslySetInnerHTML={{ __html: about.entry.content }}></div>
@@ -70,7 +49,7 @@ export default function Index() {
       </Collapsible>
       <div className="grid">
         <Spacer number={12} border=""/>
-      </div> */}
+      </div>
     </Container>
   );
 }
