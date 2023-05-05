@@ -46,20 +46,12 @@ export default function Index() {
   return (
     <Container back={false}>
 			<div className="grid">
-        <Spacer number={3} border=""/>
         <div className='item w1 overflow'>
           <div className='float graphic-element'>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
           </div>
         </div>
-        <Spacer number={20} border=""/>
-        <div className='item w1 overflow'>
-          <div className='float'>
-            <h2>{event.title}</h2>
-            <h2 dangerouslySetInnerHTML={{ __html: event.intro }}></h2>
-          </div>
-        </div>
-        <Spacer number={35} border=""/>
+        <Spacer number={59} border=""/>
 			</div>
 
       {navigation.nodes.filter(word => word.navHandle == 'festival').map((item, i) => {
@@ -162,7 +154,7 @@ export default function Index() {
                 <div className='content padding' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
               }
               {item.url == "#frivillig" && 
-                <div className='content padding' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                <div className='content padding flex' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
               }
               {item.url == "#arkiv" && 
                 <>
