@@ -708,7 +708,7 @@ body {
     height: calc(0.0833 * 90vw * 5);
     object-fit: cover;
     /* margin-left: calc(0.0833 * 90vw); */
-    filter: grayscale(1);
+    /* filter: grayscale(1); */
     &:hover{
       filter: none;
     }
