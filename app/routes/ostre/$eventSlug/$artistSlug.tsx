@@ -70,7 +70,11 @@ export default function Index() {
               );
             }
             if (block.blockType === 'video') {
-              // TODO: handle video embeds based on their url
+              return (
+                <div className='embed'>
+                  <iframe src={block.videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/')}/>
+                </div>
+              );
             }
           })}
         </Collapsible>
