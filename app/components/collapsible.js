@@ -9,10 +9,12 @@ const Collapsible = ({children, trigger, open, slug}) => {
 			if (document.getElementById(window.location.hash.replace('#', '') + "-content")){
 				document.getElementsByClassName('open')[0]?.classList.remove('open');
         document.getElementById(window.location.hash.replace('#', '') + "-content").classList.add('open');
-				window.scrollTo({
-					top: document.getElementById(window.location.hash.replace('#', ''))?.offsetTop,
-					behavior: 'smooth'
-				});
+				setTimeout(function() {
+					window.scrollTo({
+						top: document.getElementById(window.location.hash.replace('#', ''))?.offsetTop - 75,
+						behavior: 'smooth'
+					});
+				}, 500);
 			}
 		}, 100);
 	})

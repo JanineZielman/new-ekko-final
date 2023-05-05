@@ -30,7 +30,6 @@
 
 html, body{
   scroll-behavior: smooth;
-  scroll-margin-top: 60px;
 }
 
 main{
@@ -578,6 +577,7 @@ body {
 .Collapsible{
   width: calc(90vw + 2px);
   height: 100%;
+  position: relative;
   & .trigger{
     height: calc(0.0833 * 90vw);
     display: flex;
