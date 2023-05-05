@@ -247,7 +247,7 @@ a{
 
 .search-link{
   position: relative;
-  margin-right: 5vw;
+  margin-right: 2vw;
   margin-left: auto;
   font-size: var(--h2);
 }
@@ -538,8 +538,11 @@ body {
     -webkit-box-sizing: border-box;
     margin: 0 -1px;
     padding-bottom: 14px;
+    &:last-child{
+      border-right: 2px solid var(--black);
+    }
     & .date{
-      padding: 2vw;
+      padding: 14px 2vw;
       border-bottom: 2px solid var(--black);
       margin: 0 -1px;
     }
@@ -627,6 +630,7 @@ body {
     & .content{
       width: 55%;
       margin-right: 5%;
+      padding-bottom: 24px;
     }
   }
 }
@@ -864,6 +868,7 @@ footer{
 .lineup-item{
   line-height: 1.5;
   padding-left: 2vw;
+  font-size: 20px;
   & a{
     width: 100%;
     display: block;

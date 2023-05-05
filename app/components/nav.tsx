@@ -22,6 +22,8 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
 		},
 	};
 
+  console.log(toggle)
+
   useEffect(() => {
     var navItems = document.getElementById("nav-items");
     var btns = navItems?.getElementsByClassName("nav-link");
@@ -74,24 +76,29 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
         :
           <a href={`/`} className="homebutton">{navigation.nodes[0].title}</a>
         }
-        {(fullSlug.slice(1).split("/")?.[0] == 'ostre' && fullSlug.slice(1).split("/")?.[1]) || (fullSlug.slice(1).split("/")?.[1] == 'festival' || fullSlug.slice(1).split("/")?.[2] ) ?
-          <></>
-        :
-          <div className="nav-items" id="nav-items">
-            {navigation &&
-              filtered.map((item, i) => {
-                return (
-                  item.title && (
-                    <a key={`navlink-${i}`} href={item.url} id={`${item.title.toLowerCase()}-nav`} className='nav-link'>
-                      <span>{item.title}</span>
-                    </a>
-                  )
-                );
-              })}
-          </div>
-        }
+        <div className="nav-items" id="nav-items">
+          {navigation &&
+            filtered.map((item, i) => {
+   
+              return (
+                item.title && (
+                  <>
+                    {item.navHandle == 'festival' ?
+                      <a key={`navlink-${i}`} href={`${toggle[2].url}${item.url}`} id={`${item.title.toLowerCase()}-nav`} className='nav-link'>
+                        <span>{item.title}</span>
+                      </a>
+                    :
+                      <a key={`navlink-${i}`} href={`/${item.navHandle}${item.url}`} id={`${item.title.toLowerCase()}-nav`} className='nav-link'>
+                        <span>{item.title}</span>
+                      </a>
+                    }
+                  </>
+                )
+              );
+            })}
+        </div>
          {filtered?.[0] ?
-          <Link className='search-link' to={`${filtered[0].navHandle}/search`}>
+          <Link className='search-link' to={`/${filtered[0].navHandle}/search`}>
             Søk
           </Link>
         :
