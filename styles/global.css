@@ -1006,6 +1006,7 @@ footer{
     height: 48%;
     aspect-ratio:  16 / 9;
     margin-top: 24px;
+    border: none;
   }
 }
 
