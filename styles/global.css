@@ -479,8 +479,10 @@ body {
 
 .graphic-element{
     position: absolute;
-    width: calc(12 * 100% + 1.5vw );
-    height: calc(5 * 100% + 1vw);
+    object-fit: contain;
+    width: calc(12 * 100% + 1.5vw);
+    height: auto;
+    /* height: calc(6 * 100% - 1vw); */
     z-index: 1;
     /* overflow: visible; */
     margin-top: -1vw;

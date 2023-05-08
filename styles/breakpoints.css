@@ -423,13 +423,17 @@
 
 @media only screen and (min-width: 1400px) and (max-width: 1600px)  {
 	.container, .grid, .Collapsible{
-		max-width: 1300px;
+		width: 1300px;
 		margin-left: auto;
 		margin-right: auto;
 	}
 	
 	.Collapsible .grid{
 		margin-left: -2px;
+	}
+
+	.grid{
+		grid-auto-rows: calc(0.0833 * 1300px);
 	}
 
 	.homebutton{

@@ -51,7 +51,7 @@ export default function Index() {
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
           </div>
         </div>
-        <Spacer number={59} border=""/>
+        <Spacer number={71} border=""/>
 			</div>
 
       {navigation.nodes.filter(word => word.navHandle == 'festival').map((item, i) => {
