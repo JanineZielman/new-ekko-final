@@ -45,7 +45,7 @@ export default function Index() {
 
   return (
     <Container back={false}>
-			<div className="grid">
+			<div className="grid festival-page-grid">
         <div className='item w1 overflow'>
           <div className='float graphic-element'>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
