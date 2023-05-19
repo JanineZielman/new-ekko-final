@@ -477,16 +477,46 @@ body {
   white-space: nowrap;
 }
 
-.graphic-element{
+
+.grid .item .graphic-element{
     position: absolute;
     object-fit: contain;
+    object-position: center;
     width: calc(12 * 100% + 1.5vw);
-    height: auto;
-    /* height: calc(6 * 100% - 1vw); */
+    left: 0;
+    height: calc(5 * 100%  + 1.5vw);
     z-index: 1;
-    /* overflow: visible; */
     margin-top: -1vw;
-    margin-left: -1vw;
+    display: flex;
+    justify-content: space-between;
+    & img{
+      width: 50%;
+      height: auto;
+      object-fit: contain;
+    }
+}
+
+.float.title{
+  top: 215%;
+  margin-top: 10px;
+  left: 535%;
+  transform: translate(0, -50%);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.float.intro{
+  top: calc(215% + 35px);
+  line-height: 1;
+  left: 535%;
+  transform: translate(0, -50%);
+  font-size: 30px;
+  margin: 0;
+  margin-top: 16px;
+  & p{
+    line-height: 1;
+    font-size: 30px;
+  }
 }
 
 .animation{

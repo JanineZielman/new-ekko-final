@@ -49,9 +49,12 @@ export default function Index() {
         <div className='item w1 overflow'>
           <div className='float graphic-element'>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
+            <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
           </div>
+          <h2 className='float title'>{event.title}</h2>
+          <h2 className='float intro' dangerouslySetInnerHTML={{ __html: event.intro }}></h2>
         </div>
-        <Spacer number={71} border=""/>
+        <Spacer number={59} border=""/>
 			</div>
 
       {navigation.nodes.filter(word => word.navHandle == 'festival').map((item, i) => {

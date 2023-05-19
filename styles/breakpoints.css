@@ -279,11 +279,18 @@
 		top: 40vh;
 	}
 
-	.graphic-element{
-		top: 0;
-		left: 1vw;
+	.grid .item .graphic-element{
+		top: -3vw;
+		left: 0vw;
 		width: 100%;
-		/* height: 40vh; */
+		height: auto;
+		& img{
+			width: 100%;
+		}
+	}
+
+	.spacer-59:nth-last-child(-n+24){
+		display: none
 	}
 
 	.spacer-72:nth-last-child(-n+13){
