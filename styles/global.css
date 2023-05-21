@@ -498,10 +498,10 @@ body {
 
 .float.title{
   top: 215%;
-  margin-top: 0.5vw;
+  margin-top: 0.6vw;
   left: 520%;
   transform: translate(0, -50%);
-  font-size: 2.5vw;
+  font-size: 2.3vw;
   line-height: 1;
 }
 
@@ -510,12 +510,12 @@ body {
   line-height: 1;
   left: 520%;
   transform: translate(0, -50%);
-  font-size: 2.5vw;
+  font-size: 2.3vw;
   margin: 0;
   margin-top: 1vw;
   & p{
     line-height: 1;
-    font-size: 2.5vw;
+    font-size: 2.3vw;
   }
 }
 
