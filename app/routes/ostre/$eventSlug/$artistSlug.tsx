@@ -59,7 +59,7 @@ export default function Index() {
 
 
       {artist.artist[0].complexContent.length > 0 &&
-        <Collapsible trigger={'More about the artist'} open={false} slug={'about'}>
+        <Collapsible trigger={'More about the artist'} open={true} slug={'about'}>
           {artist.artist[0].complexContent?.map(block => {
             if (block.blockType === 'text') {
               return (

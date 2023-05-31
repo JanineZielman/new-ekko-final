@@ -96,7 +96,7 @@ export default function Index() {
       }
 
       {event.gallery.length > 0 &&
-        <Collapsible trigger='Arkiv' open={false} slug={`arkiv`}>
+        <Collapsible trigger='Arkiv' open={true} slug={`arkiv`}>
           <ImageSlider item={event.gallery}/>
           <div className="grid">
             <Spacer number={12} border={""}/>

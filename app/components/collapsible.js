@@ -25,11 +25,11 @@ const Collapsible = ({children, trigger, open, slug}) => {
 	};
 
   return (
-    <div className="Collapsible" id={slug}>
+    <div className={`Collapsible`} id={slug}>
 			<div id={`${slug}`} onClick={toggle} className="trigger">
         <span>{trigger}</span>
       </div>
-			<div className={`content-parent`} id={`${slug}-content`} >
+			<div className={`content-parent  ${open ? 'open' : ''}`} id={`${slug}-content`} >
 				<div className='collapsible-content'>{children}</div>
 			</div>
 		</div>

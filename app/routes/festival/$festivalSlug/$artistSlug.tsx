@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async ({ params }) => {
 export default function Index() {
   var Moment = require('moment');
   require('moment/locale/nb');
-  
+
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
   event.performances.sort(function (a, b) {
@@ -76,7 +76,7 @@ export default function Index() {
         </div>
       </div>
 
-      <Collapsible trigger={'More about the artist'} open={false} slug={'about'}>
+      <Collapsible trigger={'More about the artist'} open={true} slug={'about'}>
         {artist.artist[0].complexContent?.map(block => {
           if (block.blockType === 'text') {
             return (
@@ -98,7 +98,7 @@ export default function Index() {
         })}
       </Collapsible>
 
-      <Collapsible trigger={'Dagens Program'} open={false} slug={'dagens-program'}>
+      <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
         <div className='artists-section'>
           {event.performances.map((performance, i) => {
             return(
