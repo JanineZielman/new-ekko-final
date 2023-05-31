@@ -2,6 +2,7 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
+import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -13,9 +14,6 @@ export const loader: LoaderFunction = () => {
 };
 
 export default function Index() {
-  var Moment = require('moment');
-  require('moment/locale/nb');
-  
   let { events } = useLoaderData<AllEvents>();
 
   let filteredEvents: any[] = [];
@@ -33,15 +31,16 @@ export default function Index() {
     <Container back="/ostre">
 
       {months.map((item, i) => {
-        let content;
+        let content = false;
         {filteredEvents.map((event,j) => {
           if (Moment(event.date).format("MMMM") == item) {
             content = true;
           }
         })}
+        
         return(
           <>
-            {content &&
+            {content && 
               <Collapsible trigger={item} open={true} slug={item}>
                 {filteredEvents.map((event,j) => {
                   return(
@@ -57,14 +56,14 @@ export default function Index() {
                   )
                 })}
               </Collapsible>
-            }
+           } 
           </>
         )
       })}
 
-      <div className="grid">
+      {/* <div className="grid">
         <Spacer number={12} border={""}/>
-      </div>
+      </div> */}
     </Container>
   );
 }
