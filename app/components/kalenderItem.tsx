@@ -8,10 +8,14 @@ export default function KalenderItem({ item }: { item: any }) {
         <div className='indicator'>Dato</div>
         <p>{Moment(item.date).format("dddd D.M.")} {Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
       </div>
-      <div className='title'>
-        <div className='indicator'>Host</div>
-        <p>{item.title}</p>
-      </div>
+      {item.organizer?.[0]?.title ?
+        <div className='title'>
+          <div className='indicator'>Host</div>
+          <p>{item.organizer[0].title}</p>
+        </div>
+        :
+        <div className='title'></div>
+      }
       <div className='artists'>
         <div className='indicator'>Artister</div>
         <h3>

@@ -10,6 +10,9 @@ export interface Event {
   date: string;
   openingTime: string;
   closingTime: string;
+  organizer:{
+    title: string;
+  }
   location: {
     title: string;
     fullTitle: string;
@@ -55,6 +58,9 @@ const query = gql`
           title
           fullTitle
         }
+        organizer {
+          title
+        }
         date
         ticketLink
         ticketDescription
@@ -87,6 +93,9 @@ const query = gql`
         location {
           title
           fullTitle
+        }
+        organizer {
+          title
         }
         date
         performances {

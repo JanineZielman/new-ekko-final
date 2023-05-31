@@ -26,6 +26,8 @@ export default function Index() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+  console.log(filteredEvents)
+
 
   return (
     <Container back="/ostre">
