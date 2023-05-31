@@ -7,6 +7,7 @@ export interface PageEntry {
     contact: string;
     content: string;
     date: string;
+    pagePhoto: { url: string }[];
     gallery: {url: string}[];
     linkedEvents: {
       slug: string;
@@ -33,6 +34,11 @@ const query = gql`
       title
       contact
       content: pageContent
+      ... on legal_legal_Entry {
+        pagePhoto{
+          url
+        }
+      }
       sections {
         ... on sections_entry_BlockType {
           sectionTitle

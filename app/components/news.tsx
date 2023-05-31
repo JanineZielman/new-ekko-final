@@ -10,7 +10,8 @@ export default function News({news, page} : {news:any, page:any}) {
               <img src={item.newsPhoto[0].url} alt="" />
               <div className='info-box'>
                 <h2>{item.title}</h2>
-                <div dangerouslySetInnerHTML={{__html: item.newsIntro}}></div>
+                <p style={{margin: '5px 0'}}>Les mer...</p>
+                {/* <div dangerouslySetInnerHTML={{__html: item.newsIntro}}></div> */}
               </div>
             </a>
           )

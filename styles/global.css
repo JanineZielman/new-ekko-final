@@ -663,6 +663,11 @@ body.festival .festival-page-grid{
     }
     & .contact{
       width: 39%;
+      position: relative;
+      & img{
+        width: 100%;
+        height: auto;
+      }
     }
     & .content{
       width: 53%;
@@ -703,16 +708,18 @@ body.festival .festival-page-grid{
 }
 
 .news-item{
-  width: 50%;
+  width: 47.5%;
+  border: 1px solid black;
   position: relative;
   aspect-ratio: 4 / 3; 
+  margin-right: 2%;
   & img{
     width: 100%;
     height: 100%;
     aspect-ratio: 4 / 3; 
     object-fit: cover;
     filter: grayscale(1);
-    margin-bottom: -40px;
+    margin-bottom: -100px;
     z-index: -1;
     &:hover{
       filter: none;
@@ -725,7 +732,8 @@ body.festival .festival-page-grid{
     border-radius: 2em;
     position: absolute;
     min-height: 80px;
-    width: calc(100% - 40px);
+    margin-left: -2px;
+    width: calc(100% - 38px);
     bottom: -82px;
     z-index: 2;
     & p{
