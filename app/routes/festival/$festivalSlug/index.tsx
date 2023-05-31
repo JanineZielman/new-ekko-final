@@ -6,7 +6,6 @@ import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
 import type { Navigation } from '~/service/data/global';
 import { getNavigation } from '~/service/data/global';
-import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -28,6 +27,9 @@ export const loader: LoaderFunction = async ({params}) => {
 };
 
 export default function Index() {
+  var Moment = require('moment');
+  require('moment/locale/nb');
+
   const { event, ekko_festival_info, slug, navigation } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String, navigation: Navigation }>();
 
   event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
@@ -75,7 +77,7 @@ export default function Index() {
                   {event.program.map((item, i) => {
                     return(
                       <div className='program-day'>
-                        {item.date && <h3 className='date'>{Moment(item.date).format("ddd D.M.")}</h3>}
+                        {item.date && <h3 className='date'>{Moment(item.date).format("dddd D.M.")}</h3>}
                         {locations.map((location, i) => {
                           const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);

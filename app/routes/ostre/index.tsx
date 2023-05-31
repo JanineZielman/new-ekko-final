@@ -1,6 +1,5 @@
 import type { LoaderFunction, MetaFunction } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
-import Moment from 'moment';
 
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
@@ -35,6 +34,9 @@ export const meta: MetaFunction = ({ data }) => ({
 });
 
 export default function Oestre() {
+  var Moment = require('moment');
+  require('moment/locale/nb');
+  
   const { ostre, news, events, navigation } = useLoaderData<{ ostre: PageEntry, news: RecentNews, events: AllEvents, navigation: Navigation }>();
 
   let filteredEvents = [];

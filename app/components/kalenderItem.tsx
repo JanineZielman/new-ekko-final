@@ -1,6 +1,7 @@
-import Moment from 'moment';
-
 export default function KalenderItem({ item }: { item: any }) {
+  var Moment = require('moment');
+  require('moment/locale/nb');
+  
   return (
     <div className='agenda-item'>
       <div className='time'>

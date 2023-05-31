@@ -1,6 +1,5 @@
 import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
-import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';

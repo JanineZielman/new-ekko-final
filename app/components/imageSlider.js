@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import Moment from 'moment';
 
 export default function ImageSlider({ item }) {
   var settings = {
@@ -11,6 +10,9 @@ export default function ImageSlider({ item }) {
     slidesToShow: 1,
     slidesToScroll: 1
   };
+
+  var Moment = require('moment');
+  require('moment/locale/nb');
   
   return (
     <Slider {...settings}>

@@ -1,6 +1,7 @@
-import Moment from 'moment';
-
 export default function ArchiveItem({ item }: { item: any }) {
+  var Moment = require('moment');
+  require('moment/locale/nb');
+  
   return (
     <div className='agenda-item'>
       <p className='time'>{Moment(item.date).format("dddd D.M.Y")}</p>

@@ -2,7 +2,6 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchEvent } from '~/service/data/festival';
 import type { Event } from '~/service/data/festival';
-import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -25,6 +24,9 @@ export const loader: LoaderFunction = async ({ params }) => {
 };
 
 export default function Index() {
+  var Moment = require('moment');
+  require('moment/locale/nb');
+  
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
   event.performances.sort(function (a, b) {
