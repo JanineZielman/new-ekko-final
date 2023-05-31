@@ -11,6 +11,10 @@ export interface PageEntry {
     linkedEvents: {
       slug: string;
     }[];
+    sections: {
+      sectionTitle: string;
+      sectionBody: string;
+    }[];
     performances: {
       artist: {
         title: string;
@@ -29,6 +33,12 @@ const query = gql`
       title
       contact
       content: pageContent
+      sections {
+        ... on sections_entry_BlockType {
+          sectionTitle
+          sectionBody
+        }
+      }
       linkedEvents {
         slug
         ... on events_event_Entry {

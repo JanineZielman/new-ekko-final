@@ -36,7 +36,7 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Oestre() {
   var Moment = require('moment');
   require('moment/locale/nb');
-  
+
   const { ostre, news, events, navigation } = useLoaderData<{ ostre: PageEntry, news: RecentNews, events: AllEvents, navigation: Navigation }>();
 
   let filteredEvents = [];
@@ -117,6 +117,9 @@ export default function Oestre() {
                     <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
                   </div>
                 </>
+              }
+              {item.url == "#frivillig" && 
+                <div className='content padding flex' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
               }
             </>
           </Collapsible>
