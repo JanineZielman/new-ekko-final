@@ -76,7 +76,7 @@ export default function Index() {
         </div>
       </div>
 
-      <Collapsible trigger={'More about the artist'} open={true} slug={'about'}>
+      <Collapsible trigger={'Mer informasjon om artisten'} open={true} slug={'about'}>
         {artist.artist[0].complexContent?.map(block => {
           if (block.blockType === 'text') {
             return (

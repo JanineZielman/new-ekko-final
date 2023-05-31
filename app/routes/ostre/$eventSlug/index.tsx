@@ -95,15 +95,24 @@ export default function Index() {
         </Collapsible>
       }
 
-      {event.gallery.length > 0 &&
+      
         <Collapsible trigger='Arkiv' open={true} slug={`arkiv`}>
-          <ImageSlider item={event.gallery}/>
-          <div className="grid">
-            <Spacer number={12} border={""}/>
-            <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
-          </div>
+          {event.gallery.length > 0 ?
+            <>
+              <ImageSlider item={event.gallery}/>
+              <div className="grid">
+                <Spacer number={12} border={""}/>
+                <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+              </div>
+            </>
+            :
+            <div>
+              <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+            </div>
+          }
+          
         </Collapsible>
-      }
+     
 
       <div className='grid'>
         <Spacer number={12} border=""/>

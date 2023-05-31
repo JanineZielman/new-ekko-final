@@ -11,11 +11,11 @@ import {
 import { useLocation } from 'react-router-dom';
 
 import styles from '~/styles/global.css';
-import breakpoints from '~/styles/breakpoints.css';
 import kalender from '~/styles/kalender.css';
 import Footer from './components/footer';
 import Nav from './components/nav';
 import Menu from './components/menu';
+import breakpoints from '~/styles/breakpoints.css';
 import type { Navigation } from './service/data/global';
 import { getNavigation } from './service/data/global';
 
