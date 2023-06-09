@@ -10,7 +10,7 @@ export default function KalenderItem({ item }: { item: any }) {
       </div>
       {item.organizer?.[0]?.title ?
         <div className='title'>
-          <div className='indicator'>Host</div>
+          <div className='indicator'>Arrangør</div>
           <p>{item.organizer[0].title}</p>
         </div>
         :

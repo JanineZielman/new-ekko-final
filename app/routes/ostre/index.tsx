@@ -99,7 +99,7 @@ export default function Oestre() {
                   
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href="/ostre/kalender"><h2>Full kalendar</h2></a>
+                    <a className='show-all-button' href="/ostre/kalender"><h2>Full kalender</h2></a>
                   </div>
                 </>
               }
