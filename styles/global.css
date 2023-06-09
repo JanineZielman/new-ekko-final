@@ -569,6 +569,8 @@ body.festival .festival-page-grid{
     width: calc(100% / 3 + 2px);
     /* display: inline-block; */
     border: 1px solid var(--black);
+    border-top: 2px solid var(--black);
+    border-bottom: 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;

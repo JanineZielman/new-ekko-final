@@ -76,6 +76,7 @@ export default function Index() {
                 <div className='program'>
                   {event.program.map((item, i) => {
                     return(
+                      <>
                       <div className='program-day'>
                         {item.date && <h3 className='date'>{Moment(item.date).format("dddd D.M.")}</h3>}
                         {locations.map((location, i) => {
@@ -107,11 +108,15 @@ export default function Index() {
                           )
                         })}
                       </div>
+                      {event.program.length == 5 && i == 4 &&
+                      <div className='program-day'></div>
+                      }
+                      </>
                     )
                   })}
                 </div>
               }
-              {item.url == "#line-up" && event.performances.length > 0 &&
+              {item.url == "#spilleplan" && event.performances.length > 0 &&
                 <div className='line-up'>
                   {event.performances.map((item, i) => {
                     return(
