@@ -891,23 +891,25 @@ footer{
 
 .show-all-button{
   padding: 10px 20px;
-  background-color: var(--white);
+  background-color: inherit;
   border: 1px solid var(--black);
   width: fit-content;
   position: absolute;
   z-index: 2;
-  right: 24px;
+  right: 0;
   white-space: nowrap;
   top: 50%;
   transform: translateY(-50%);
+  border-radius: 25px;
 }
 
 
-.white-button{
-  padding: 10px 20px;
-  background-color: var(--white);
+.button{
+  padding: 10px 30px;
+  background-color: transparent;
   border: 1px solid var(--black);
   width: fit-content;
+  border-radius: 25px;
 }
 
 .margin-bottom{
@@ -1024,6 +1026,9 @@ footer{
     flex-direction: column;
     justify-content: space-between;
     height: 90%;
+    & .host{
+      margin-bottom: 10px;
+    }
     & h2{
       margin-top: 24px;
     }
@@ -1106,7 +1111,8 @@ footer{
     width: 98%;
     height: 100%;
     object-fit: cover;
-    margin-left: 1%;
+    margin-left: 1vw;
+    border-radius: 0 0 0 25px;
   }
   opacity: 0.5;
   &.slick-current{
@@ -1119,13 +1125,14 @@ footer{
     opacity: 0;
     padding: 10px 20px;
     border: 1px solid black;
-    border-radius: 2em;
+    border-radius: 25px;
     position: absolute;
     height: auto;
     min-height: 80px;
-    width: fit-content;
-    max-width: 50vw;
+    width: 100%;
+    max-width: 30vw;
     bottom: 0;
+    margin-left: 1vw;
     & p{
       font-size: var(--body);
       line-height: 1.2;
@@ -1238,4 +1245,43 @@ footer{
   50%  { transform: translate(-10px, 10px); }
   75%  { transform: translate(10px, 10px); }
   100%  { transform: translate(0px); }
+}
+
+.artist-running-list{
+  & span:after{
+    content: ", ";
+  }
+  & span:last-child:after{
+    content: "";
+  }
+}
+
+.info-text{
+  & p{
+    display: flex;
+    width: fit-content;
+    justify-content: space-between;
+    min-width: 300px;
+    & span{
+      text-align: left;
+      width: 50%;
+    }
+  }
+}
+
+.dagens-program{
+  & .day{
+    margin-left: 2vw;
+    width: 30%;
+  }
+  & .performances{
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  & .performance{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--body);
+  }
 }
