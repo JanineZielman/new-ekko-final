@@ -51,7 +51,7 @@ export default function Index() {
             <div className='info-text'>
               <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
               <p><span>Sted:</span> <span>{event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</span></p>
-              <p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0000').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0000').format("HH:mm")}`}</span></p>
+              <p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
               }
@@ -83,18 +83,6 @@ export default function Index() {
 
       {event.performances?.length > 0 &&
         <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
-          {/* <div className='artists-section'>
-            {event.performances.map((performance, i) => (
-              <Link to={`/ostre/${event.slug}/${performance.slug}`} className='artist-item'>
-                <div className='info-bar'>
-                  <h2>{performance.artist?.[0].title}</h2>
-                  {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
-                  <br/>
-                  {performance.time &&<p>{Moment(performance.time).utcOffset('+0000').format("HH:mm")}</p>}
-                </div>
-              </Link>
-            ))}
-          </div> */}
           <div className='dagens-program'>
             <div className='day'>
               {event.date && <h3>{Moment(event.date).format("dddd D.M.")} <br/></h3>}
@@ -102,8 +90,8 @@ export default function Index() {
               <div className='performances'>
                 {event.performances.map((item, i) => {
                   return(
-                    <a className='performance' href={`/ostre/${item.slug}`}>
-                      <div className='time'>{Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
+                    <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
+                      <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
                       <div className='artist'>{item.artist[0].title}</div>
                     </a>
                   )

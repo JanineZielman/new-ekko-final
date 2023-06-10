@@ -51,7 +51,7 @@ export default function Index() {
           <div className="flex space-between white-bg">
             <div className="info">
               <h4>{artist.artist[0].title}</h4>
-              <p>{artist.time}, {artist.location[0].title}</p>
+              <p>{artist.time}, {artist.location[0]?.title}</p>
             </div>
           </div>
         </div>

@@ -441,6 +441,11 @@
 			right: 0%;
 		}
 	}
+	.dagens-program{
+		& .day{
+			width: 100%;
+		}
+	}
 }
 
 

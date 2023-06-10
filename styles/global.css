@@ -1283,5 +1283,12 @@ footer{
     display: flex;
     justify-content: space-between;
     font-size: var(--body);
+    margin-bottom: 5px;
+    & .time{
+      width: 30%;
+    }
+    & .artist{
+      width: 70%;
+    }
   }
 }
