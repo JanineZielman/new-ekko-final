@@ -620,6 +620,7 @@ body.festival .festival-page-grid{
   width: calc(90vw + 2px);
   height: 100%;
   position: relative;
+  margin-top: -1px;
   & .trigger{
     height: calc(0.0833 * 90vw);
     display: flex;
@@ -662,6 +663,9 @@ body.festival .festival-page-grid{
     & .flex{
       width: calc(100% - 2vw);
       padding-left: 2vw;
+      &.content{
+        margin-left: 0;
+      }
     }
     & .contact{
       width: 39%;
@@ -953,8 +957,9 @@ footer{
 
 #arena-content{
   & .content{
-    width: 98%;
+    width: 95%;
     margin-right: 0;
+    margin-left: 2vw;
   }
   & p{
     display: flex;

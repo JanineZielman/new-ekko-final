@@ -161,10 +161,10 @@ export default function Index() {
                 </div>
               }
               {item.url == "#arena" && 
-                <div className='content padding' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
               }
               {item.url == "#frivillig" && 
-                <div className='content padding flex' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                <div className='content flex' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
               }
               {item.url == "#arkiv" && 
                 <>
