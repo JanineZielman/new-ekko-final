@@ -551,7 +551,6 @@ body.festival .festival-page-grid{
 .ticket{
   display: flex;
   justify-content: space-between;
-  padding: 14px!important;
 }
 
 .ticket-wrapper{
@@ -656,9 +655,9 @@ body.festival .festival-page-grid{
     }
     & .flex{
       width: calc(100% - 2vw);
-      padding-left: 2vw;
+      /* padding-left: 2vw; */
       &.content{
-        margin-left: 0;
+        /* margin-left: 0; */
       }
     }
     & .contact{
@@ -704,7 +703,7 @@ body.festival .festival-page-grid{
 }
 
 #ostre-content.open, #about-content.open, #ekko_festival_info-content.open{
-  padding: 1vw;
+  padding: 2vw;
 }
 
 .news-item{
@@ -712,7 +711,7 @@ body.festival .festival-page-grid{
   border: 1px solid black;
   position: relative;
   aspect-ratio: 4 / 3; 
-  margin-right: 2%;
+  margin-left: 2%;
   & img{
     width: 100%;
     height: 100%;
@@ -791,6 +790,7 @@ body.festival .festival-page-grid{
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
+    padding: 2vw;
   }
 }
 
@@ -973,6 +973,10 @@ footer{
   width: 48%;
 }
 
+.Collapsible .content-parent .content, .contact{
+  margin-left: 2vw;
+}
+
 #arena-content{
   & .content{
     width: 40%;
@@ -1095,8 +1099,9 @@ footer{
   display: inline;
   margin-right: 1%;
   & iframe{
-    width: 48%;
-    height: 48%;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
     aspect-ratio:  16 / 9;
     margin-top: 24px;
     border: none;

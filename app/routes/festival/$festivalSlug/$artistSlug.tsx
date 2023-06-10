@@ -51,7 +51,7 @@ export default function Index() {
 					<div>
 						<h1>{artist.artist[0].title}</h1>
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
-            <br/>
+            <br/><br/>
             <div className='info-text'>
               <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
               <p><span>Sted:</span> <span>{artist.location?.[0]?.title}{artist.location?.[1]?.title ? `, ${artist.location?.[1]?.title}` : ''}</span></p>
