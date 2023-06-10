@@ -1,7 +1,7 @@
 :root {
   --black: #000;
   --white: #fff;
-  --festival: #F2D42F;
+  --festival: #FFD800;
   --festival_light: #EFDA6A;
   --ostre: #3EF22F;
   --ostre_light: #7EF474;
@@ -291,6 +291,17 @@
 	#arena-content{
 		& p{
 			display: block;
+		}
+		& .arena-flex{
+			& ul{
+				height: auto;
+			}
+			& .content{
+				width: 100%;
+			}
+			& .images{
+				display: none;
+			}
 		}
 	}
 

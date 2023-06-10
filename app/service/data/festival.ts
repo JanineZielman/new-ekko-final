@@ -45,6 +45,7 @@ export interface Event {
   sections: {
     sectionTitle: string;
     sectionBody: string;
+    images: { url: string }[];
   }[];
   performances: {
     title: string;
@@ -120,6 +121,9 @@ const eventFragment = gql`
       ... on sections_entry_BlockType {
         sectionTitle
         sectionBody
+        images{
+          url
+        }
       }
     }
     performances {

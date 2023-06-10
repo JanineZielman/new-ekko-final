@@ -45,6 +45,7 @@ export default function Index() {
     }
   }
 
+
   return (
     <Container back={false}>
 			<div className="grid festival-page-grid">
@@ -158,7 +159,16 @@ export default function Index() {
                 </div>
               }
               {item.url == "#arena" && 
-                <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                <div className='arena-flex'>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                  <div className='images'>
+                    {event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.images.map((item, i) => {
+                      return(
+                        <img src={item.url}/>
+                      )
+                    })}
+                  </div>
+                </div>
               }
               {item.url == "#frivillig" && 
                 <div className='content flex' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
