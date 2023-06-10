@@ -487,6 +487,10 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+
+	footer .container{
+    max-width: 1300px;
+	}
 	
 	.Collapsible .grid{
 		margin-left: -2px;

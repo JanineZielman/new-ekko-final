@@ -820,7 +820,6 @@ footer{
     width: 90vw;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1300px;
   }
 }
 
@@ -1311,9 +1310,9 @@ footer{
     width: 100%;
     & span{
       text-align: left;
-      width: calc(100% - 75px);
+      width: calc(100% - 120px);
       &:first-child{
-        width: 75px;
+        width: 120px;
       }
     }
   }
