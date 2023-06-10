@@ -896,12 +896,13 @@ footer{
 }
 
 .show-all-button-simple{
-  padding: 10px 20px;
-  background-color: var(--white);
-  border: 1px solid var(--black);
   display: block;
-  width: fit-content;
   margin: 48px 14px 14px auto;
+  padding: 10px 20px;
+  background-color: inherit;
+  border: 1px solid var(--black);
+  width: fit-content;
+  border-radius: 25px;
 }
 
 .show-all-button{
@@ -943,14 +944,21 @@ footer{
 }
 
 .lineup-item{
-  line-height: 1.5;
+  line-height: 1.3;
   padding-left: 2vw;
-  font-size: 20px;
+  font-size: 24px;
   width: 100%;
   max-width: 300px;
   & a{
     width: 100%;
     display: block;
+  }
+  & sup{
+    font-size: 16px;
+    line-height: 1;
+    display: inline-block;
+    padding-top: 15px;
+
   }
   &:hover{
     text-decoration: underline
@@ -1194,7 +1202,7 @@ footer{
     min-height: 80px;
     width: calc(100% - 2vw);
     max-width: 94vw;
-    bottom: 0;
+    bottom: -4px;
     margin-left: 2.5vw;
     margin-right: 2.5vw;
     & p{
@@ -1375,5 +1383,11 @@ footer{
   }
   & .program-location-item{
     width: 28%;
+  }
+}
+
+.contact, .content, .intro-text, .description{
+  & p{
+    margin: 14px auto;
   }
 }

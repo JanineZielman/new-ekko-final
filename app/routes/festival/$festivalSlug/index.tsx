@@ -120,7 +120,10 @@ export default function Index() {
                   {event.performances.map((item, i) => {
                     return(
                       <div className='lineup-item'>
-                        <a href={`/festival/${slug}/${item.slug}`}>{item.artist[0].title}</a>
+                        <a href={`/festival/${slug}/${item.slug}`}>
+                          {item.artist[0].title} 
+                          {/* {item.artist?.[0].artistMeta && <sup>{`(${item.artist?.[0].artistMeta})`}</sup>} */}
+                        </a>
                       </div>
                     )
                   })}

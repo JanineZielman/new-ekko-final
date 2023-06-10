@@ -100,9 +100,12 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
             Søk
           </Link>
         :
+          <>
+          <br/>
           <Link className='search-link' to="/search">
             Søk
           </Link>
+          </>
         }
         
       </div>
