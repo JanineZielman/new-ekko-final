@@ -47,8 +47,6 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
-  console.log(filteredEvents)
-
   return (
     <Container back={false}>
       <div className="grid">

@@ -6,13 +6,23 @@ export default function ImageSlider({ item }) {
     infinite: true,
     speed: 500,
     centerMode: true,
-    centerPadding: "20%",
+    centerPadding: "25%",
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          centerMode: false,
+        }
+      }
+     ]
   };
 
   var Moment = require('moment');
   require('moment/locale/nb');
+
+  console.log(item)
   
   return (
     <Slider {...settings}>

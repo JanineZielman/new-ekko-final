@@ -44,8 +44,6 @@ export default function Index() {
     }
   }
 
-  console.log(event)
-
   return (
     <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">

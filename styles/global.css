@@ -1072,7 +1072,7 @@ footer{
 
 
 .slick-slider{
-  height: 600px;
+  height: auto;
   position: relative;
   display: flex;
   justify-content: center;
@@ -1093,6 +1093,12 @@ footer{
     z-index: 777;
   }
 }
+.festival .slick-slide img{
+  border-radius: 0;
+}
+.slide-wrapper{
+  position: relative;
+}
 .slick-slide{
   height: 100%;
   & div{
@@ -1102,13 +1108,14 @@ footer{
     }
   }
   & img{
-    width: 98%;
+    width: 95%;
     height: 100%;
     object-fit: cover;
-    margin-left: 1vw;
-    border-radius: 0 0 0 25px;
+    margin-left: 2.5vw;
+    border-radius: 0 0 25px 25px;
+    aspect-ratio: 1/1;
   }
-  opacity: 0.5;
+  opacity: 0.3;
   &.slick-current{
     opacity: 1;
     & .info-box{
@@ -1119,14 +1126,16 @@ footer{
     opacity: 0;
     padding: 10px 20px;
     border: 1px solid black;
+    box-sizing: border-box;
     border-radius: 25px;
     position: absolute;
     height: auto;
     min-height: 80px;
-    width: 100%;
-    max-width: 30vw;
+    width: calc(100% - 2vw);
+    max-width: 94vw;
     bottom: 0;
-    margin-left: 1vw;
+    margin-left: 2.5vw;
+    margin-right: 2.5vw;
     & p{
       font-size: var(--body);
       line-height: 1.2;
