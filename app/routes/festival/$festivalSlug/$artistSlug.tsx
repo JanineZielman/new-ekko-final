@@ -15,11 +15,6 @@ export const loader: LoaderFunction = async ({ params }) => {
     fetchArtist(params.artistSlug!),
   ]);
 
-  // Remove current artist from the performance list of the event
-  // event.performances = event.performances?.filter(
-  //   performance => performance.slug !== artist.slug
-  // );
-
   return { event, artist };
 };
 
@@ -41,17 +36,29 @@ export default function Index() {
     return first - second
   });
 
-  console.log(artist)
+  const locations: any[] = [];
+
+  for (let i = 0; i < event.performances.length; i++) {
+    if (!locations.includes(`${event.performances[i].location[0].title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`)) {
+      locations.push(`${event.performances[i]?.location?.[0]?.title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`);
+    }
+  }
+
+  console.log(event)
 
   return (
     <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
 					<div>
-            <p>{Moment(event.date).format("dddd D.M.")} {Moment(artist.time).utcOffset('+0100').format("HH:mm")}</p>
-            <br/>
 						<h1>{artist.artist[0].title}</h1>
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
+            <br/>
+            <div className='info-text'>
+              <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
+              <p><span>Sted:</span> <span>{artist.location?.[0]?.title}{artist.location?.[1]?.title ? `, ${artist.location?.[1]?.title}` : ''}</span></p>
+              <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
+            </div>
 					</div>
           <h3 className='margin-bottom'>
             {event.ticketLink?.includes('https') &&
@@ -64,16 +71,6 @@ export default function Index() {
           <img src={artist.artist[0].featuredImage[0]?.url}/>
         </div>
 
-      </div>
-
-      <div className='fake-grid'>
-        <div className='flex space-between event-info'>
-          <div className='info-text'>
-            <p>Sted: {artist.location?.[0]?.title}{artist.location?.[1]?.title ? `, ${artist.location?.[1]?.title}` : ''}</p>
-            <p>Tid: {Moment(artist.time).utcOffset('+0100').format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).utcOffset('+0100').format("HH:mm")}`}</p>
-            <p>{event.ticketDescription && `Billetter: ${event.ticketDescription}`}</p>
-          </div>
-        </div>
       </div>
 
       <Collapsible trigger={'Mer informasjon om artisten'} open={true} slug={'about'}>
@@ -99,25 +96,47 @@ export default function Index() {
       </Collapsible>
 
       <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
-        <div className='artists-section'>
-          {event.performances.map((performance, i) => {
-            return(
-              <>
-                {performance.date == artist.date &&
-                  <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
-                    {/* {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>} */}
-                    <div className='info-bar'>
-                      <h2>{performance.artist[0].title}</h2>
-                      {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
-                      <br/>
-                      <p>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</p>
-                    </div>
-                  </Link>
-                }
-              </>
-            )
-          })}
-        </div>
+      <div className='program dagens-program'>
+        {event.program.map((item, i) => {
+          return(
+            <>
+            {item.date == artist.date &&
+              <div className='program-day'>
+                {item.date && <h3 className='date'>{Moment(item.date).format("dddd D.M.")}</h3>}
+                {locations.map((location, i) => {
+                  const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
+                  const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                  return(
+                    <>
+                    {filteredPerformance.length > 0 &&
+                      <div className='program-location-item'>
+                        <>
+                          <div className='location'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                        
+                          {filteredEvents.map((performance, i) => {
+                            return(
+                              <>
+                                {item.date == performance.date && 
+                                  <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
+                                    <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                    <div className='artist'>{performance.artist[0].title}</div>
+                                  </a>
+                                }
+                              </>
+                            )
+                          })}
+                        </>
+                      </div>
+                      }
+                    </>
+                  )
+                })}
+              </div>
+            }
+            </>
+          )
+        })}
+      </div>
       </Collapsible>
 
       <div className='grid'>

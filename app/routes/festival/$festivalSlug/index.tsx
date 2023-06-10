@@ -87,13 +87,13 @@ export default function Index() {
                             {filteredPerformance.length > 0 &&
                               <div className='program-location-item'>
                                 <>
-                                  <div className='bold'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                                  <div className='location'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
                                 
                                   {filteredEvents.map((performance, i) => {
                                     return(
                                       <>
                                         {item.date == performance.date && 
-                                          <a className='flex space-between performance' href={`/festival/${slug}/${performance.slug}`}>
+                                          <a className='performance' href={`/festival/${slug}/${performance.slug}`}>
                                             <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
                                             <div className='artist'>{performance.artist[0].title}</div>
                                           </a>
@@ -108,9 +108,6 @@ export default function Index() {
                           )
                         })}
                       </div>
-                      {event.program.length == 5 && i == 4 &&
-                      <div className='program-day'></div>
-                      }
                       </>
                     )
                   })}

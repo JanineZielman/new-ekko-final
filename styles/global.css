@@ -9,7 +9,7 @@
   /* Font Sizes */
   --h1: 48px;
   --h2: 32px;
-  --h3: 20px;
+  --h3: 24px;
   --h4: 20px;
   --body: 20px;
 }
@@ -135,10 +135,6 @@ h3 p{
 a{
   text-decoration: none;
   color: var(--black);
-}
-
-.bold{
-  font-weight: bold;
 }
 
 .big {
@@ -564,35 +560,34 @@ body.festival .festival-page-grid{
 .program{
   display: flex;
   flex-wrap: wrap;
-  
+  padding-bottom: 24px;
   & .program-day{
     width: calc(100% / 3 + 2px);
-    /* display: inline-block; */
-    border: 1px solid var(--black);
-    border-top: 2px solid var(--black);
-    border-bottom: 0;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     margin: 0 -1px;
     padding-bottom: 14px;
-    &:last-child{
-      border-right: 2px solid var(--black);
-    }
     & .date{
-      padding: 14px 2vw;
-      border-bottom: 2px solid var(--black);
+      padding: 0px 2vw;
       margin: 0 -1px;
     }
     & .performances{
       padding: 1vw;
     }
+    & .location{
+      margin: 14px 0;
+      font-size: var(--h4);
+    }
     & .performance{
       margin: 0px 0;
-      padding: 4px 4px;
+      padding: 4px 0;
       box-sizing: border-box;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
       &:hover{
         opacity: 0.5;
       }
@@ -1295,4 +1290,18 @@ footer{
     }
   }
   padding-bottom: 24px;
+}
+
+.program.dagens-program{
+  & .date{
+    width: 100%;
+  }
+  & .program-day{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  & .program-location-item{
+    width: 28%;
+  }
 }
