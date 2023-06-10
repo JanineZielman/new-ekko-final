@@ -38,7 +38,7 @@ export default function Menu({ navigation, slug, fullSlug}: { navigation: Naviga
 				{filtered?.[0] ?
           <a href={``} className="homebutton">{filtered[0].navName}</a>
         :
-          <a href={`/`} className="homebutton">{navigation.nodes[0].title}</a>
+         <div></div>
         }
 				<div className='open-menu' onClick={openModal}></div>
 			</div>
