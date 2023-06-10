@@ -473,10 +473,6 @@
 	.homebutton{
 		margin-left: calc((100vw - 1300px) / 2 - 45px);
 	}
-
-	footer .container{
-		max-width: 95%;
-	}
 	.search-link{
 		margin-right: 2vw;
 	}

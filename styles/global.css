@@ -9,7 +9,7 @@
   /* Font Sizes */
   --h1: 48px;
   --h2: 32px;
-  --h3: 24px;
+  --h3: 20px;
   --h4: 20px;
   --body: 20px;
 }
@@ -658,7 +658,6 @@ body.festival .festival-page-grid{
       border-bottom: 0;
       border-top: 0;
       height: 100%;
-    
     }
     & .flex{
       width: calc(100% - 2vw);
@@ -820,8 +819,10 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
-    margin-left: 2.5%;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1300px;
   }
 }
 
@@ -1293,4 +1294,5 @@ footer{
       width: 70%;
     }
   }
+  padding-bottom: 24px;
 }
