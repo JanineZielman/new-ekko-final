@@ -47,11 +47,13 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+  console.log(filteredEvents)
+
   return (
     <Container back={false}>
       <div className="grid">
         <Spacer number={72} border={""}/>
-        {filteredEvents.slice(0,1).map((item,i) => {
+        {filteredEvents.filter(item => item.type == 'event').slice(0,1).map((item,i) => {
           return(
             <a className='event-highlight' href={`/ostre/${item.slug}`}>
               <img src={item.featuredImage?.[0]?.url} alt="" />
@@ -87,7 +89,7 @@ export default function Oestre() {
               }
               {item.url == '#kalender' && 
                 <>
-                  {filteredEvents.slice(-5).reverse().map((item,i) => {
+                  {filteredEvents.filter(item => item.type == 'event').slice(-5).reverse().map((item,i) => {
                     return(
                       <div>
                         <a href={`/ostre/${item.slug}`}>
