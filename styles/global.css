@@ -587,7 +587,6 @@ body.festival .festival-page-grid{
       -webkit-box-sizing: border-box;
       display: flex;
       justify-content: space-between;
-      font-size: 16px;
       &:hover{
         opacity: 0.5;
       }
@@ -596,10 +595,10 @@ body.festival .festival-page-grid{
       width: 100%;
     }
     & .time{
-      width: 30%;
+      width: 75px;
     }
     & .artist{
-      width: 70%;
+      width: calc(100% - 75px);
     }
   }
 
@@ -632,7 +631,7 @@ body.festival .festival-page-grid{
     border-bottom: 0;
     & span{
       margin-left: 2vw;
-      text-transform: uppercase;
+      /* text-transform: uppercase; */
       font-size: var(--h2);
     }
   }

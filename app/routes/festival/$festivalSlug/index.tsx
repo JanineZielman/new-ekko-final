@@ -113,7 +113,8 @@ export default function Index() {
                   })}
                 </div>
               }
-              {item.url == "#spilleplan" && event.performances.length > 0 &&
+              {item.url == "#artister" && event.performances.length > 0 &&
+                <>
                 <div className='line-up'>
                   {event.performances.map((item, i) => {
                     return(
@@ -123,8 +124,6 @@ export default function Index() {
                     )
                   })}
                 </div>
-              }
-              {item.url == "#artister" && event.performances.length > 0 &&
                 <div className='artists-section'>
                   {event.performances.map((performance, i) => {
                     return(
@@ -138,6 +137,7 @@ export default function Index() {
                     )
                   })}
                 </div>
+                </>
               }
               {item.url == "#billetter" && event.tickets.length > 0 &&
                 <div className='flex tickets'>
