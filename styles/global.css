@@ -1021,7 +1021,7 @@ footer{
   display: flex;
   & .info-wrapper{
     width: calc(50% - 2vw);
-    padding: 1vw;
+    padding: 2vw;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -1047,13 +1047,12 @@ footer{
 }
 
 .event-info{
+  padding: 2vw;
   & .info-text{
     width: 48%;
-    padding: 1%;
   }
   & .intro-text{
     width: 48%;
-    padding: 1%;
   }
 }
 
@@ -1284,6 +1283,9 @@ footer{
     justify-content: space-between;
     font-size: var(--body);
     margin-bottom: 5px;
+    &:hover{
+      opacity: 0.5;
+    }
     & .time{
       width: 30%;
     }
