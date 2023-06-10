@@ -137,7 +137,7 @@
 
 	.agenda-item{
 		flex-wrap: wrap;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-between;
 		& .time{
 			width: auto;
@@ -146,16 +146,28 @@
 			width: auto;
 		}
 		& .artists{
-			width: 80%;
+			width: 100%;
 			margin-top: 14px;
 		}
-		& .ticket-link{
+		& .ticket-button{
+			margin-top: 14px;
+			margin-bottom: 14px;
+		}
+		& .ticket-info{
+			justify-content: flex-end;
 			text-align: right;
+			width: calc(100% - 150px);
+			& div{
+				width: 100%;
+			}
+		}
+		& .ticket-link{
+			text-align: left;
 			padding: 5px 20px;
 			border: 1px solid var(--black);
 			border-radius: 25px;
 			height: fit-content;
-			margin: 10px 10px 0px auto;
+			/* margin: 10px 10px 0px auto; */
 		}
 		& h3{
 			display: flex;

@@ -55,9 +55,6 @@ input:focus, textarea:focus, select:focus{
 
 p a{
   text-decoration: underline;
-  &:hover{
-    opacity: 0.5;
-  }
 }
 
 body,html{
@@ -390,6 +387,10 @@ body {
   }
 }
 
+p a:hover, .social-links a:hover{
+  text-decoration: underline;
+}
+
 .homebutton {
   font-size: var(--h2);
   margin-left: 2vw;
@@ -588,7 +589,7 @@ body.festival .festival-page-grid{
       display: flex;
       justify-content: space-between;
       &:hover{
-        opacity: 0.5;
+        text-decoration: underline
       }
     }
     & .flex{
@@ -841,10 +842,10 @@ footer{
     font-size: 16px;
   }
   & .time{
-    width: 25%;
+    width: 20%;
   }
   & .title{
-    width: 20%;
+    width: 10%;
   }
   & .artists{
     width: 36%;
@@ -852,8 +853,12 @@ footer{
   & .ticket-info{
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    width: 100px;
+    align-items: center;
+    width: 50px;
+  }
+  & .ticket-button{
+    width: 150px;
+    text-align: right;
   }
   & .ticket-link{
     text-align: right;
@@ -862,9 +867,14 @@ footer{
     border-radius: 25px;
     height: 100%;
     width: fit-content;
+    margin-left: auto;
+    margin-right: 0;
   }
   & .no-ticket{
-    width: 100px;
+    opacity: 0.5;
+    &:hover .ticket-link{
+      background-color: inherit;
+    }
   }
   & h3{
     display: flex;
@@ -896,6 +906,9 @@ footer{
   top: 50%;
   transform: translateY(-50%);
   border-radius: 25px;
+  &:hover{
+    background-color: var(--white);
+  }
 }
 
 
@@ -905,6 +918,9 @@ footer{
   border: 1px solid var(--black);
   width: fit-content;
   border-radius: 25px;
+  &:hover{
+    background-color: var(--white);
+  }
 }
 
 .margin-bottom{
@@ -925,7 +941,7 @@ footer{
     display: block;
   }
   &:hover{
-    opacity: 0.5;
+    text-decoration: underline
   }
 }
 
@@ -1288,7 +1304,7 @@ footer{
     font-size: var(--body);
     margin-bottom: 5px;
     &:hover{
-      opacity: 0.5;
+      text-decoration: underline
     }
     & .time{
       width: 30%;

@@ -59,7 +59,7 @@ export default function Index() {
           </div>
           <h3 className='ticket-wrapper'>
             {event.ticketLink?.includes('https') &&
-              <a className='ticket-link button' href={event.ticketLink} target="_blank">Billetter</a>
+              <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
             }
           </h3>
         </div>

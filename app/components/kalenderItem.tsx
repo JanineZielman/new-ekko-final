@@ -28,13 +28,16 @@ export default function KalenderItem({ item }: { item: any }) {
           })}
         </h3>
       </div>
+      <div className="ticket-info">
+        <div dangerouslySetInnerHTML={{__html: item.ticketDescription}}></div>
+      </div>
       {item.ticketLink?.includes('https') ?
-        <div className='ticket-info'>
-          <a className='ticket-link' href={item.ticketLink} target="_blank">Billetter</a>
+        <div className='ticket-button'>
+          <a className='ticket-link button' href={item.ticketLink} target="_blank">Kjøp billetter</a>
         </div>
         :
-        <div className='ticket-info no-ticket'>
-          <div dangerouslySetInnerHTML={{__html: item.ticketDescription}}></div>
+        <div className='ticket-button no-ticket'>
+          <div className='ticket-link button'>Ingen forsalg</div>
         </div>
       }
     </div>
