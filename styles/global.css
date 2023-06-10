@@ -810,7 +810,7 @@ body.festival .festival-page-grid{
 footer{
   font-size: var(--h3);
   padding: 48px 0;
-  & a{
+  & .social-links a{
     margin-left: 24px;
   }
   & .container{
@@ -820,6 +820,9 @@ footer{
     width: 90vw;
     margin-left: auto;
     margin-right: auto;
+  }
+  & a:hover{
+    text-decoration: underline;
   }
 }
 
@@ -990,6 +993,16 @@ footer{
     margin-bottom: 24px;
     & a{
       text-decoration: underline;
+      &:after {
+        content: " ";
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        position: absolute;
+        background-image: url('/location.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
     }
   }
   & .arena-flex{

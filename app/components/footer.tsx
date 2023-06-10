@@ -4,9 +4,9 @@ import type { Navigation } from '~/service/data/global';
 export default function Footer({ navigation }: { navigation: Navigation }) {
   return (
     <footer>
-      <Container>
+      <Container back={false}>
         <div>
-          Where to find us
+          <a href="#">Meld på nyhetsbrev</a>
         </div>
         <div className='social-links'>
           <a href={navigation.globalSets[1].socialFacebook} target="_blank">Facebook</a>

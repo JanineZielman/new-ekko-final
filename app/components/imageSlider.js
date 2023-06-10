@@ -21,8 +21,6 @@ export default function ImageSlider({ item }) {
 
   var Moment = require('moment');
   require('moment/locale/nb');
-
-  console.log(item)
   
   return (
     <Slider {...settings}>
