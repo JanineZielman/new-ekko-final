@@ -1280,10 +1280,13 @@ footer{
     display: flex;
     width: fit-content;
     justify-content: space-between;
-    min-width: 300px;
+    width: 100%;
     & span{
       text-align: left;
-      width: 50%;
+      width: calc(100% - 75px);
+      &:first-child{
+        width: 75px;
+      }
     }
   }
 }

@@ -72,7 +72,7 @@ export default function Nav({ navigation, slug, fullSlug }: { navigation: Naviga
         {filtered?.[0] ?
           <a href={``} className="homebutton">{filtered[0].navName}</a>
         :
-          <a href={`/`} className="homebutton">{navigation.nodes[0].title}</a>
+          <></>
         }
         <div className="nav-items" id="nav-items">
           {navigation &&

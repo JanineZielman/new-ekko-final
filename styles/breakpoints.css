@@ -458,6 +458,9 @@
 			width: 100%;
 		}
 	}
+	.program.dagens-program .program-location-item{
+		width: 100%;
+	}
 }
 
 

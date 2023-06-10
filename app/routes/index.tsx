@@ -28,7 +28,7 @@ export default function Index() {
   return (
     <Container back={false}>
       <div className="grid">
-        <Spacer number={60} border=""/>
+        <Spacer number={72} border=""/>
         <div className='main-images'>
           <a className="festival-img wrap" href={`/festival/${ekko_festival_info.entry.linkedFestival[0]?.slug}`}>
             <h2>Festival</h2>
