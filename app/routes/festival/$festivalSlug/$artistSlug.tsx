@@ -44,6 +44,9 @@ export default function Index() {
     }
   }
 
+  const festivalDay = event.program.filter(day => day.date == event.date);
+  console.log(festivalDay)
+
   return (
     <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">
@@ -54,8 +57,12 @@ export default function Index() {
             <br/><br/>
             <div className='info-text'>
               <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
-              <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
               <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
+              <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
+              <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
+              {festivalDay[0]?.ticketInformation && 
+                <p> <span>Billetter:</span> <span>{festivalDay[0]?.ticketInformation}</span></p>
+              }
             </div>
 					</div>
           <h3 className='margin-bottom'>

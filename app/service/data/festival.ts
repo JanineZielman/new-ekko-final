@@ -40,6 +40,9 @@ export interface Event {
     endDate: string;
     program: {
       date: string;
+      startTime: string;
+      endTime: string;
+      ticketInformation: string;
     }[];
   }[]
   sections: {
@@ -97,6 +100,9 @@ const eventFragment = gql`
       endDate
       ... on program_day_BlockType {
         date
+        startTime
+        endTime
+        ticketInformation
       }
     }
     isMultiDay

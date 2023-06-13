@@ -45,7 +45,6 @@ export default function Index() {
     }
   }
 
-
   return (
     <Container back={false}>
 			<div className="grid festival-page-grid">
