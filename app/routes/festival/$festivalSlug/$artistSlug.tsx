@@ -39,8 +39,8 @@ export default function Index() {
   const locations: any[] = [];
 
   for (let i = 0; i < event.performances.length; i++) {
-    if (!locations.includes(`${event.performances[i].location[0].title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`)) {
-      locations.push(`${event.performances[i]?.location?.[0]?.title}${event.performances[i].location[1]?.title ? `, ${event.performances[i].location[1]?.title}` : ''}`);
+    if (!locations.includes(`${event.performances[i].location[1].fullTitle}`)) {
+      locations.push(`${event.performances[i]?.location?.[1]?.fullTitle}`);
     }
   }
 
@@ -54,7 +54,7 @@ export default function Index() {
             <br/><br/>
             <div className='info-text'>
               <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
-              <p><span>Sted:</span> <span>{artist.location?.[0]?.title}{artist.location?.[1]?.title ? `, ${artist.location?.[1]?.title}` : ''}</span></p>
+              <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
               <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
             </div>
 					</div>
@@ -102,14 +102,14 @@ export default function Index() {
               <div className='program-day'>
                 {item.date && <h3 className='date'>{Moment(item.date).format("dddd D.M.")}</h3>}
                 {locations.map((location, i) => {
-                  const filteredEvents = event.performances.filter(performance => (`${performance.location?.[0]?.title}${performance.location[1]?.title ? `, ${performance.location[1]?.title}` : ''}` == location));
+                  const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                   const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
                   return(
                     <>
                     {filteredPerformance.length > 0 &&
                       <div className='program-location-item'>
                         <>
-                          <div className='location'>{filteredPerformance[0].location[0].title} {filteredPerformance[0].location[1] && `, ${filteredPerformance[0].location[1]?.title}`}</div>
+                          <div className='location'>{filteredPerformance[0].location[1]?.fullTitle}</div>
                         
                           {filteredEvents.map((performance, i) => {
                             return(

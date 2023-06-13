@@ -895,6 +895,18 @@ footer{
   }
 }
 
+.ticket-link.button{
+  text-align: right;
+  padding: 5px 20px;
+  border: 1px solid var(--black);
+  border-radius: 25px;
+  height: 100%;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: 0;
+  font-size: 16px;
+}
+
 .show-all-button-simple{
   display: block;
   margin: 48px 14px 14px auto;

@@ -46,9 +46,15 @@ export default function Index() {
                     <>
                       { (Moment(event.date).format("MMMM") == item) && 
                         <div>
-                          <a href={`/ostre/${event.slug}`}>
-                            <KalenderItem item={event}/>
-                          </a>
+                          {event.type == 'festival' ?
+                            <a href={`/festival/${event.slug}`}>
+                              <KalenderItem item={event}/>
+                            </a>
+                            :
+                            <a href={`/ostre/${event.slug}`}>
+                              <KalenderItem item={event}/>
+                            </a>
+                          }
                         </div>
                       }
                     </>
@@ -59,10 +65,6 @@ export default function Index() {
           </>
         )
       })}
-
-      {/* <div className="grid">
-        <Spacer number={12} border={""}/>
-      </div> */}
     </Container>
   );
 }
