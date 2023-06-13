@@ -73,7 +73,7 @@ export default function Index() {
                   </div>
                 </>
               }
-              {item.url == "#program" && event.program.length > 0 &&
+              {item.url == "#spilleplan" && event.program.length > 0 &&
                 <div className='program'>
                   {event.program.map((item, i) => {
                     return(

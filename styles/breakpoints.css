@@ -19,6 +19,14 @@
 		display: none;
 	}
 
+	.artist-text{
+		margin-top: -2vw;
+		column-count: 1;
+		& p:first-child{
+			margin-top: 0;
+		}
+	}
+
 	.gravity{
 		& .gravity-item{
 			padding: 14px 50px;

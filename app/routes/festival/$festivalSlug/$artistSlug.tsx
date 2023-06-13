@@ -75,7 +75,7 @@ export default function Index() {
         {artist.artist[0].complexContent?.map(block => {
           if (block.blockType === 'text') {
             return (
-              <div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+              <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
             );
           }
           if (block.blockType === 'embed') {

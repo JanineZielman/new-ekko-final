@@ -939,7 +939,7 @@ footer{
 }
 
 .line-up{
-  padding-bottom: 2vw;
+  padding-bottom: 4vw;
   columns: 3;
 }
 
@@ -1386,7 +1386,15 @@ footer{
   }
 }
 
-.contact, .content, .intro-text, .description{
+.artist-text{
+  margin-top: -2vw;
+  column-count: 2;
+  & p:first-child{
+    margin-top: 0;
+  }
+}
+
+.contact, .content, .intro-text, .description, .collapsible-content{
   & p{
     margin: 14px auto;
   }
