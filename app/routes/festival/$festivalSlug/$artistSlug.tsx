@@ -72,7 +72,7 @@ export default function Index() {
                 <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
               }
             </div>
-            <div className='social-links'>
+            <div className='social-links-artist'>
               {artist.artist?.[0].relatedLinks.map((item, i) => {
                 return(
                   <a className={`${item.linkTitle}`} href={item.linkUrl} target="_blank"></a>

@@ -1426,7 +1426,7 @@ footer{
 
 }
 
-.social-links{
+.social-links-artist{
   display: flex;
   & a {
     display: block;

@@ -34,11 +34,20 @@ export default function Index() {
 						<h1>{artist.artist[0].title}</h1>
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
 					</div>
-          <h3 className='margin-bottom'>
-            {event.ticketLink?.includes('https') &&
-              <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
-            }
-          </h3>
+          <div className='flex space-between margin-top bottom-links'>
+            <div>
+              {event.ticketLink?.includes('https') &&
+                <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
+              }
+            </div>
+            <div className='social-links-artist'>
+              {artist.artist?.[0].relatedLinks.map((item, i) => {
+                return(
+                  <a className={`${item.linkTitle}`} href={item.linkUrl} target="_blank"></a>
+                )
+              })}
+            </div>
+          </div>
 				</div>
 
         <div className='img-wrapper'>
