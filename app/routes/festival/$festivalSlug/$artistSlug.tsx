@@ -45,7 +45,8 @@ export default function Index() {
   }
 
   const festivalDay = event.program.filter(day => day.date == event.date);
-  console.log(festivalDay)
+
+  console.log(artist)
 
   return (
     <Container back={`/festival/${event.slug}`}>
@@ -65,11 +66,20 @@ export default function Index() {
               }
             </div>
 					</div>
-          <h3 className='margin-bottom'>
-            {event.ticketLink?.includes('https') &&
-              <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
-            }
-          </h3>
+          <div className='flex space-between margin-top bottom-links'>
+            <div>
+              {event.ticketLink?.includes('https') &&
+                <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
+              }
+            </div>
+            <div className='social-links'>
+              {artist.artist?.[0].relatedLinks.map((item, i) => {
+                return(
+                  <a className={`${item.linkTitle}`} href={item.linkUrl} target="_blank"></a>
+                )
+              })}
+            </div>
+          </div>
 				</div>
 
         <div className='img-wrapper'>

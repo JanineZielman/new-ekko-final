@@ -15,6 +15,10 @@ export interface Artist {
     url: string;
     title: string;
     artistMeta: string;
+    relatedLinks: {
+      linkTitle: string;
+      linkUrl: string;
+    }[];
     featuredImage: { url: string }[];
     complexContent: (
       | { blockType: 'text'; text: string }
@@ -30,6 +34,10 @@ const artistFragment = gql`
     artistMeta
     featuredImage: artistFeaturedPhoto {
       url
+    }
+    relatedLinks {
+      linkTitle
+      linkUrl
     }
     complexContent {
       ... on complexContent_text_BlockType {

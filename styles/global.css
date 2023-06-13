@@ -950,6 +950,10 @@ footer{
   margin-bottom: 24px;
 }
 
+.margin-top{
+  margin-top: 24px;
+}
+
 .line-up{
   padding-bottom: 4vw;
   columns: 3;
@@ -1414,4 +1418,41 @@ footer{
 
 .cap{
   text-transform: capitalize;
+}
+
+.bottom-links{
+  width: 98%;
+  margin-bottom: 10px;
+
+}
+
+.social-links{
+  display: flex;
+  & a {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url('/web.svg');
+    border-radius: 50%;
+    cursor: pointer;
+    margin-right: 10px;
+    &[class^="Soundcloud"]{
+      background-image: url('/soundcloud.svg')
+    }
+    &[class^="Bandcamp"]{
+      background-image: url('/bandcamp.svg')
+    }
+    &[class^="Instagram"]{
+      background-image: url('/instagram.svg')
+    }
+    &[class^="Spotify"]{
+      background-image: url('/spotify.svg')
+    }
+    &[class^="Facebook"]{
+      background-image: url('/facebook.svg')
+    }
+    &[class^="Youtube"]{
+      background-image: url('/youtube.svg')
+    }
+  }
 }
