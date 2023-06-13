@@ -49,7 +49,7 @@ export default function Index() {
             </h2>
             <br/>
             <div className='info-text'>
-              <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
+              <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")}</span></p>
               <p><span>Sted:</span> <span>{event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</span></p>
               <p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
               {event.ticketDescription && 
@@ -85,7 +85,7 @@ export default function Index() {
         <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
           <div className='dagens-program'>
             <div className='day'>
-              {event.date && <h3>{Moment(event.date).format("dddd D.M.")} <br/></h3>}
+              {event.date && <h3 className='cap'>{Moment(event.date).format("dddd D.M.")} <br/></h3>}
               <h3>{event.location[0]?.title} {event.location[1] && `, ${event.location[1]?.title}`}</h3>
               <div className='performances'>
                 {event.performances.map((item, i) => {

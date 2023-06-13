@@ -31,7 +31,7 @@ export default function ImageSlider({ item }) {
               <div className="slide-wrapper">
                 <img src={slideItem.url}/>
                 <a className='info-box' href={`${slide.performances ? `/ostre/${slide.slug}` : `/festival/${slide.slug}`}`}>
-                  <p className='time'>{Moment(item.date).format("dddd D.M. yy")}</p>
+                  <p className='time cap'>{Moment(item.date).format("dddd D.M. yy")}</p>
                   <h2>{slide.title}</h2>
                   <h2 className='artists'>
                     {slide.performances?.map((performance,j) => {

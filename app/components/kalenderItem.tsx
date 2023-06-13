@@ -6,7 +6,7 @@ export default function KalenderItem({ item }: { item: any }) {
     <div className='agenda-item'>
       <div className='time'>
         <div className='indicator'>Dato</div>
-        <p>{Moment(item.date).format("dddd D.M.")} {Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
+        <p className="cap">{Moment(item.date).format("dddd D.M.")} {Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
       </div>
       {item.organizer?.[0]?.title ?
         <div className='title'>

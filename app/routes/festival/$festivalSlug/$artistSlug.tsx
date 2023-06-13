@@ -56,7 +56,7 @@ export default function Index() {
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
             <br/><br/>
             <div className='info-text'>
-              <p><span>Dato:</span> <span>{Moment(event.date)?.format("dddd D.M.")}</span></p>
+              <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")}</span></p>
               <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
               <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
               <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
@@ -107,7 +107,7 @@ export default function Index() {
             <>
             {item.date == artist.date &&
               <div className='program-day'>
-                {item.date && <h3 className='date'>{Moment(item.date).format("dddd D.M.")}</h3>}
+                {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
                 {locations.map((location, i) => {
                   const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                   const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);

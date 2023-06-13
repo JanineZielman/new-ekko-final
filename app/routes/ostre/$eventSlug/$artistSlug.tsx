@@ -29,7 +29,7 @@ export default function Index() {
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
 					<div>
-            <p>{Moment(event.date)?.format("dddd D.M.")} {artist.time && `${Moment(artist.time).utcOffset('+0000').format("HH:mm")}`}</p>
+            <p className='cap'>{Moment(event.date)?.format("dddd D.M.")} {artist.time && `${Moment(artist.time).utcOffset('+0000').format("HH:mm")}`}</p>
             <br/>
 						<h1>{artist.artist[0].title}</h1>
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}

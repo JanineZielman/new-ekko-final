@@ -78,7 +78,7 @@ export default function Index() {
                     return(
                       <>
                       <div className='program-day'>
-                        {item.date && <h3 className='date'>{Moment(item.date).format("dddd D.M.")}</h3>}
+                        {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
                         {locations.map((location, i) => {
                           const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
