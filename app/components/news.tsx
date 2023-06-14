@@ -7,7 +7,7 @@ export default function News({news, page} : {news:any, page:any}) {
         {news.map((item:any, i:any) => {
           return(
             <a className='news-item' key={`news${i}`} href={`/${page}/news/${item.slug}`}>
-              <img src={item.newsPhoto[0].url} alt="" />
+              <img src={item.newsPhoto[0]?.url} alt="" />
               <div className='info-box'>
                 <h2>{item.title}</h2>
                 <p style={{margin: '5px 0'}}>Les mer...</p>

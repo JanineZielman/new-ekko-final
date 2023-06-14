@@ -74,7 +74,7 @@ export default function Oestre() {
       </div>
       {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
         return(
-          <Collapsible trigger={item.title} open={false} slug={item.url.replace('#', '')}>
+          <Collapsible trigger={item.title} open={false} slug={item.url?.replace('#', '')}>
             <>
               {item.url == '#nyheter' && 
                 <>
