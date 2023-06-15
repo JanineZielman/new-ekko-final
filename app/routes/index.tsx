@@ -29,7 +29,7 @@ export default function Index() {
       <div className="grid">
         <Spacer number={72} border=""/>
         <div className='main-images'>
-          <a className="festival-img wrap" href={`/festival/${ekko_festival_info.entry.linkedFestival[0]?.slug}`}>
+          <a className="festival-img wrap" href={`/festival/${ekko_festival_info?.entry?.linkedFestival[0]?.slug}`}>
             <h2>Festival</h2>
             <img src="/2@4x-8.png"/>
           </a>
