@@ -50,7 +50,7 @@ export default function Index() {
             <br/>
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")}</span></p>
-              <p><span>Sted:</span> <span>{event.location?.[0]?.title}{event.location?.[1]?.title ? `, ${event.location?.[1]?.title}` : ''}</span></p>
+              <p><span>Sted:</span> <span>{event.location?.[1]?.fullTitle}</span></p>
               <p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
@@ -82,24 +82,27 @@ export default function Index() {
       </div>
 
       {event.performances?.length > 0 &&
-        <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
-          <div className='dagens-program'>
-            <div className='day'>
-              {event.date && <h3 className='cap'>{Moment(event.date).format("dddd D.M.")} <br/></h3>}
-              <h3>{event.location[0]?.title} {event.location[1] && `, ${event.location[1]?.title}`}</h3>
-              <div className='performances'>
-                {event.performances.map((item, i) => {
-                  return(
-                    <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
-                      <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
-                      <div className='artist'>{item.artist[0].title}</div>
-                    </a>
-                  )
-                })}
+        <div className='Collapsible'>
+          <div className='trigger' style={{"height": 0, "padding": "14px"}}></div>
+          <div className='content-parent open'>
+            <div className='dagens-program'>
+              <div className='day'>
+                {event.date && <h3 className='cap'>{Moment(event.date).format("dddd D.M.")} <br/></h3>}
+                <h3>{event.location[1]?.fullTitle}</h3>
+                <div className='performances'>
+                  {event.performances.map((item, i) => {
+                    return(
+                      <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
+                        <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
+                        <div className='artist'>{item.artist[0].title}</div>
+                      </a>
+                    )
+                  })}
+                </div>
               </div>
             </div>
           </div>
-        </Collapsible>
+        </div>
       }
 
       

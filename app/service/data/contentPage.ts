@@ -15,6 +15,7 @@ export interface PageEntry {
     sections: {
       sectionTitle: string;
       sectionBody: string;
+      images: {url: string}[];
     }[];
     performances: {
       artist: {
@@ -43,6 +44,7 @@ const query = gql`
         ... on sections_entry_BlockType {
           sectionTitle
           sectionBody
+          images
         }
       }
       linkedEvents {

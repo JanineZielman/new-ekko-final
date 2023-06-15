@@ -110,49 +110,52 @@ export default function Index() {
         })}
       </Collapsible>
 
-      <Collapsible trigger={'Dagens Program'} open={true} slug={'dagens-program'}>
-      <div className='program dagens-program'>
-        {event.program.map((item, i) => {
-          return(
-            <>
-            {item.date == artist.date &&
-              <div className='program-day'>
-                {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
-                {locations.map((location, i) => {
-                  const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
-                  const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
-                  return(
-                    <>
-                    {filteredPerformance.length > 0 &&
-                      <div className='program-location-item'>
+      <div className='Collapsible'>
+        <div className='trigger' style={{"height": 0, "padding": "14px"}}></div>
+        <div className='content-parent open'>
+          <div className='program dagens-program'>
+            {event.program.map((item, i) => {
+              return(
+                <>
+                {item.date == artist.date &&
+                  <div className='program-day'>
+                    {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
+                    {locations.map((location, i) => {
+                      const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
+                      const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                      return(
                         <>
-                          <div className='location'>{filteredPerformance[0].location[1]?.fullTitle}</div>
-                        
-                          {filteredEvents.map((performance, i) => {
-                            return(
-                              <>
-                                {item.date == performance.date && 
-                                  <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
-                                    <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
-                                    <div className='artist'>{performance.artist[0].title}</div>
-                                  </a>
-                                }
-                              </>
-                            )
-                          })}
+                        {filteredPerformance.length > 0 &&
+                          <div className='program-location-item'>
+                            <>
+                              <div className='location'>{filteredPerformance[0].location[1]?.fullTitle}</div>
+                            
+                              {filteredEvents.map((performance, i) => {
+                                return(
+                                  <>
+                                    {item.date == performance.date && 
+                                      <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
+                                        <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                        <div className='artist'>{performance.artist[0].title}</div>
+                                      </a>
+                                    }
+                                  </>
+                                )
+                              })}
+                            </>
+                          </div>
+                          }
                         </>
-                      </div>
-                      }
-                    </>
-                  )
-                })}
-              </div>
-            }
-            </>
-          )
-        })}
+                      )
+                    })}
+                  </div>
+                }
+                </>
+              )
+            })}
+          </div>
+        </div>
       </div>
-      </Collapsible>
 
       <div className='grid'>
         <Spacer number={12} border=""/>

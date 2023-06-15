@@ -103,6 +103,18 @@ export default function Oestre() {
                   </div>
                 </>
               }
+              {item.url == "#intro" && 
+                <div className='arena-flex'>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                  <div className='images'>
+                    {ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.images.map((item, i) => {
+                      return(
+                        <img src={item.url}/>
+                      )
+                    })}
+                  </div>
+                </div>
+              }
               {item.url == '#info' && 
                 <div className='flex'>
                   {ostre.entry.contact && <div className='contact' dangerouslySetInnerHTML={{ __html: ostre.entry.contact }}></div>}
