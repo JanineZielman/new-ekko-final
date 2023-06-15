@@ -5,7 +5,6 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
-import Collapsible from '~/components/collapsible';
 
 
 export const loader: LoaderFunction = async () => {

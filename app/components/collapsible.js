@@ -23,6 +23,7 @@ const Collapsible = ({children, trigger, open, slug}) => {
 	const toggle = (e) => {
 		if (e.target.parentElement.id == window.location.hash.replace('#', '')){
 			document.getElementsByClassName('open')[0]?.classList.remove('open');
+			window.location.hash = '';
 		} else {
 			navigate(`#${e.target.parentElement.id}`);
 		}
