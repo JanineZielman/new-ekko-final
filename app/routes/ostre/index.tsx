@@ -51,7 +51,7 @@ export default function Oestre() {
     <Container back={false}>
       <div className="grid">
         <Spacer number={72} border={""}/>
-        {filteredEvents.filter(item => item.type == 'event').slice(0,1).map((item,i) => {
+        {filteredEvents.filter(item => item.type == 'event').slice(-1).map((item,i) => {
           return(
             <a className='event-highlight' href={`/ostre/${item.slug}`}>
               <img src={item.featuredImage?.[0]?.url} alt="" />

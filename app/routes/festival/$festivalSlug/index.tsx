@@ -172,7 +172,7 @@ export default function Index() {
                   </div>
                 </div>
               }
-              {item.url == "#tema" && 
+              {item.url == "#intro" && 
                 <div className='arena-flex'>
                   <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
                   <div className='images'>
