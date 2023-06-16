@@ -156,8 +156,8 @@ export default function Index() {
               }
               {item.url == "#info" && 
                 <div className='flex'>
-                  {ekko_festival_info.entry.contact && <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.contact }}></div>}
-                  {ekko_festival_info.entry.content && <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info.entry.content }}></div>}
+                  {ekko_festival_info?.entry?.contact && <div className='contact' dangerouslySetInnerHTML={{ __html: ekko_festival_info?.entry?.contact }}></div>}
+                  {ekko_festival_info?.entry?.content && <div className='content' dangerouslySetInnerHTML={{ __html: ekko_festival_info?.entry?.content }}></div>}
                 </div>
               }
               {item.url == "#arena" && 
