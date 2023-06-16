@@ -45,6 +45,8 @@ export default function Index() {
     }
   }
 
+  console.log(ekko_festival_info)
+
   return (
     <Container back={false}>
 			<div className="grid festival-page-grid">

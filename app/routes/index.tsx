@@ -8,13 +8,11 @@ import type { PageEntry } from '~/service/data/contentPage';
 
 
 export const loader: LoaderFunction = async () => {
-  const [about, ostre, ekko_festival_info] = await Promise.all([
-    fetchContentPage('about'),
-    fetchContentPage('ostre'),
+  const [ekko_festival_info] = await Promise.all([
     fetchContentPage('ekko_festival_info')
   ]);
 
-  return { about, ostre, ekko_festival_info };
+  return { ekko_festival_info };
 };
 
 export const meta: MetaFunction = ({ data }) => ({
@@ -22,14 +20,15 @@ export const meta: MetaFunction = ({ data }) => ({
 });
 
 export default function Index() {
-  const { about, ostre, ekko_festival_info } = useLoaderData<{ about: PageEntry; ostre: PageEntry, ekko_festival_info: PageEntry }>();
+  const { ekko_festival_info } = useLoaderData<{ ekko_festival_info: PageEntry }>();
 
+  console.log(ekko_festival_info)
   return (
     <Container back={false}>
       <div className="grid">
         <Spacer number={72} border=""/>
         <div className='main-images'>
-          <a className="festival-img wrap" href={`/festival/${ekko_festival_info?.entry?.linkedFestival[0]?.slug}`}>
+          <a className="festival-img wrap" href={`/festival/ekko-festival-xx`}>
             <h2>Festival</h2>
             <img src="/2@4x-8.png"/>
           </a>

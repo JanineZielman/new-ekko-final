@@ -103,7 +103,7 @@ export default function Oestre() {
                   </div>
                 </>
               }
-              {item.url == "#intro" && 
+              {/* {item.url == "#intro" && 
                 <div className='arena-flex'>
                   <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
                   <div className='images'>
@@ -132,7 +132,7 @@ export default function Oestre() {
               }
               {item.url == "#frivillig" && 
                 <div className='content padding flex' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
-              }
+              } */}
             </>
           </Collapsible>
         )
