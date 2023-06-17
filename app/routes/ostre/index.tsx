@@ -41,34 +41,39 @@ export default function Oestre() {
 
   let filteredEvents = [];
   var currentTime = new Date();
+  currentTime.setDate(currentTime.getDate() - 1);
 
   filteredEvents = events.events.filter((item: any) => {
     var itemDate = new Date(item.date);
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+
   return (
     <Container back={false}>
       <div className="grid">
-        <Spacer number={72} border={""}/>
+        
         {filteredEvents.filter(item => item.type == 'event').slice(-1).map((item,i) => {
           return(
-            <a className='event-highlight' href={`/ostre/${item.slug}`}>
-              <img src={item.featuredImage?.[0]?.url} alt="" />
-              <div className='info-box'>
-                <p className='time cap'>{Moment(item.date).format("dddd D.M.")} {item.openingTime && Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
-                <h2>{item.title}:</h2>
-                <h2 className='artists'>
-                  {item.performances.map((performance,j) => {
-                    return(
-                      <span>
-                        {performance.artist[0].title}
-                      </span>
-                    )
-                  })}
-                </h2>
-              </div>
-            </a>
+            <>
+              <Spacer number={72} border={""}/>
+              <a className='event-highlight' href={`/ostre/${item.slug}`}>
+                <img src={item.featuredImage?.[0]?.url} alt="" />
+                <div className='info-box'>
+                  <p className='time cap'>{Moment(item.date).format("dddd D.M.")} {item.openingTime && Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}</p>
+                  <h2>{item.title}:</h2>
+                  <h2 className='artists'>
+                    {item.performances.map((performance,j) => {
+                      return(
+                        <span>
+                          {performance.artist[0].title}
+                        </span>
+                      )
+                    })}
+                  </h2>
+                </div>
+              </a>
+            </>
           )
         })}
       </div>
