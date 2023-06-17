@@ -18,6 +18,7 @@ export default function Index() {
 
   let filteredEvents: any[] = [];
   var currentTime = new Date();
+  currentTime.setDate(currentTime.getDate() - 1);
   let months = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"];
 
