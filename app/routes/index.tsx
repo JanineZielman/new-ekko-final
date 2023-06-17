@@ -22,13 +22,12 @@ export const meta: MetaFunction = ({ data }) => ({
 export default function Index() {
   const { ekko_festival_info } = useLoaderData<{ ekko_festival_info: PageEntry }>();
 
-  console.log(ekko_festival_info)
   return (
     <Container back={false}>
       <div className="grid">
         <Spacer number={72} border=""/>
         <div className='main-images'>
-          <a className="festival-img wrap" href={`/festival/ekko-festival-xx`}>
+          <a className="festival-img wrap" href={`/festival/${ekko_festival_info.entry.linkedFestival[0]?.slug}`}>
             <h2>Festival</h2>
             <img src="/2@4x-8.png"/>
           </a>

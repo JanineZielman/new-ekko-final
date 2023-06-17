@@ -44,7 +44,9 @@ const query = gql`
         ... on sections_entry_BlockType {
           sectionTitle
           sectionBody
-          images
+          images{
+            url
+          }
         }
       }
       linkedEvents {
