@@ -14,10 +14,19 @@ export const loader: LoaderFunction = () => {
 export default function Archive() {
   let { events } = useLoaderData<AllEvents>();
 
+  let filteredEvents: any[] = [];
+  var currentTime = new Date();
+  currentTime.setDate(currentTime.getDate() - 1);
+
+  filteredEvents = events.filter((item: any) => {
+    var itemDate = new Date(item.date);
+    return itemDate.getTime() <= currentTime.getTime();
+  });
+
   return (
     <Container back={false}>
       <div className='fake-grid'>
-        {events.map(event => (
+        {filteredEvents.map(event => (
           <>
             {event.type == 'festival' ?
               <Link to={`/${event.type}/${event.slug}`} key={`event-${event.slug}`}>

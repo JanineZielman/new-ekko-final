@@ -30,6 +30,8 @@ export default function Index() {
     return first - second
   });
 
+  console.log(event)
+
 
   return (
     <Container back="/ostre">
@@ -49,9 +51,9 @@ export default function Index() {
             </h2>
             <br/>
             <div className='info-text'>
-              <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")}</span></p>
-              <p><span>Sted:</span> <span>{event.location?.[1]?.fullTitle}</span></p>
-              <p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
+              <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
+              <p><span>Sted:</span> <span>{event.location?.[1]?.fullTitle ? event.location?.[1]?.fullTitle : event.location?.[0]?.fullTitle}</span></p>
+              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
               }
@@ -112,12 +114,12 @@ export default function Index() {
               <ImageSlider item={event.gallery}/>
               <div className="grid">
                 <Spacer number={12} border={""}/>
-                <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+                <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
               </div>
             </>
             :
             <div>
-              <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+              <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
             </div>
           }
           

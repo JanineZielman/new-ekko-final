@@ -194,7 +194,7 @@ export default function Index() {
                   {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href="/archive"><h2>Tidligere arrangementer</h2></a>
+                    <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
                   </div>
                 </>
               }

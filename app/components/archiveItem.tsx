@@ -4,7 +4,10 @@ export default function ArchiveItem({ item }: { item: any }) {
   
   return (
     <div className='agenda-item'>
-      <p className='time cap'>{Moment(item.date).format("dddd D.M.Y")}</p>
+      <p className="time cap">
+        {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.")}`} 
+        {Moment(item.date).format("Y")} {item.openingTime && Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}
+      </p>
       <p className='title'>{item.title}</p>
       <h3 className='artists'>
         {item.performances?.map((performance:any,j:any) => {

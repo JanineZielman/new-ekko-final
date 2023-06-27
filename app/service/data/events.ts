@@ -8,6 +8,7 @@ export interface Event {
   type: 'event' | 'festival';
   featuredImage: { url: string }[];
   date: string;
+  dateEnd: string;
   openingTime: string;
   closingTime: string;
   organizer:{
@@ -62,6 +63,7 @@ const query = gql`
           title
         }
         date
+        dateEnd
         ticketLink
         ticketDescription
         performances {
@@ -98,6 +100,7 @@ const query = gql`
           title
         }
         date
+        dateEnd
         performances {
           title
           slug
