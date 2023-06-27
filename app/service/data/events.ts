@@ -101,6 +101,8 @@ const query = gql`
         }
         date
         dateEnd
+        ticketLink
+        ticketDescription
         performances {
           title
           slug
