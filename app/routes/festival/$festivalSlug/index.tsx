@@ -32,10 +32,10 @@ export default function Index() {
 
   const { event, ekko_festival_info, slug, navigation } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String, navigation: Navigation }>();
 
-  event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
-  event.performances.sort(function(a,b){
-    return new Date(a.date) - new Date(b.date);
-  });
+  // const sortedPerformance = event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
+  // sortedPerformance.sort(function(a,b){
+  //   return new Date(a.date) - new Date(b.date);
+  // });
 
   const locations: any[] = [];
 
@@ -44,8 +44,6 @@ export default function Index() {
       locations.push(`${event.performances[i]?.location?.[1]?.fullTitle}`);
     }
   }
-
-  console.log(ekko_festival_info)
 
   return (
     <Container back={false}>

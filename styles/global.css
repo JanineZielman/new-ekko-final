@@ -855,10 +855,10 @@ footer{
     width: 20%;
   }
   & .title{
-    width: 10%;
+    width: 15%;
   }
   & .artists{
-    width: 36%;
+    width: 30%;
   }
   & .ticket-info{
     display: flex;
@@ -1336,10 +1336,13 @@ footer{
 }
 
 .artist-running-list{
-  & span:after{
+  & a:hover{
+    text-decoration: underline;
+  }
+  & a:after{
     content: ", ";
   }
-  & span:last-child:after{
+  & a:last-child:after{
     content: "";
   }
 }

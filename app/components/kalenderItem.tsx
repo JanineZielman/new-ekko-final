@@ -20,16 +20,20 @@ export default function KalenderItem({ item }: { item: any }) {
         <div className='title'></div>
       }
       <div className='artists'>
-        <div className='indicator'>Artister</div>
-        <h3>
-          {item.performances?.map((performance:any,j:any) => {
-            return(
-              <span>
-                {performance.artist[0].title}
-              </span>
-            )
-          })}
-        </h3>
+        {item.performances.length > 0 &&
+          <>
+            <div className='indicator'>Artister</div>
+            <h3>
+              {item.performances?.map((performance:any,j:any) => {
+                return(
+                  <span>
+                    {performance.artist[0].title}
+                  </span>
+                )
+              })}
+            </h3>
+          </>
+        }
       </div>
       <div className="ticket-info">
         <div dangerouslySetInnerHTML={{__html: item.ticketDescription}}></div>

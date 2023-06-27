@@ -29,11 +29,20 @@ export default function Index() {
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
 					<div>
-            <p className='cap'>{Moment(event.date)?.format("dddd D.M.")} {artist.time && `${Moment(artist.time).utcOffset('+0000').format("HH:mm")}`}</p>
-            <br/>
-						<h1>{artist.artist[0].title}</h1>
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
+						<h1>{artist.artist[0].title}</h1>
+            <br/>
+            <div className='info-text'>
+            <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
+            <p><span>Tid:</span> <span className='cap'>{artist.time && `${Moment(artist.time).utcOffset('+0000').format("HH:mm")}`}</span></p>
+            <p><span>Sted:</span> <span>{event.location?.[1]?.fullTitle ? event.location?.[1]?.fullTitle : event.location?.[0]?.fullTitle}</span></p>
+            {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
+            {event.ticketDescription && 
+              <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
+            }
+          </div>
 					</div>
+
           <div className='flex space-between margin-top bottom-links'>
             <div>
               {event.ticketLink?.includes('https') &&

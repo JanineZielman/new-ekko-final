@@ -30,9 +30,6 @@ export default function Index() {
     return first - second
   });
 
-  console.log(event)
-
-
   return (
     <Container back="/ostre">
       <div className="intro-section fake-grid">
@@ -43,9 +40,7 @@ export default function Index() {
             <h2 className='artist-running-list'>
               {event.performances.map((performance:any,j:any) => {
                 return(
-                  <span>
-                    {performance.artist[0].title}
-                  </span>
+                  <a href={`/ostre/${event.slug}/${performance.slug}`}>{performance.artist[0].title}</a>
                 )
               })}
             </h2>
