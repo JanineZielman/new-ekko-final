@@ -25,7 +25,6 @@ export default function ImageSlider({ item }) {
   return (
     <Slider {...settings}>
       {item.map((slide, i) => {
-        console.log(slide)
         return(
           slide.gallery ?
             slide.gallery.map((slideItem, i) => (

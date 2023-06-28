@@ -131,7 +131,7 @@ export default function Oestre() {
                   {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>}
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
+                    <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>
                   </div>
                 </>
               }

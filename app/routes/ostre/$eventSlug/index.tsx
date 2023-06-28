@@ -84,8 +84,9 @@ export default function Index() {
           <div className='content-parent open'>
             <div className='dagens-program'>
               <div className='day'>
-                {event.date && <h3 className='cap'>{Moment(event.date).format("dddd D.M.")} <br/></h3>}
-                <h3>{event.location[1]?.fullTitle}</h3>
+                {event.date && <h3 className='cap'>{Moment(event.date).format("dddd D.M.")}</h3>}
+                <br/>
+                <div className='location'>{event.location[1]?.fullTitle}</div>
                 <div className='performances'>
                   {event.performances.map((item, i) => {
                     return(
@@ -109,12 +110,12 @@ export default function Index() {
               <ImageSlider item={event.gallery}/>
               <div className="grid">
                 <Spacer number={12} border={""}/>
-                <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
+                <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>
               </div>
             </>
             :
             <div>
-              <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
+              <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>
             </div>
           }
           

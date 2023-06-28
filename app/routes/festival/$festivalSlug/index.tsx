@@ -40,6 +40,8 @@ export default function Index() {
     }
   }
 
+  console.log(event)
+
   return (
     <Container back={false}>
 			<div className="grid festival-page-grid">
@@ -120,6 +122,7 @@ export default function Index() {
                       </div>
                     )
                   })}
+                  <div className='lineup-text' dangerouslySetInnerHTML={{ __html: event.lineup }}></div>
                 </div>
                 <div className='artists-section'>
                   {event.performances.map((performance, i) => {
@@ -186,7 +189,7 @@ export default function Index() {
                   {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href="/archive"><h2>Vis fullt arkiv</h2></a>
+                    <a className='show-all-button' href="/festival/archive"><h2>Vis fullt arkiv</h2></a>
                   </div>
                 </>
               }
