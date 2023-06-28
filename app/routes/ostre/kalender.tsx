@@ -2,7 +2,7 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
-import Moment from 'moment';
+// import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -16,11 +16,14 @@ export const loader: LoaderFunction = () => {
 export default function Index() {
   let { events } = useLoaderData<AllEvents>();
 
+  var Moment = require('moment');
+  require('moment/locale/nb');
+
   let filteredEvents: any[] = [];
   var currentTime = new Date();
   currentTime.setDate(currentTime.getDate() - 1);
-  let months = ["Januar", "Februar", "Mars", "April", "Mai", "Juni",
-  "Juli", "August", "September", "Oktober", "November", "Desember"];
+  let months = ["januar", "februar", "mars", "april", "mai", "juni",
+  "juli", "august", "september", "oktober", "november", "desember"];
 
   filteredEvents = events.reverse().filter((item: any) => {
     var itemDate = new Date(item.date);
