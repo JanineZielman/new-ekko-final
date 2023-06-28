@@ -19,8 +19,8 @@ export default function Index() {
   let filteredEvents: any[] = [];
   var currentTime = new Date();
   currentTime.setDate(currentTime.getDate() - 1);
-  let months = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
+  let months = ["Januar", "Februar", "Mars", "April", "Mai", "Juni",
+  "Juli", "August", "September", "Oktober", "November", "Desember"];
 
   filteredEvents = events.reverse().filter((item: any) => {
     var itemDate = new Date(item.date);

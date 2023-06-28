@@ -12,6 +12,7 @@
   --h3: 24px;
   --h4: 20px;
   --body: 20px;
+  --small: 16px;
 }
 
 /* Font */
@@ -513,7 +514,6 @@ p a:hover, .social-links a:hover{
   transform: translate(0, -50%);
   font-size: 2.3vw;
   margin: 0;
-  margin-top: 1vw;
   & p{
     line-height: 1;
     font-size: 2.3vw;
@@ -849,7 +849,7 @@ footer{
     background-color: var(--ostre_light);
   }
   & .indicator{
-    font-size: 16px;
+    font-size: var(--small);
   }
   & .time{
     width: 20%;
@@ -904,7 +904,7 @@ footer{
   width: fit-content;
   margin-left: auto;
   margin-right: 0;
-  font-size: 16px;
+  font-size: var(--small);
 }
 
 .show-all-button-simple{
@@ -970,7 +970,7 @@ footer{
     display: block;
   }
   & sup{
-    font-size: 16px;
+    font-size: var(--small);
     line-height: 1;
     display: inline-block;
     padding-top: 15px;
@@ -1155,6 +1155,18 @@ footer{
   font-size: 40px;
 }
 
+.Collapsible .credits{
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  width: fit-content;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 25px;
+  font-weight: 100;
+}
 
 .slick-slider{
   height: auto;

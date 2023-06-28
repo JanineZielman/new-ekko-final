@@ -8,7 +8,10 @@ export interface PageEntry {
     content: string;
     date: string;
     pagePhoto: { url: string }[];
-    gallery: {url: string}[];
+    gallery: {
+      url: string
+      title: string
+    }[];
     linkedEvents: {
       slug: string;
     }[];
@@ -55,6 +58,7 @@ const query = gql`
           slug
           gallery {
             url
+            title
           }
           date
           title
@@ -71,6 +75,7 @@ const query = gql`
         ... on events_festival_Entry {
           gallery {
             url
+            title
           }
           date
           title

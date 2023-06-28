@@ -25,10 +25,12 @@ export default function ImageSlider({ item }) {
   return (
     <Slider {...settings}>
       {item.map((slide, i) => {
+        console.log(slide)
         return(
           slide.gallery ?
             slide.gallery.map((slideItem, i) => (
               <div className="slide-wrapper">
+                <span className="credits">{slideItem.title}</span>
                 <img src={slideItem.url}/>
                 <a className='info-box' href={`${slide.performances ? `/ostre/${slide.slug}` : `/festival/${slide.slug}`}`}>
                   <p className='time cap'>{Moment(item.date).format("dddd D.M. yy")}</p>
@@ -47,6 +49,7 @@ export default function ImageSlider({ item }) {
             ))
           :
             <div className="slide-wrapper">
+              <span className="credits">{slide.title}</span>
               <img src={slide.url}/>
             </div>
             

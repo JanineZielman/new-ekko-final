@@ -32,11 +32,6 @@ export default function Index() {
 
   const { event, ekko_festival_info, slug, navigation } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String, navigation: Navigation }>();
 
-  // const sortedPerformance = event.performances.sort(({ time: a }, { time: b }) => parseInt(Moment(a).utcOffset('+0700').format("HH:mm").replace(/:/g, '')) - parseInt(Moment(b).utcOffset('+0700').format("HH:mm").replace(/:/g, '')))
-  // sortedPerformance.sort(function(a,b){
-  //   return new Date(a.date) - new Date(b.date);
-  // });
-
   const locations: any[] = [];
 
   for (let i = 0; i < event.performances.length; i++) {
@@ -53,7 +48,6 @@ export default function Index() {
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
           </div>
-          <h2 className='float title'>{event.title}</h2>
           <h2 className='float intro' dangerouslySetInnerHTML={{ __html: event.intro }}></h2>
         </div>
         <Spacer number={59} border=""/>

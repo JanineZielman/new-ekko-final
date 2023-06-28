@@ -35,7 +35,7 @@ export default function Index() {
       <div className="intro-section fake-grid">
         <div className='info-wrapper'>
           <div>
-            {event.organizer[0]?.title &&<p className='host'>{event.organizer[0]?.title} </p>}
+            {event.organizer[0]?.title &&<p className='host'>{event.organizer[0]?.title} presenterer: </p>}
             <h1>{event.title}</h1>
             <h2 className='artist-running-list'>
               {event.performances.map((performance:any,j:any) => {

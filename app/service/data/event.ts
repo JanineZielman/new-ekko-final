@@ -16,6 +16,7 @@ export interface Event {
   }[];
   gallery: {
     url: string;
+    title: string;
   }[];
   intro: string;
   description: string;
@@ -61,6 +62,7 @@ const eventFragment = gql`
     }
     gallery{
       url
+      title
     }
     intro
     description
