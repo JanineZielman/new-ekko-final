@@ -1462,22 +1462,22 @@ footer{
     border-radius: 50%;
     cursor: pointer;
     margin-right: 10px;
-    &[class^="Soundcloud"]{
+    &[class^="Soundcloud"], &.Soundcloud{
       background-image: url('/soundcloud.svg')
     }
-    &[class^="Bandcamp"]{
+    &[class^="Bandcamp"], &.Bandcamp{
       background-image: url('/bandcamp.svg')
     }
-    &[class^="Instagram"]{
+    &[class^="Instagram"], &.Instagram{
       background-image: url('/instagram.svg')
     }
-    &[class^="Spotify"]{
+    &[class^="Spotify"], &.Spotify{
       background-image: url('/spotify.svg')
     }
-    &[class^="Facebook"]{
+    &[class^="Facebook"], &.Facebook{
       background-image: url('/facebook.svg')
     }
-    &[class^="Youtube"]{
+    &[class^="Youtube"], &.Youtube{
       background-image: url('/youtube.svg')
     }
   }
