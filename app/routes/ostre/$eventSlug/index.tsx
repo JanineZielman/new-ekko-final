@@ -30,6 +30,23 @@ export default function Index() {
     return first - second
   });
 
+  function isDateInArray(needle:any, haystack:any) {
+    for (var i = 0; i < haystack.length; i++) {
+      if (needle === haystack[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  var uniqueDates = [];
+  for (var i = 0; i < event.performances.length; i++) {
+    if (!isDateInArray(event.performances[i].date, uniqueDates)) {
+      uniqueDates.push(event.performances[i].date);
+    }
+  }
+  
+
   return (
     <Container back="/ostre">
       <div className="intro-section fake-grid">
@@ -83,21 +100,26 @@ export default function Index() {
           <div className='trigger' style={{"height": 0, "padding": "14px"}}></div>
           <div className='content-parent open'>
             <div className='dagens-program'>
-              <div className='day'>
-                {event.date && <h3 className='cap'>{Moment(event.date).format("dddd D.M.")}</h3>}
-                <br/>
-                <div className='location'>{event.location[1]?.fullTitle}</div>
-                <div className='performances'>
-                  {event.performances.map((item, i) => {
-                    return(
-                      <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
-                        <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
-                        <div className='artist'>{item.artist[0].title}</div>
-                      </a>
-                    )
-                  })}
-                </div>
-              </div>
+              {uniqueDates.map((item, i) => {
+                const filteredPerformance = event.performances.filter(performance => performance.date == item);
+                return(
+                  <div className='day'>
+                    <h3 className='cap'>{Moment(item).format("dddd D.M.")}</h3>
+                    <br/>
+                    <div className='location'>{event.location[1]?.fullTitle}</div>
+                    <div className='performances'>
+                      {filteredPerformance.map((item, i) => {
+                        return(
+                          <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
+                            <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
+                            <div className='artist'>{item.artist[0].title}</div>
+                          </a>
+                        )
+                      })}
+                    </div>
+                  </div>
+                )
+              })}
             </div>
           </div>
         </div>

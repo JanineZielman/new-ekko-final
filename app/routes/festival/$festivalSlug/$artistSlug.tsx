@@ -46,8 +46,6 @@ export default function Index() {
 
   const festivalDay = event.program.filter(day => day.date == artist.date);
 
-  console.log(artist)
-
 
   return (
     <Container back={`/festival/${event.slug}`}>

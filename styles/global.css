@@ -624,7 +624,7 @@ body.festival .festival-page-grid{
   margin-top: -1px;
   overflow: hidden;
   & .trigger{
-    text-transform: capitalize;
+    /* text-transform: capitalize; */
     height: calc(0.0833 * 90vw);
     display: flex;
     flex-direction: column;
@@ -1387,6 +1387,7 @@ footer{
 }
 
 .dagens-program{
+  display: flex;
   & .day{
     margin-left: 2vw;
     width: 30%;
