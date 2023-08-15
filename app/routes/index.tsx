@@ -5,6 +5,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
+import SEO from '~/components/seo';
 
 
 export const loader: LoaderFunction = async () => {
@@ -23,6 +24,12 @@ export default function Index() {
   const { ekko_festival_info } = useLoaderData<{ ekko_festival_info: PageEntry }>();
 
   return (
+    <>
+    <SEO
+      title={`EKKO`}
+      description={''}
+      imageUrl={'/main-pic-festival-2016_web_160701_122022.jpg'}
+    />
     <Container back={false}>
       <div className="grid">
         <Spacer number={72} border=""/>
@@ -42,5 +49,6 @@ export default function Index() {
         </div>
       </div>
     </Container>
+    </>
   );
 }

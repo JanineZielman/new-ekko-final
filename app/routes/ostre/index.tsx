@@ -16,7 +16,7 @@ import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
 import KalenderItem from '~/components/kalenderItem';
 import ImageSlider from '~/components/imageSlider';
-
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({params}) => {
   const [ostre, news, events, navigation] = await Promise.all([
@@ -48,8 +48,16 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+  console.log(ostre)
+
 
   return (
+    <>
+    <SEO
+      title={`EKKO | ${ostre.entry.title}`}
+      description={ostre.entry.content ? ostre.entry.content.replace(/<[^>]+>/g, '') : ''}
+      imageUrl={''}
+    />
     <Container back={false}>
       <div className="grid">
         
@@ -147,5 +155,6 @@ export default function Oestre() {
         <Spacer number={12} border={""}/>
       </div>
     </Container>
+    </>
   );
 }

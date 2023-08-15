@@ -12,6 +12,7 @@ import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
 import ImageSlider from '~/components/imageSlider';
+import SEO from '~/components/seo';
 
 
 export const loader: LoaderFunction = async ({params}) => {
@@ -41,6 +42,12 @@ export default function Index() {
   }
 
   return (
+    <>
+    <SEO
+      title={`EKKO | ${event.title}`}
+      description={event.intro ? event.intro.replace(/<[^>]+>/g, '') : ''}
+      imageUrl={event.festivalSectionGraphicElements?.[0]?.url}
+    />
     <Container back={false}>
 			<div className="grid festival-page-grid">
         <div className='item w1 overflow'>
@@ -211,5 +218,6 @@ export default function Index() {
         <Spacer number={12} border=""/>
       </div>
 		</Container>
+    </>
   );
 }

@@ -7,6 +7,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import ImageSlider from '~/components/imageSlider';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = ({ params }) => {
   return fetchEvent(params.eventSlug!);
@@ -48,6 +49,12 @@ export default function Index() {
   
 
   return (
+    <>
+    <SEO
+      title={`EKKO | ${event.title}`}
+      description={event.intro ? event.intro.replace(/<[^>]+>/g, '') : ''}
+      imageUrl={event.featuredImage[0]?.url}
+    />
     <Container back="/ostre">
       <div className="intro-section fake-grid">
         <div className='info-wrapper'>
@@ -148,5 +155,6 @@ export default function Index() {
         <Spacer number={12} border=""/>
       </div>
     </Container>
+    </>
   );
 }

@@ -8,6 +8,7 @@ import Spacer from '~/components/spacer';
 import type { Artist } from '~/service/data/artist';
 import { fetchArtist } from '~/service/data/artist';
 import Collapsible from '~/components/collapsible';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({ params }) => {
   const [event, artist] = await Promise.all([
@@ -48,6 +49,12 @@ export default function Index() {
 
 
   return (
+    <>
+    <SEO
+      title={`EKKO | ${artist.title}`}
+      description={event.intro ? event.intro.replace(/<[^>]+>/g, '') : ''}
+      imageUrl={artist.artist?.[0].featuredImage[0]?.url ? artist.artist?.[0].featuredImage[0]?.url : event.featuredImage[0]?.url}
+    />
     <Container back={`/festival/${event.slug}`}>
       <div className="intro-section fake-grid">
         <div className="info-wrapper">
@@ -161,5 +168,6 @@ export default function Index() {
       </div>
 
     </Container>
+    </>
   );
 }

@@ -10,6 +10,7 @@ import Spacer from '~/components/spacer';
 import ArchiveItem from '~/components/archiveItem';
 import type { SearchResults } from '~/service/data/search';
 import { fetchSearchResults } from '~/service/data/search';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({ request }) => {
   const url = new URL(request.url);
@@ -30,6 +31,12 @@ export default function Search() {
   const [searchParams] = useSearchParams();
 
   return (
+    <>
+    <SEO
+      title={`EKKO | Search`}
+      description={''}
+      imageUrl={''}
+    />
     <Container back={false}>
       <Form className='search-bar'>
         <input
@@ -66,5 +73,6 @@ export default function Search() {
         <div className='min-height'></div>
       }
     </Container>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import type { NewsEntry } from '~/service/data/newsPage';
 import { fetchNewsPage } from '~/service/data/newsPage';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({ params }) => {
   const [news] = await Promise.all([
@@ -18,6 +19,12 @@ export default function Index() {
   const {  news } = useLoaderData<{ news: NewsEntry }>();
 
   return (
+		<>
+		<SEO
+      title={`EKKO | ${news.entry.title}`}
+      description={news.entry.newsIntro ? news.entry.newsIntro.replace(/<[^>]+>/g, '') : ''}
+      imageUrl={news.entry.newsPhoto[0]?.url ? news.entry.newsPhoto[0]?.url : news.entry.pagePhoto[0]?.url}
+    />
     <Container back={false}>
       <div className="fake-grid news-page">
 
@@ -51,5 +58,6 @@ export default function Index() {
         <Spacer number={12} border=""/>
       </div>
     </Container>
+		</>
   );
 }

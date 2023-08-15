@@ -6,6 +6,7 @@ import type { AllEvents } from '~/service/data/events';
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import ArchiveItem from '~/components/archiveItem';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = () => {
   return fetchAllEvents(999);
@@ -24,6 +25,12 @@ export default function Archive() {
   });
 
   return (
+    <>
+    <SEO
+      title={`EKKO | Archive`}
+      description={''}
+      imageUrl={''}
+    />
     <Container back={'/ostre'}>
       <div className='fake-grid'>
         {filteredEvents.map(event => (
@@ -45,5 +52,6 @@ export default function Archive() {
         <Spacer number={12} border={""}/>
       </div>
     </Container>
+    </>
   );
 }

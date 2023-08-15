@@ -6,6 +6,7 @@ import Spacer from '~/components/spacer';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
 import Collapsible from '~/components/collapsible';
+import SEO from '~/components/seo';
 
 
 export const loader: LoaderFunction = async () => {
@@ -26,6 +27,12 @@ export default function Index() {
   const { about, ostre, ekko_festival_info } = useLoaderData<{ about: PageEntry; ostre: PageEntry, ekko_festival_info: PageEntry }>();
 
   return (
+    <>
+    <SEO
+      title={`EKKO | ${about.entry.title}`}
+      description={''}
+      imageUrl={'/main-pic-festival-2016_web_160701_122022.jpg'}
+    />
     <Container back={false}>
       <Collapsible trigger={about.entry.title} open={true} slug={about.entry.slug}>
         <div className='flex'>
@@ -51,5 +58,6 @@ export default function Index() {
         <Spacer number={12} border=""/>
       </div>
     </Container>
+    </>
   );
 }

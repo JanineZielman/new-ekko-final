@@ -6,6 +6,7 @@ import type { RecentNews } from '~/service/data/news';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async () => {
   const [news] = await Promise.all([
@@ -19,6 +20,12 @@ export default function Index() {
   const { news } = useLoaderData<{ news: RecentNews }>();
 
   return (
+    <>
+    <SEO
+      title={`EKKO | News`}
+      description={''}
+      imageUrl={''}
+    />
     <Container back={false}>
       <div className="fake-grid news-section">
         {news?.events?.map((item, i) => {
@@ -39,5 +46,6 @@ export default function Index() {
         <Spacer number={12} border={""}/>
       </div>
     </Container>
+    </>
   );
 }

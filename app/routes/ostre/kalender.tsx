@@ -8,6 +8,7 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import KalenderItem from '~/components/kalenderItem';
+import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = () => {
   return fetchAllEvents(25);
@@ -31,6 +32,12 @@ export default function Index() {
   });
 
   return (
+    <>
+    <SEO
+      title={`EKKO | Kalender`}
+      description={''}
+      imageUrl={''}
+    />
     <Container back="/ostre">
 
       {months.map((item, i) => {
@@ -70,5 +77,6 @@ export default function Index() {
         )
       })}
     </Container>
+    </>
   );
 }
