@@ -40,8 +40,6 @@ export default function Index() {
     }
   }
 
-  console.log(event)
-
   return (
     <Container back={false}>
 			<div className="grid festival-page-grid">
@@ -78,6 +76,17 @@ export default function Index() {
                         {locations.map((location, i) => {
                           const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                          filteredEvents.sort(function (a, b) {
+                            let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+                            let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+                            if (first < 6){
+                              first = first + 24;
+                            }
+                            if (second < 6){
+                              second = second + 24;
+                            }
+                            return first - second
+                          });
                           return(
                             <>
                             {filteredPerformance.length > 0 &&
