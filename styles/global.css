@@ -253,7 +253,7 @@ a{
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid black;
-  width: 90vw;
+  width: 80vw;
   height: 50px;
   & input{
     border: none;
@@ -427,12 +427,12 @@ p a:hover, .social-links a:hover{
 }
 
 .grid {
-  width: 90vw;
+  width: 80vw;
   border: 1px solid black;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8.333%, 12fr));
   grid-gap: 0px;
-  grid-auto-rows: calc(0.0833 * 90vw);
+  grid-auto-rows: calc(0.0833 * 80vw);
   margin: -2px;
   position: relative;
   overflow: hidden;
@@ -618,14 +618,14 @@ body.festival .festival-page-grid{
 }
 
 .Collapsible{
-  width: calc(90vw + 2px);
+  width: calc(80vw + 2px);
   height: 100%;
   position: relative;
   margin-top: -1px;
   overflow: hidden;
   & .trigger{
     /* text-transform: capitalize; */
-    height: calc(0.0833 * 90vw);
+    height: calc(0.0833 * 80vw);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -757,11 +757,9 @@ body.festival .festival-page-grid{
   height: 100%;
   right: 0;
   & img{
-    width: calc(0.0833 * 90vw * 12);
-    height: calc(0.0833 * 90vw * 5);
+    width: calc(0.0833 * 80vw * 12);
+    height: calc(0.0833 * 80vw * 5);
     object-fit: cover;
-    /* margin-left: calc(0.0833 * 90vw); */
-    /* filter: grayscale(1); */
     &:hover{
       filter: none;
     }
@@ -826,7 +824,7 @@ footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90vw;
+    width: 80vw;
     margin-left: auto;
     margin-right: auto;
   }
@@ -1097,7 +1095,7 @@ footer{
 
 
 .fake-grid{
-  width: calc(90vw + 2px);
+  width: calc(80vw + 2px);
   border: 2px solid var(--black);
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -1483,3 +1481,4 @@ footer{
     }
   }
 }
+
