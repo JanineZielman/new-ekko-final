@@ -44,7 +44,9 @@ export default function Index() {
     }
   }
 
-  const festivalDay = event.program.filter(day => day.date == event.date);
+  const festivalDay = event.program.filter(day => day.date == artist.date);
+
+  console.log(artist)
 
 
   return (
@@ -56,7 +58,7 @@ export default function Index() {
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
             <br/><br/>
             <div className='info-text'>
-              <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")}</span></p>
+              <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
               <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
               <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
               <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
