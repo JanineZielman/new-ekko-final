@@ -181,6 +181,11 @@
 			font-size: 20px;
 		}
 	}
+	.embed{
+		& iframe{
+			max-width: 100%;
+		}
+	}
 }
 
 @media (max-width:600px){
