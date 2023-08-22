@@ -186,7 +186,7 @@ export default function Index() {
                 </div>
               }
               {item.url == "#intro" && 
-                <div className='arena-flex'>
+                <div className='intro-flex'>
                   <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
                   <div className='images'>
                     {event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.images.map((item, i) => {

@@ -1059,6 +1059,19 @@ footer{
   }
 }
 
+.Collapsible .content-parent .intro-flex{
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+  & .content{
+    column-count: 2;
+    width: 100%;
+    & p:nth-child(1){
+      margin-top: 0;
+    }
+  }
+}
+
 .artist-item, .news-grid-item {
   display: block;
   width: calc(100% / 3 );
@@ -1482,3 +1495,7 @@ footer{
   }
 }
 
+#about.trigger{
+  padding: 24px 1vw;
+  height: auto;
+}
