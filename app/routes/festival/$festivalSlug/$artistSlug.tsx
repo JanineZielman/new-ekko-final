@@ -86,81 +86,78 @@ export default function Index() {
               })}
             </div>
           </div>
-				</div>
-
-        <div className='img-wrapper'>
-          <img src={artist.artist[0].featuredImage[0]?.url}/>
-        </div>
-
-      </div>
-
-      <Collapsible trigger={'Mer informasjon om artisten'} open={true} slug={'about'}>
-        {artist.artist[0].complexContent?.map(block => {
-          if (block.blockType === 'text') {
-            return (
-              <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
-            );
-          }
-          if (block.blockType === 'embed') {
-            return (
-              <div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>
-            );
-          }
-          if (block.blockType === 'video') {
-            return (
-              <div className='embed'>
-                <iframe src={block.videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/')}/>
-              </div>
-            );
-          }
-        })}
-      </Collapsible>
-
-      <div className='Collapsible'>
-        <div className='trigger' style={{"height": 0, "padding": "14px"}}></div>
-        <div className='content-parent open'>
-          <div className='program dagens-program'>
-            {event.program.map((item, i) => {
-              return(
-                <>
-                {item.date == artist.date &&
-                  <div className='program-day'>
-                    {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
-                    {locations.map((location, i) => {
-                      const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
-                      const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
-                      return(
-                        <>
-                        {filteredPerformance.length > 0 &&
-                          <div className='program-location-item'>
-                            <>
-                              <div className='location'>{filteredPerformance[0].location[1]?.fullTitle}</div>
-                            
-                              {filteredEvents.map((performance, i) => {
-                                return(
-                                  <>
-                                    {item.date == performance.date && 
-                                      <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
-                                        <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
-                                        <div className='artist'>{performance.artist[0].title}</div>
-                                      </a>
-                                    }
-                                  </>
-                                )
-                              })}
-                            </>
-                          </div>
-                          }
-                        </>
-                      )
-                    })}
-                  </div>
-                }
-                </>
-              )
-            })}
+          <div className='content-parent fes-event'>
+            <div className='program dagens-program'>
+              {event.program.map((item, i) => {
+                return(
+                  <>
+                  {item.date == artist.date &&
+                    <div className='program-day'>
+                      <h3><br/>Dagens program</h3>
+                      {locations.map((location, i) => {
+                        const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
+                        const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
+                        return(
+                          <>
+                          {filteredPerformance.length > 0 &&
+                            <div className='program-location-item'>
+                              <>
+                                <div className='location'>{filteredPerformance[0].location[1]?.fullTitle}</div>
+                              
+                                {filteredEvents.map((performance, i) => {
+                                  return(
+                                    <>
+                                      {item.date == performance.date && 
+                                        <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
+                                          <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                          <div className='artist'>{performance.artist[0].title}</div>
+                                        </a>
+                                      }
+                                    </>
+                                  )
+                                })}
+                              </>
+                            </div>
+                            }
+                          </>
+                        )
+                      })}
+                    </div>
+                  }
+                  </>
+                )
+              })}
+            </div>
           </div>
+          {artist.artist[0].complexContent?.map(block => {
+            if (block.blockType === 'text') {
+              return (
+                <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
+              );
+            }
+          })}
+				</div>
+        
+        <div className='right-column festival'>
+          <div className='img-wrapper'>
+            <img src={artist.artist[0].featuredImage[0]?.url}/>
+          </div>
+          {artist.artist[0].complexContent?.map(block => {
+            if (block.blockType === 'embed') {
+              return (
+                <div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>
+              );
+            }
+            if (block.blockType === 'video') {
+              return (
+                <div className='embed'>
+                  <iframe src={block.videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/')}/>
+                </div>
+              );
+            }
+          })}
         </div>
+
       </div>
 
       <div className='grid'>

@@ -582,7 +582,7 @@ body.festival .festival-page-grid{
 }
 
 .ticket-wrapper{
-  margin: 24px 0 48px 0;
+  margin: 24px 0 14px 0;
 }
 
 .program{
@@ -1533,6 +1533,9 @@ footer{
 
 .right-column{
   width: calc(50% - 4vw);
+  &.festival{
+    border-left: 2px solid var(--black);
+  }
   border-left: 2px solid var(--white);
   boz-sizing: border-box;
   padding: 2vw;
@@ -1559,6 +1562,22 @@ footer{
   }
 }
 
+.fes-event{
+  & .program.dagens-program{
+    & .program-location-item{
+      width: 100%;
+      padding-left: 0;
+      & .time{
+        width: 100px;
+      }
+      & .artist{
+        width: 100%;
+      }
+    }
+  }
+}
+
 .Collapsible:hover .triger {
 
 }
+

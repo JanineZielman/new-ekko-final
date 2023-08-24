@@ -289,10 +289,6 @@
 		boz-sizing: border-box;
 		& .info-wrapper{
 			width: auto;
-
-			& h3{
-				margin-top: 36px;
-			}
 		}
 		& .img-wrapper{
 			width: 100%;
@@ -300,6 +296,7 @@
 		& .right-column{
 			border: none;
 			width: 100%;
+			padding: 0;
 			& .artist-item{
 				width: 100%;
 				margin-bottom: 24px;
