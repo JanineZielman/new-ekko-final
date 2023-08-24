@@ -60,8 +60,12 @@ export default function Oestre() {
     />
     <Container back={false}>
       <div className="grid">
+        <Spacer number={60} border={""}/>
+        <div className='event-highlight'>
+          <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" />
+        </div>
         
-        {filteredEvents.filter(item => item.type == 'event').slice(-1).map((item,i) => {
+        {/* {filteredEvents.filter(item => item.type == 'event').slice(-1).map((item,i) => {
           return(
             <>
               <Spacer number={72} border={""}/>
@@ -83,7 +87,7 @@ export default function Oestre() {
               </a>
             </>
           )
-        })}
+        })} */}
       </div>
       {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
         return(

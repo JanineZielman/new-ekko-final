@@ -3,8 +3,8 @@
   --white: rgb(230,230,230);
   --festival: #FFD800;
   --festival_light: #EFDA6A;
-  --ostre: #3EF22F;
-  --ostre_light: #7EF474;
+  --ostre: #000;
+  --ostre_light: #111;
 
   /* Font Sizes */
   --h1: 48px;
@@ -72,11 +72,32 @@ body {
   }
   &.ostre{
     background-color: var(--ostre);
-    & .grid, & .Collapsible, & .fake-grid{
+    color: var(--white);
+    & .toggle-menu{
+      background-color: var(--white);
+    }
+    & a{
+      color: var(--white);
+    }
+    & .grid, & .Collapsible, & .fake-grid, & .Collapsible .content-parent, & .Collapsible .trigger, & .grid .item{
       background-color: var(--ostre_light);
+      border-color: var(--white);
     }
     & .ReactModal__Content{
       background-color: var(--ostre)!important;
+      border-color: var(--white);
+    }
+    & .show-all-button, & .ticket-link.button{
+      margin-right: 24px;
+      background-color: var(--white);
+      color: var(--black);
+    }
+    & .agenda-item{
+      background-color: var(--ostre_light);
+      border-color: var(--white);
+      &:hover{
+        background-color: var(--ostre);
+      }
     }
   }
   &.festival{
@@ -760,6 +781,7 @@ body.festival .festival-page-grid{
     width: calc(0.0833 * 80vw * 12);
     height: calc(0.0833 * 80vw * 5);
     object-fit: cover;
+
     &:hover{
       filter: none;
     }
@@ -1121,17 +1143,17 @@ footer{
 .intro-section{
   display: flex;
   & .info-wrapper{
-    width: calc(50% - 2vw);
+    width: calc(50% - 4vw);
     padding: 2vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 90%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+    /* height: 90%; */
     & .host{
       margin-bottom: 10px;
     }
     & h2{
-      margin-top: 24px;
+      /* margin-top: 24px; */
     }
     & h1{
       margin: 0;
@@ -1140,9 +1162,9 @@ footer{
   }
   & .img-wrapper{
     width: 50%;
-    border-left: 2px solid var(--black);
+    border-left: 2px solid var(--white);
     & img{
-      aspect-ratio:  4 / 3;
+      /* aspect-ratio:  4 / 3; */
     }
   }
 }
@@ -1158,13 +1180,15 @@ footer{
 }
 
 .embed{
-  margin-top: 24px;
-  display: inline;
+  margin-top: 14px;
+  display: block;
   margin-right: 1%;
+  width: 100%;
+  min-width: 100%;
   & iframe{
     width: 100%;
+    min-width: 100%;
     height: 100%;
-    max-width: 49%;
     aspect-ratio:  16 / 9;
     margin-top: 24px;
     border: none;
@@ -1400,8 +1424,17 @@ footer{
 .dagens-program{
   display: flex;
   & .day{
-    margin-left: 2vw;
-    width: 30%;
+    margin-right: 2vw;
+    width: auto;
+    &.true{
+      width: 100%;
+      & .time{
+        width: 100px;
+      }
+      & .artist{
+        width: 100%;
+      }
+    }
   }
   & .performances{
     margin-top: 14px;
@@ -1440,14 +1473,6 @@ footer{
   }
 }
 
-.artist-text{
-  margin-top: -2vw;
-  column-count: 2;
-  & p:first-child{
-    margin-top: 0;
-  }
-}
-
 .contact, .content, .intro-text, .description, .collapsible-content{
   & p{
     margin: 14px auto;
@@ -1461,15 +1486,21 @@ footer{
 .bottom-links{
   width: 98%;
   margin-bottom: 10px;
-
+  & .ticket-link.button{
+    margin-left: 0;
+  }
 }
 
 .social-links-artist{
   display: flex;
   & a {
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+    background-color: var(--white);
+    background-size: 103%;
+    background-position: center;
+    /* border: 1px solid var(--white); */
     background-image: url('/web.svg');
     border-radius: 50%;
     cursor: pointer;
@@ -1498,4 +1529,36 @@ footer{
 #about.trigger{
   padding: 24px 1vw;
   height: auto;
+}
+
+.right-column{
+  width: calc(50% - 4vw);
+  border-left: 2px solid var(--white);
+  boz-sizing: border-box;
+  padding: 2vw;
+  & .img-wrapper{
+    width: 100%;
+    border: none;
+  }
+  & .artists-single-event{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    
+    & .artist-item{
+      width: 48%;
+      box-sizing: border-box;
+      border: none;
+      margin-top: 24px;
+      & .info-bar{
+        background-color: var(--ostre);
+      }
+    }
+  }
+}
+
+.Collapsible:hover .triger {
+
 }

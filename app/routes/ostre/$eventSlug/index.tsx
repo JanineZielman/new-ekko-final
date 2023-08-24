@@ -60,15 +60,28 @@ export default function Index() {
         <div className='info-wrapper'>
           <div>
             {event.organizer[0]?.title &&<p className='host'>{event.organizer[0]?.title} presenterer: </p>}
-            <h1>{event.title}</h1>
+            {event.singlePage == false && 
+              <>
+                <h1>{event.title}</h1>
+                <br/>
+              </>
+            }
             <h2 className='artist-running-list'>
               {event.performances.map((performance:any,j:any) => {
                 return(
-                  <a href={`/ostre/${event.slug}/${performance.slug}`}>{performance.artist[0].title}</a>
+                  <div>
+                    <a href={`/ostre/${event.slug}/${performance.slug}`}>{performance.artist[0].title}</a>
+                  </div>
                 )
               })}
             </h2>
             <br/>
+            <div className='intro-text'>
+              <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
+              <div dangerouslySetInnerHTML={{__html: event.description}}></div>
+            </div>
+            <br/>
+            
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
               <p><span>Sted:</span> <span>{event.location?.[1]?.fullTitle ? event.location?.[1]?.fullTitle : event.location?.[0]?.fullTitle}</span></p>
@@ -77,79 +90,91 @@ export default function Index() {
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
               }
             </div>
-          </div>
-          <h3 className='ticket-wrapper'>
+          
             {event.ticketLink?.includes('https') &&
-              <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
+              <h3 className='ticket-wrapper'>
+                <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
+              </h3>
             }
-          </h3>
-        </div>
-        <div className='img-wrapper'>
-          {event.featuredImage[0] && 
-            <img src={event.featuredImage[0]?.url } alt={event.title}/>
-          }
-        </div>
-      </div>
+            
+            {event.performances?.length > 0 &&
+              <div className='content-parent'>
+                <div className='dagens-program'>
+                  {uniqueDates.map((item, i) => {
+                    const filteredPerformance = event.performances.filter(performance => performance.date == item);
+                    return(
+                      <div className={`day ${event.singlePage}`}>
+                        {event.singlePage ?
+                          <p><br/>Tidsplan</p>
+                        :
+                          <>
+                            <p className='cap'>{Moment(item).format("dddd D.M.")}</p>
+                            <br/>
+                            <div className='location'>{event.location[1]?.fullTitle}</div>
+                          </>
+                        }
+                        <div className={`performances`}>
+                          {filteredPerformance.map((item, i) => {
+                            return(
+                              <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
+                                <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                <div className='artist'>{item.artist[0].title}</div>
+                              </a>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            }
 
-      <div className='fake-grid'>
-        <div className='flex space-between event-info'>
-          <div className='intro-text'>
-            <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
-          </div>
-          <div className='intro-text'>
-            <div dangerouslySetInnerHTML={{__html: event.description}}></div>
-          </div>
-        </div>
-      </div>
-
-      {event.performances?.length > 0 &&
-        <div className='Collapsible'>
-          <div className='trigger' style={{"height": 0, "padding": "14px"}}></div>
-          <div className='content-parent open'>
-            <div className='dagens-program'>
-              {uniqueDates.map((item, i) => {
-                const filteredPerformance = event.performances.filter(performance => performance.date == item);
+            {event.showArtistInfo &&
+              event.performances.map((performance, i) => {
                 return(
-                  <div className='day'>
-                    <h3 className='cap'>{Moment(item).format("dddd D.M.")}</h3>
-                    <br/>
-                    <div className='location'>{event.location[1]?.fullTitle}</div>
-                    <div className='performances'>
-                      {filteredPerformance.map((item, i) => {
-                        return(
-                          <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
-                            <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
-                            <div className='artist'>{item.artist[0].title}</div>
-                          </a>
-                        )
-                      })}
-                    </div>
+                  <div className='artist-text'>
+                    {performance.artist[0].complexContent?.map(block => {
+                      if (block.blockType === 'text') {
+                        return (
+                          <>
+                            <h3>{performance.artist[0].title}</h3>
+                            {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+                            <br/>
+                            <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                          </>
+                        );
+                      }
+                    })}
+                    <br/><br/>
                   </div>
                 )
-              })}
-            </div>
+              })
+            }
+
+            
           </div>
         </div>
-      }
-
-      
-        <Collapsible trigger='Arkiv' open={true} slug={`arkiv`}>
-          {event.gallery.length > 0 ?
-            <>
-              <ImageSlider item={event.gallery}/>
-              <div className="grid">
-                <Spacer number={12} border={""}/>
-                <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>
+        <div className='right-column'>
+          <div className='img-wrapper'>
+            <img src={event.featuredImage[0]?.url } alt={event.title}/>
+            {event.singlePage &&
+              <div className='artists-single-event'>
+                {event.performances.map((performance, i) => {
+                  return(
+                    <Link to={`/ostre/${event.slug}/${performance.slug}`} className='artist-item'>
+                      {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
+                      <div className='info-bar'>
+                        <p>{performance.artist[0].title}</p>
+                      </div>
+                    </Link>
+                  )
+                })}
               </div>
-            </>
-            :
-            <div>
-              <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>
-            </div>
-          }
-          
-        </Collapsible>
-     
+            }
+          </div>
+        </div>
+      </div>     
 
       <div className='grid'>
         <Spacer number={12} border=""/>

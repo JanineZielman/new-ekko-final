@@ -5,6 +5,8 @@ export interface Event {
   slug: string;
   title: string;
   url: string;
+  singlePage: boolean;
+  showArtistInfo: boolean;
   organizer: { title: string }[];
   featuredImage: { url: string }[];
   isMultiDay: boolean;
@@ -39,6 +41,15 @@ export interface Event {
       title: string;
       artistMeta: string;
       featuredImage: { url: string }[];
+      relatedLinks: {
+        linkTitle: string;
+        linkUrl: string;
+      }[];
+      complexContent: (
+        | { blockType: 'text'; text: string }
+        | { blockType: 'video'; videoUrl: string }
+        | { blockType: 'embed'; code: string }
+      )[];
     }[];
   }[];
 }
@@ -52,6 +63,8 @@ const eventFragment = gql`
       url
     }
     isMultiDay
+    singlePage
+    showArtistInfo
     date
     dateEnd
     openingTime
@@ -86,6 +99,24 @@ const eventFragment = gql`
             artistMeta
             featuredImage: artistFeaturedPhoto {
               url
+            }
+            relatedLinks {
+              linkTitle
+              linkUrl
+            }
+            complexContent {
+              ... on complexContent_text_BlockType {
+                blockType: typeHandle
+                text
+              }
+              ... on complexContent_video_BlockType {
+                blockType: typeHandle
+                videoUrl
+              }
+              ... on complexContent_embed_BlockType {
+                blockType: typeHandle
+                code
+              }
             }
           }
         }
