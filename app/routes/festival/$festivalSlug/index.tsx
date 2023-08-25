@@ -146,7 +146,7 @@ export default function Index() {
                       <Link to={`/festival/${event.slug}/${performance.slug}`} className='artist-item'>
                         {performance.artist[0].featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.artist[0].featuredImage[0]?.url} alt={performance.artist[0].title} /></div>}
                         <div className='info-bar'>
-                          <h2>{performance.artist[0].title}</h2>
+                          <h3>{performance.artist[0].title}</h3>
                           {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
                         </div>
                       </Link>

@@ -7,7 +7,6 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import type { Artist } from '~/service/data/artist';
 import { fetchArtist } from '~/service/data/artist';
-import Collapsible from '~/components/collapsible';
 import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({ params }) => {

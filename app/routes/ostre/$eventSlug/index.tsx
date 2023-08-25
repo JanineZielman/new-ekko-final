@@ -81,6 +81,28 @@ export default function Index() {
               <div dangerouslySetInnerHTML={{__html: event.description}}></div>
             </div>
             <br/>
+
+            {event.showArtistInfo &&
+              event.performances.map((performance, i) => {
+                return(
+                  <div className='artist-text'>
+                    {performance.artist[0].complexContent?.map(block => {
+                      if (block.blockType === 'text') {
+                        return (
+                          <>
+                            <h3>{performance.artist[0].title}</h3>
+                            {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+                            <br/>
+                            <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                          </>
+                        );
+                      }
+                    })}
+                    <br/><br/>
+                  </div>
+                )
+              })
+            }
             
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
@@ -129,30 +151,7 @@ export default function Index() {
                 </div>
               </div>
             }
-
-            {event.showArtistInfo &&
-              event.performances.map((performance, i) => {
-                return(
-                  <div className='artist-text'>
-                    {performance.artist[0].complexContent?.map(block => {
-                      if (block.blockType === 'text') {
-                        return (
-                          <>
-                            <h3>{performance.artist[0].title}</h3>
-                            {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
-                            <br/>
-                            <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
-                          </>
-                        );
-                      }
-                    })}
-                    <br/><br/>
-                  </div>
-                )
-              })
-            }
-
-            
+  
           </div>
         </div>
         <div className='right-column'>

@@ -62,22 +62,29 @@ export default function Index() {
 						<h1>{artist.artist[0].title}</h1>
             {artist.artist?.[0].artistMeta && <span>{`(${artist.artist?.[0].artistMeta})`}</span>}
             <br/><br/>
-            <div className='info-text'>
-              <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
-              <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
-              <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
-              <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
-              {festivalDay[0]?.ticketInformation && 
-                <p> <span>Billetter:</span> <span>{festivalDay[0]?.ticketInformation}</span></p>
-              }
-            </div>
 					</div>
+          
+          {artist.artist[0].complexContent?.map(block => {
+            if (block.blockType === 'text') {
+              return (
+                <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
+              );
+            }
+          })}
+          <br/><br/>
+          <div className='info-text'>
+            <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
+            <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
+            <p><span>Sted:</span> <span>{artist.location?.[1]?.fullTitle}</span></p>
+            <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
+            {festivalDay[0]?.ticketInformation && 
+              <p> <span>Billetter:</span> <span>{festivalDay[0]?.ticketInformation}</span></p>
+            }
+          </div>
           <div className='flex space-between margin-top bottom-links'>
-            <div>
-              {event.ticketLink?.includes('https') &&
-                <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
-              }
-            </div>
+            {event.ticketLink?.includes('https') &&
+              <a className='ticket-link button' href={event.ticketLink} target="_blank">Kjøp billetter</a>
+            }
             <div className='social-links-artist'>
               {artist.artist?.[0].relatedLinks.map((item, i) => {
                 return(
@@ -129,13 +136,6 @@ export default function Index() {
               })}
             </div>
           </div>
-          {artist.artist[0].complexContent?.map(block => {
-            if (block.blockType === 'text') {
-              return (
-                <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
-              );
-            }
-          })}
 				</div>
         
         <div className='right-column festival'>
