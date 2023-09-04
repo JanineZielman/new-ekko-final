@@ -6,7 +6,7 @@ export default function Footer({ navigation }: { navigation: Navigation }) {
     <footer>
       <Container back={false}>
         <div>
-          <a target="_blank" href="http://eepurl.com/gFG-rn">Meld på nyhetsbrev</a>
+          <a target="_blank" href="http://eepurl.com/dKvyro">Meld på nyhetsbrev</a>
         </div>
         <div className='social-links'>
           {navigation.globalSets[1].socialFacebook && <a href={navigation.globalSets[1].socialFacebook} target="_blank">Facebook</a>}
