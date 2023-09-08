@@ -1583,3 +1583,8 @@ footer{
 
 }
 
+.artist-text{
+  & p{
+    margin-top: 14px;
+  }
+}
