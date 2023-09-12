@@ -980,7 +980,9 @@ footer{
 
 .line-up{
   padding-bottom: 3vw;
-  columns: 3;
+  /* columns: 3; */
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .lineup-text{
@@ -994,8 +996,10 @@ footer{
   line-height: 1.3;
   padding-left: 2vw;
   font-size: var(--body);
-  width: 100%;
-  max-width: 300px;
+  box-sizing: border-box;
+  width: 33%;
+  /* width: 100%; */
+  /* max-width: 300px; */
   & a{
     width: 100%;
     display: block;
