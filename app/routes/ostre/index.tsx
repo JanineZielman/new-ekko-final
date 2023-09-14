@@ -48,8 +48,6 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
-  console.log(ostre)
-
 
   return (
     <>

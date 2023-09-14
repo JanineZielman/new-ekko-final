@@ -70,6 +70,34 @@ export interface Event {
 			featuredImage: { url: string }[];
     }[];
   }[];
+  linkedEvents: {
+    title: string;
+    date: string;
+    dateEnd: string;
+    slug: string;
+    featuredImage: { url: string }[];
+    location: {
+      title: string;
+      fullTitle: string;
+    }[];
+    performances: {
+      title: string;
+      date: string;
+      time: string;
+      timeEnd: string;
+      slug: string;
+      location: {
+        title: string;
+        fullTitle: string;
+      }[];
+      artist: {
+        slug: string;
+        title: string;
+        artistMeta: string;
+        featuredImage: { url: string }[];
+      }[];
+    }[];
+  }[];
 }
 
 const eventFragment = gql`
@@ -155,6 +183,44 @@ const eventFragment = gql`
 						featuredImage: artistFeaturedPhoto {
 							url
 						}
+          }
+        }
+      }
+    }
+    linkedEvents{
+      title
+      slug
+      ... on events_event_Entry{
+        date
+        dateEnd
+        location {
+          title
+          fullTitle
+        }
+        featuredImage: artistFeaturedPhoto {
+          url
+        }
+        performances {
+          ... on performance_performance_Entry {
+            title
+            slug
+            date
+            time
+            timeEnd
+            location {
+              title
+              fullTitle
+            }
+            artist {
+              slug
+              ... on artists_artist_Entry {
+                title
+                artistMeta
+                featuredImage: artistFeaturedPhoto {
+                  url
+                }
+              }
+            }
           }
         }
       }

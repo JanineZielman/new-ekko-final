@@ -1583,7 +1583,17 @@ footer{
   }
 }
 
-.Collapsible:hover .triger {
+.fes-event-multiple{
+  & .dagens-program {
+    & .performance {
+      & .time {
+        width: fit-content;
+      }
+    }
+  }
+}
+
+.Collapsible:hover .trigger {
 
 }
 

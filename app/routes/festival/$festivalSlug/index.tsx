@@ -33,13 +33,28 @@ export default function Index() {
 
   const { event, ekko_festival_info, slug, navigation } = useLoaderData<{ event: Event, ekko_festival_info: PageEntry, slug: String, navigation: Navigation }>();
 
+  const linkedPerformances: any[] = [];
+
+  for (let i = 0; i < event.linkedEvents.length; i++) {
+    for (let j = 0; j < event.linkedEvents[i].performances.length; j++) {
+      if (!linkedPerformances.includes(`${event.linkedEvents[i].performances[j]}`)) {
+        linkedPerformances.push(event.linkedEvents[i]?.performances[j]);
+      }
+    }
+  } 
+
+  const mergedEvents = event.performances.concat(linkedPerformances)
+
   const locations: any[] = [];
 
-  for (let i = 0; i < event.performances.length; i++) {
-    if (!locations.includes(`${event.performances[i].location[1]?.fullTitle}`)) {
-      locations.push(`${event.performances[i]?.location?.[1]?.fullTitle}`);
+  for (let i = 0; i < mergedEvents.length; i++) {
+    if (!locations.includes(`${mergedEvents[i].location[1]?.fullTitle}`)) {
+      locations.push(`${mergedEvents[i]?.location?.[1]?.fullTitle}`);
     }
   }
+
+
+
 
   return (
     <>
@@ -81,7 +96,7 @@ export default function Index() {
                       <div className='program-day'>
                         {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
                         {locations.map((location, i) => {
-                          const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
+                          const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
                           filteredEvents.sort(function (a, b) {
                             let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
@@ -138,6 +153,15 @@ export default function Index() {
                       </div>
                     )
                   })}
+                  {event.linkedEvents.map((item, i) => {
+                    return(
+                      <div className='lineup-item'>
+                        <a href={`/festival/${slug}/event/${item.slug}`}>
+                          {item.title} 
+                        </a>
+                      </div>
+                    )
+                  })}
                   <div className='lineup-text' dangerouslySetInnerHTML={{ __html: event.lineup }}></div>
                 </div>
                 <div className='artists-section'>
@@ -148,6 +172,16 @@ export default function Index() {
                         <div className='info-bar'>
                           <h3>{performance.artist[0].title}</h3>
                           {performance.artist?.[0].artistMeta && <div>{`(${performance.artist?.[0].artistMeta})`}</div>}
+                        </div>
+                      </Link>
+                    )
+                  })}
+                  {event.linkedEvents.map((performance, i) => {
+                    return(
+                      <Link to={`/festival/${event.slug}/event/${performance.slug}`} className='artist-item'>
+                        {performance.featuredImage[0]?.url && <div className='img-wrapper'><img src={performance.featuredImage[0]?.url} alt={performance.title} /></div>}
+                        <div className='info-bar'>
+                          <h3>{performance.title}</h3>
                         </div>
                       </Link>
                     )
