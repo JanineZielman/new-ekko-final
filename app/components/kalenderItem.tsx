@@ -31,6 +31,13 @@ export default function KalenderItem({ item }: { item: any }) {
                   </span>
                 )
               })}
+              {item.linkedEvents?.map((item:any, i:any) => {
+                return(
+                  <span>
+                    {item.title}
+                  </span>
+                )
+              })}
             </h3>
           </>
         }

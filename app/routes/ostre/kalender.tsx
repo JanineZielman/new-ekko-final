@@ -62,9 +62,13 @@ export default function Index() {
                               <KalenderItem item={event}/>
                             </a>
                             :
-                            <a href={`/ostre/${event.slug}`}>
-                              <KalenderItem item={event}/>
-                            </a>
+                            <>
+                              {event.linkedFestival.length == 0 &&
+                                <a href={`/ostre/${event.slug}`}>
+                                  <KalenderItem item={event}/>
+                                </a>
+                              }
+                            </>
                           }
                         </div>
                       }
