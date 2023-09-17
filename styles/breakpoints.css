@@ -193,6 +193,36 @@
 			max-width: 100%;
 		}
 	}
+	.grid{
+		width: 90vw;
+		grid-auto-rows: calc(0.0833 * 90vw);
+	}
+	.search-bar{
+		width: 90vw;
+	}
+	.Collapsible{
+		width: calc(90vw + 2px);
+		& .trigger{
+			height: calc(0.0833 * 90vw);
+		}
+	}
+	.event-highlight{
+		& img{
+			width: calc(0.0833 * 90vw * 12);
+			height: calc(0.0833 * 90vw * 5);
+		}
+	}
+	footer{
+		& .container{
+			width: 90vw;
+		}
+	}
+	.fake-grid{
+		width: calc(90vw + 2px);
+	}
+	.kalender{
+		width: 90vw;
+	}
 }
 
 @media (max-width:600px){

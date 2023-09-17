@@ -104,11 +104,15 @@ export default function Oestre() {
                 <>
                   {filteredEvents.filter(item => item.type == 'event').slice(-5).reverse().map((item,i) => {
                     return(
-                      <div>
-                        <a href={`/ostre/${item.slug}`}>
-                          <KalenderItem item={item}/>
-                        </a>
-                      </div>
+                      <>
+                      {item.linkedFestival.length == 0 &&
+                        <div>
+                          <a href={`/ostre/${item.slug}`}>
+                            <KalenderItem item={item}/>
+                          </a>
+                        </div>
+                      }
+                      </>
                     )
                   })}
                   
