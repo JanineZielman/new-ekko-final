@@ -45,6 +45,20 @@ export default function Index() {
 
   const mergedEvents = event.performances.concat(linkedPerformances)
 
+  mergedEvents.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60);
+    let second = parseFloat(Moment(b.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    
+    if (first < 6){
+      first = first + 24;
+    }
+    if (second < 6){
+      second = second + 24;
+    }
+    return first - second
+  });
+
+
   const locations: any[] = [];
 
   for (let i = 0; i < mergedEvents.length; i++) {
@@ -52,7 +66,6 @@ export default function Index() {
       locations.push(`${mergedEvents[i]?.location?.[1]?.fullTitle}`);
     }
   }
-
 
 
 
@@ -98,17 +111,6 @@ export default function Index() {
                         {locations.map((location, i) => {
                           const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
-                          filteredEvents.sort(function (a, b) {
-                            let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
-                            let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
-                            if (first < 6){
-                              first = first + 24;
-                            }
-                            if (second < 6){
-                              second = second + 24;
-                            }
-                            return first - second
-                          });
                           return(
                             <>
                             {filteredPerformance.length > 0 &&
