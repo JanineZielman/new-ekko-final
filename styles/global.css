@@ -1585,7 +1585,20 @@ footer{
 
 .fes-event-multiple{
   & .dagens-program {
+    flex-wrap: wrap;
+    & .day{
+      margin-bottom: 20px;
+      width: 100%;
+    }
+    & .performances {
+      margin-top: 5px;
+    }
     & .performance {
+      display: block;
+      & .info{
+        display: flex;
+        justify-content: space-between;
+      }
       & .time {
         width: fit-content;
       }

@@ -141,20 +141,24 @@ export default function Index() {
                           <>
                             <p className='cap'>{Moment(item).format("dddd D.M.")}</p>
                             
-                            <div className='location'>{event.location[1]?.title}</div>
+                            {/* <div className='location'>{event.location[1]?.title}</div> */}
                           </>
                         }
                         <div className={`performances`}>
                           {filteredPerformance.map((item, i) => {
                             return(
                               <a className='performance' href={`${event.slug}/${item.slug}`}>
-                                <div className='time'>
-                                  {item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}
-                                  {!event.showArtistInfo && 
-                                  <> - {Moment(item.timeEnd).utcOffset('+0100').format("HH:mm")}</>
-                                  }
-                                </div> 
-                                {event.showArtistInfo && <div className='artist'>{item.artist[0].title}</div>}
+                                <div className='location'>{item.location[1]?.title}</div>
+                                <div className='info'>
+                                  <div className='time'>
+                                    {item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}
+                                    {!event.showArtistInfo && 
+                                    <> - {Moment(item.timeEnd).utcOffset('+0100').format("HH:mm")}</>
+                                    }
+                                  </div> 
+                                  <div className='artist'>{item.fullTitle}</div>
+                                  {/* {event.showArtistInfo && <div className='artist'>{item.artist[0].title}</div>} */}
+                                </div>
                               </a>
                             )
                           })}
