@@ -76,9 +76,6 @@ export default function Index() {
     }
   }
 
-  console.log(mergedEvents)
-
-
   return (
     <>
     <SEO

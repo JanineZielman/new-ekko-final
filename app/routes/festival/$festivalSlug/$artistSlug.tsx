@@ -25,9 +25,31 @@ export default function Index() {
 
   const { event, artist } = useLoaderData<{ event: Event; artist: Artist }>();
 
-  event.performances.sort(function (a, b) {
-    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
-    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+  const linkedPerformances: any[] = [];
+
+  for (let i = 0; i < event.linkedEvents.length; i++) {
+    for (let j = 0; j < event.linkedEvents[i].performances.length; j++) {
+      if (!linkedPerformances.includes(`${event.linkedEvents[i].performances[j]}`)) {
+        linkedPerformances.push({
+          performance: event.linkedEvents[i]?.performances[j],
+          artist: event.linkedEvents[i]?.performances[j].artist,
+          date: event.linkedEvents[i]?.performances[j].date,
+          location: event.linkedEvents[i]?.performances[j].location,
+          slug: 'event/' + event.linkedEvents[i].slug,
+          time: event.linkedEvents[i]?.performances[j].time,
+          timeEnd: event.linkedEvents[i]?.performances[j].timeEnd,
+          fullTitle: event.linkedEvents[i]?.performances[j].fullTitle
+        });
+      }
+    }
+  } 
+
+  const mergedEvents = event.performances.concat(linkedPerformances)
+
+  mergedEvents.sort(function (a, b) {
+    let first = parseFloat(Moment(a.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60);
+    let second = parseFloat(Moment(b.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    
     if (first < 6){
       first = first + 24;
     }
@@ -37,11 +59,12 @@ export default function Index() {
     return first - second
   });
 
+
   const locations: any[] = [];
 
-  for (let i = 0; i < event.performances.length; i++) {
-    if (!locations.includes(`${event.performances[i].location[1].fullTitle}`)) {
-      locations.push(`${event.performances[i]?.location?.[1]?.fullTitle}`);
+  for (let i = 0; i < mergedEvents.length; i++) {
+    if (!locations.includes(`${mergedEvents[i].location[1]?.fullTitle}`)) {
+      locations.push(`${mergedEvents[i]?.location?.[1]?.fullTitle}`);
     }
   }
 
@@ -102,7 +125,7 @@ export default function Index() {
                     <div className='program-day'>
                       <h3><br/>Dagens program</h3>
                       {locations.map((location, i) => {
-                        const filteredEvents = event.performances.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
+                        const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
                         const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
                         return(
                           <>
