@@ -106,7 +106,7 @@ export default function Index() {
             
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
-              <p><span>Sted:</span> <span>{event.location?.[1]?.fullTitle ? event.location?.[1]?.fullTitle : event.location?.[0]?.fullTitle}</span></p>
+              <p><span>Sted:</span> <span>{event.location?.[1]?.title ? event.location?.[1]?.title : event.location?.[0]?.title}</span></p>
               {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
@@ -132,7 +132,7 @@ export default function Index() {
                           <>
                             <p className='cap'>{Moment(item).format("dddd D.M.")}</p>
                             <br/>
-                            <div className='location'>{event.location[1]?.fullTitle}</div>
+                            <div className='location'>{event.location[1]?.title}</div>
                           </>
                         }
                         <div className={`performances`}>
