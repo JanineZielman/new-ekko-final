@@ -55,6 +55,7 @@ export interface Event {
   }[];
   performances: {
     title: string;
+    fullTitle: string;
     date: string;
     time: string;
     timeEnd: string;
@@ -82,6 +83,7 @@ export interface Event {
     }[];
     performances: {
       title: string;
+      fullTitle: string;
       date: string;
       time: string;
       timeEnd: string;
@@ -167,6 +169,7 @@ const eventFragment = gql`
     performances {
       ... on performance_performance_Entry {
 				title
+        fullTitle
         slug
         date
         time
@@ -203,6 +206,7 @@ const eventFragment = gql`
         performances {
           ... on performance_performance_Entry {
             title
+            fullTitle
             slug
             date
             time

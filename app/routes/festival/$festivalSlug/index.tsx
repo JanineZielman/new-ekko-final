@@ -43,9 +43,10 @@ export default function Index() {
           artist: event.linkedEvents[i]?.performances[j].artist,
           date: event.linkedEvents[i]?.performances[j].date,
           location: event.linkedEvents[i]?.performances[j].location,
-          slug: 'event/' + event.linkedEvents[i].slug + '/' + event.linkedEvents[i]?.performances[j].slug,
+          slug: 'event/' + event.linkedEvents[i].slug,
           time: event.linkedEvents[i]?.performances[j].time,
-          timeEnd: event.linkedEvents[i]?.performances[j].timeEnd
+          timeEnd: event.linkedEvents[i]?.performances[j].timeEnd,
+          fullTitle: event.linkedEvents[i]?.performances[j].fullTitle
         });
       }
     }
@@ -133,7 +134,7 @@ export default function Index() {
                                         {item.date == performance.date && 
                                           <a className='performance' href={`/festival/${slug}/${performance.slug}`}>
                                             <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
-                                            <div className='artist'>{performance.artist[0].title}</div>
+                                            <div className='artist'>{performance.fullTitle}</div>
                                           </a>
                                         }
                                       </>
