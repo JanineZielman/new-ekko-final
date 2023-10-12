@@ -38,7 +38,15 @@ export default function Index() {
   for (let i = 0; i < event.linkedEvents.length; i++) {
     for (let j = 0; j < event.linkedEvents[i].performances.length; j++) {
       if (!linkedPerformances.includes(`${event.linkedEvents[i].performances[j]}`)) {
-        linkedPerformances.push(event.linkedEvents[i]?.performances[j]);
+        linkedPerformances.push({
+          performance: event.linkedEvents[i]?.performances[j],
+          artist: event.linkedEvents[i]?.performances[j].artist,
+          date: event.linkedEvents[i]?.performances[j].date,
+          location: event.linkedEvents[i]?.performances[j].location,
+          slug: 'event/' + event.linkedEvents[i].slug + '/' + event.linkedEvents[i]?.performances[j].slug,
+          time: event.linkedEvents[i]?.performances[j].time,
+          timeEnd: event.linkedEvents[i]?.performances[j].timeEnd
+        });
       }
     }
   } 
@@ -67,6 +75,7 @@ export default function Index() {
     }
   }
 
+  console.log(mergedEvents)
 
 
   return (
