@@ -71,8 +71,8 @@ export default function Index() {
   const locations: any[] = [];
 
   for (let i = 0; i < mergedEvents.length; i++) {
-    if (!locations.includes(`${mergedEvents[i].location[1]?.fullTitle}`)) {
-      locations.push(`${mergedEvents[i]?.location?.[1]?.fullTitle}`);
+    if (!locations.includes(`${mergedEvents[i].location[1]?.title}`)) {
+      locations.push(`${mergedEvents[i]?.location?.[1]?.title}`);
     }
   }
 
@@ -116,14 +116,14 @@ export default function Index() {
                       <div className='program-day'>
                         {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
                         {locations.map((location, i) => {
-                          const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[1]?.fullTitle}` == location));
+                          const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[1]?.title}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
                           return(
                             <>
                             {filteredPerformance.length > 0 &&
                               <div className='program-location-item'>
                                 <>
-                                  <div className='location'>{filteredPerformance[0].location[1].fullTitle}</div>
+                                  <div className='location'>{filteredPerformance[0].location[1].title}</div>
                                 
                                   {filteredEvents.map((performance, i) => {
                                     return(
