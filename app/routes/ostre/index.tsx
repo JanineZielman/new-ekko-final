@@ -44,7 +44,12 @@ export default function Oestre() {
   currentTime.setDate(currentTime.getDate() - 1);
 
   filteredEvents = events.events.filter((item: any) => {
-    var itemDate = new Date(item.dateEnd);
+    var itemDate;
+    if (item.dateEnd) {
+      itemDate = new Date(item.dateEnd);
+    } else {
+      itemDate = new Date(item.date);
+    }
     return itemDate.getTime() >= currentTime.getTime();
   });
 

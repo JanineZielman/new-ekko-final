@@ -27,7 +27,12 @@ export default function Index() {
   "juli", "august", "september", "oktober", "november", "desember"];
 
   filteredEvents = events.reverse().filter((item: any) => {
-    var itemDate = new Date(item.dateEnd);
+    var itemDate;
+    if (item.dateEnd) {
+      itemDate = new Date(item.dateEnd);
+    } else {
+      itemDate = new Date(item.date);
+    }
     return itemDate.getTime() >= currentTime.getTime();
   });
 
