@@ -1589,6 +1589,31 @@ footer{
   }
 }
 
+.content-parent{
+  & .dagens-program {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    & .day{
+      margin-bottom: 20px;
+      width: 48%;
+      margin-right: 0;
+    }
+    & .performances {
+      margin-top: 5px;
+    }
+    & .performance {
+      display: flex;
+      & .info{
+        display: flex;
+        justify-content: space-between;
+      }
+      & .time {
+        width: 30%;
+      }
+    }
+  }
+}
+
 .fes-event-multiple{
   & .dagens-program {
     flex-wrap: wrap;
@@ -1604,6 +1629,7 @@ footer{
       & .info{
         display: flex;
         justify-content: space-between;
+        padding-bottom: 5px;
       }
       & .time {
         width: fit-content;

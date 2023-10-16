@@ -312,6 +312,14 @@
 		width: 100%;
 	}
 
+	.content-parent{
+		& .dagens-program {
+			& .day{
+				width: 100%;
+			}
+		}
+	}
+
 	.intro-section{
 		flex-direction: column;
 		padding: 10px;
@@ -320,6 +328,7 @@
 		boz-sizing: border-box;
 		& .info-wrapper{
 			width: auto;
+			padding: 0;
 		}
 		& .img-wrapper{
 			width: 100%;

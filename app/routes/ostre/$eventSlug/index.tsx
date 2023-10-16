@@ -66,15 +66,17 @@ export default function Index() {
                 <br/>
               </>
             }
-            <h2 className='artist-running-list'>
-              {event.performances.map((performance:any,j:any) => {
-                return(
-                  <div>
-                    <a href={`/ostre/${event.slug}/${performance.slug}`}>{performance.artist[0].title}</a>
-                  </div>
-                )
-              })}
-            </h2>
+            {event.showArtistInfo &&
+              <h2 className='artist-running-list'>
+                {event.performances.map((performance:any,j:any) => {
+                  return(
+                    <div>
+                      <a href={`/ostre/${event.slug}/${performance.slug}`}>{performance.artist[0].title}</a>
+                    </div>
+                  )
+                })}
+              </h2>
+            }
             <br/>
             <div className='intro-text'>
               <div dangerouslySetInnerHTML={{__html: event.intro}}></div>
@@ -121,6 +123,7 @@ export default function Index() {
             
             {event.performances?.length > 0 &&
               <div className='content-parent'>
+                <br/><br/>
                 <div className='dagens-program'>
                   {uniqueDates.map((item, i) => {
                     const filteredPerformance = event.performances.filter(performance => performance.date == item);
