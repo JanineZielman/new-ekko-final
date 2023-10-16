@@ -201,9 +201,13 @@ export default function Index() {
               {item.url == "#billetter" && event.tickets.length > 0 &&
                 <div className='flex tickets'>
                   {event.tickets.map((ticket, i) => {
+                    console.log(ticket)
                     return(
                       <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
-                        <h3>{ticket.description}</h3>
+                        <h3>{ticket.description} <br/>
+                          <p>{ticket.subdescription}</p>
+                        </h3>
+
                         <p className='price-label'>{ticket.price} Kr</p>
                       </a>
                     )

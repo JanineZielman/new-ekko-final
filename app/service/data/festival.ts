@@ -38,6 +38,7 @@ export interface Event {
     subdescription: string;
     price: string;
     ticketLink: string;
+    relatedPerformances: { slug: string }[];
   }[];
   program: {
     date: string;
@@ -155,11 +156,15 @@ const eventFragment = gql`
 		lineup
     ticketLink
     ticketDescription
+    subdescription
     tickets{
       description
-      subDescription
+      subdescription
       price
       ticketLink
+      relatedPerformances {
+        slug
+      }
     }
     sections {
       ... on sections_entry_BlockType {

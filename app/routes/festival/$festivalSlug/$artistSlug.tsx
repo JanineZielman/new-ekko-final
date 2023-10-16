@@ -69,6 +69,19 @@ export default function Index() {
 
   const festivalDay = event.program.filter(day => day.date == artist.date);
 
+  // const ticketDay = event.tickets.filter(ticket => ticket.relatedPerformances.filter == true);
+  let ticketDay: any[] = [];
+
+  for (let i = 0; i < event.tickets.length; i++) {
+    if (!ticketDay.includes(`${event.tickets[i].relatedPerformances.filter(performance => performance.slug == artist.slug)}`)) {
+      if (event.tickets[i].relatedPerformances.filter(performance => performance.slug == artist.slug).length > 0){
+        ticketDay.push(event.tickets[i]);
+      }
+    }
+  }
+
+  console.log(ticketDay)
+
 
   return (
     <>
@@ -99,8 +112,26 @@ export default function Index() {
             <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
             <p><span>Sted:</span> <span>{artist.location[1].venue}{artist.location[1].room && `, ${artist.location[1].room}`}</span></p>
             <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
-            {festivalDay[0]?.ticketInformation && 
-              <p> <span>Billetter:</span> <span>{festivalDay[0]?.ticketInformation}</span></p>
+            {artist.ekstraInfo && 
+              <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
+            }
+            {ticketDay[0] ?
+            <>
+              <p> 
+                <span>Billetter:</span> 
+                <span>
+                  {ticketDay[0]?.description && <>{ticketDay[0]?.description} <br/></>}
+                  {ticketDay[0]?.subdescription && <>{ticketDay[0]?.subdescription}<br/></>} 
+                  {ticketDay[0]?.price && `${ticketDay[0]?.price} Kr`} 
+                </span>
+              </p>
+            </>
+            :
+            <>
+              {festivalDay[0]?.ticketInformation && 
+                <p> <span>Billetter:</span> <span>{festivalDay[0]?.ticketInformation}</span></p>
+              }
+            </>
             }
           </div>
           <div className='flex space-between margin-top bottom-links'>

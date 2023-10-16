@@ -52,9 +52,14 @@ export default function Index() {
               <p><span>Tid:</span> <span className='cap'>{artist.time && `${Moment(artist.time).utcOffset('+0100').format("HH:mm")}`}</span></p>
               <p><span>Sted:</span> <span>{artist.location[1].venue}{artist.location[1].room && `, ${artist.location[1].room}`}</span></p>
               {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
+              {artist.ekstraInfo && 
+                <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
+              }
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
               }
+              
+              
             </div>
 				  </div>
 

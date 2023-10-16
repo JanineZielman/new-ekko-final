@@ -814,12 +814,18 @@ body.festival .festival-page-grid{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 150px;
+    /* height: 150px; */
     border: 1px solid black;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     padding: 2vw;
+    & h3{
+      & p{
+        font-size: var(--body);
+        font-weight: 100;
+      }
+    }
   }
 }
 
