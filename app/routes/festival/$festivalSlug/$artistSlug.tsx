@@ -97,7 +97,7 @@ export default function Index() {
           <div className='info-text'>
             <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
             <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
-            <p><span>Sted:</span> <span>{artist.location?.[1]?.title}</span></p>
+            <p><span>Sted:</span> <span>{artist.location[1].venue}{artist.location[1].room && `, ${artist.location[1].room}`}</span></p>
             <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
             {festivalDay[0]?.ticketInformation && 
               <p> <span>Billetter:</span> <span>{festivalDay[0]?.ticketInformation}</span></p>

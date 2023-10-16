@@ -9,7 +9,8 @@ export interface Artist {
   timeEnd: string;
   location: {
     title: string;
-    fullTitle: string;
+    venue: string;
+    room: string;
   }[];
   artist: {
     url: string;
@@ -67,7 +68,8 @@ const query = gql`
       timeEnd
       location {
         title
-        fullTitle
+        venue
+        room
       }
       artist{
         ...artistData

@@ -17,7 +17,8 @@ export interface Event {
   }
   location: {
     title: string;
-    fullTitle: string;
+    venue: string;
+    room: string;
   }[];
   ticketLink: string;
   ticketDescription: string;
@@ -29,7 +30,8 @@ export interface Event {
     timeEnd: string;
     location: {
       title: string;
-      fullTitle: string;
+      venue: string;
+      room: string;
     }[];
     artist: {
       title: string;
@@ -44,7 +46,8 @@ export interface Event {
     featuredImage: { url: string }[];
     location: {
       title: string;
-      fullTitle: string;
+      venue: string;
+      room: string;
     }[];
     performances: {
       title: string;
@@ -54,7 +57,8 @@ export interface Event {
       slug: string;
       location: {
         title: string;
-        fullTitle: string;
+        venue: string;
+        room: string;
       }[];
       artist: {
         slug: string;
@@ -86,7 +90,8 @@ const query = gql`
         }
         location {
           title
-          fullTitle
+          venue
+          room
         }
         organizer {
           title
@@ -126,7 +131,8 @@ const query = gql`
         }
         location {
           title
-          fullTitle
+          venue
+          room
         }
         organizer {
           title

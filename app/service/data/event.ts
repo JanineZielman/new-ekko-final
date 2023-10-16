@@ -14,7 +14,8 @@ export interface Event {
   dateEnd: string;
   location: {
     title: string;
-    fullTitle: string;
+    venue: string;
+    room: string;
   }[];
   gallery: {
     url: string;
@@ -34,7 +35,8 @@ export interface Event {
     timeEnd: string;
     location: {
       title: string;
-      fullTitle: string;
+      venue: string;
+      room: string;
     }[];
     artist: {
       slug: string;
@@ -71,7 +73,8 @@ const eventFragment = gql`
     closingTime
     location {
       title
-      fullTitle
+      venue
+      room
     }
     gallery{
       url
@@ -90,7 +93,8 @@ const eventFragment = gql`
         timeEnd
         location {
           title
-          fullTitle
+          venue
+          room
         }
         artist {
           slug
