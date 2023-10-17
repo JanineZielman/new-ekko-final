@@ -1618,7 +1618,7 @@ footer{
   & .dagens-program {
     flex-wrap: wrap;
     & .day{
-      margin-bottom: 20px;
+      margin-bottom: 0px;
       width: 100%;
     }
     & .performances {
