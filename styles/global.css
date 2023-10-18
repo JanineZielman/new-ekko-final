@@ -10,8 +10,8 @@
   --h1: 42px;
   --h2: 28px;
   --h3: 22px;
-  --h4: 17px;
-  --body: 17px;
+  --h4: 16px;
+  --body: 16px;
   --small: 14px;
 }
 
@@ -1625,10 +1625,14 @@ footer{
       margin-top: 5px;
     }
     & .performance {
-      display: block;
+      display: flex;
+      & .location{
+        width: 35%;
+        padding-right: 14px;
+      }
       & .info{
-        display: flex;
-        justify-content: space-between;
+        display: block;
+        width: 65%;
         padding-bottom: 5px;
       }
       & .time {

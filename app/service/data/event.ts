@@ -27,6 +27,11 @@ export interface Event {
   ticketDescription: string;
   openingTime: string;
   closingTime: string;
+  complexContent: (
+    | { blockType: 'text'; text: string }
+    | { blockType: 'video'; videoUrl: string }
+    | { blockType: 'embed'; code: string }
+  )[];
   performances: {
     slug: string;
     fullTitle: string;
@@ -84,6 +89,20 @@ const eventFragment = gql`
     description
     ticketLink
     ticketDescription
+    complexContent {
+      ... on complexContent_text_BlockType {
+        blockType: typeHandle
+        text
+      }
+      ... on complexContent_video_BlockType {
+        blockType: typeHandle
+        videoUrl
+      }
+      ... on complexContent_embed_BlockType {
+        blockType: typeHandle
+        code
+      }
+    }
     performances {
       ... on performance_performance_Entry {
         slug

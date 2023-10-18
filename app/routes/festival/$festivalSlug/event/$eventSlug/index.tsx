@@ -146,14 +146,17 @@ export default function Index() {
                           {filteredPerformance.map((item, i) => {
                             return(
                               <a className='performance' href={`${event.slug}/${item.slug}`}>
-                                <div className='location'>{item.location[1].venue}{item.location[1].room && `, ${item.location[1].room}`}</div>
-                                <div className='info'>
+                                <div className='location location-time'>
+                                  {item.location[1].venue}{item.location[1].room && `, ${item.location[1].room}`}
                                   <div className='time'>
                                     {item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}
                                     {!event.showArtistInfo && 
                                     <> - {Moment(item.timeEnd).utcOffset('+0100').format("HH:mm")}</>
                                     }
                                   </div> 
+                                </div>
+                                <div className='info'>
+                                  
                                   <div className='artist'>{item.fullTitle}</div>
                                   {/* {event.showArtistInfo && <div className='artist'>{item.artist[0].title}</div>} */}
                                 </div>
@@ -167,12 +170,34 @@ export default function Index() {
                 </div>
               </div>
             }
+
+            {event.complexContent?.map(block => {
+              if (block.blockType === 'text') {
+                return (
+                  <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                );
+              }
+            })}
   
           </div>
         </div>
         <div className='right-column festival'>
           <div className='img-wrapper'>
             <img src={event.featuredImage[0]?.url } alt={event.title}/>
+            {event.complexContent?.map(block => {
+              if (block.blockType === 'embed') {
+                return (
+                  <div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>
+                );
+              }
+              if (block.blockType === 'video') {
+                return (
+                  <div className='embed'>
+                    <iframe src={block.videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/')}/>
+                  </div>
+                );
+              }
+            })}
             {event.singlePage &&
               <div className='artists-single-event'>
                 {event.performances.map((performance, i) => {
