@@ -107,7 +107,7 @@ export default function Index() {
             if (block.blockType === 'imageBlock') {
 							return (
 								<div className='img-wrapper'>
-									<img className='' src={block.image[0].url}/>
+									<img  src={block.image[0].url}/>
 								</div>
 							);
 						}
