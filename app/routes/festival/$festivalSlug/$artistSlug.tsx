@@ -62,8 +62,8 @@ export default function Index() {
   const locations: any[] = [];
 
   for (let i = 0; i < mergedEvents.length; i++) {
-    if (!locations.includes(`${mergedEvents[i].location[1]?.title}`)) {
-      locations.push(`${mergedEvents[i]?.location?.[1]?.title}`);
+    if (!locations.includes(`${mergedEvents[i].location[0]?.title}`)) {
+      locations.push(`${mergedEvents[i]?.location?.[0]?.title}`);
     }
   }
 
@@ -110,7 +110,13 @@ export default function Index() {
           <div className='info-text'>
             <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
             <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
-            <p><span>Sted:</span> <span>{artist.location[1].venue}{artist.location[1].room && `, ${artist.location[1].room}`}</span></p>
+            <p><span>Sted:</span> <span className='mutliple-locations'>
+                {artist.location.map((item,i) => {
+                  return(
+                    <span key={`loc${i}`}>{item.venue}{item.room && `, ${item.room}`}<br/></span>
+                  )
+                })}
+              </span></p>
             <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
             {artist.ekstraInfo && 
               <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
@@ -155,14 +161,14 @@ export default function Index() {
                     <div className='program-day'>
                       <h3><br/>Dagens program</h3>
                       {locations.map((location, i) => {
-                        const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[1]?.title}` == location));
+                        const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[0]?.title}` == location));
                         const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
                         return(
                           <>
                           {filteredPerformance.length > 0 &&
                             <div className='program-location-item'>
                               <>
-                                <div className='location'>{filteredPerformance[0].location[1]?.title}</div>
+                                <div className='location'>{filteredPerformance[0].location[0]?.title}</div>
                               
                                 {filteredEvents.map((performance, i) => {
                                   return(
@@ -208,6 +214,13 @@ export default function Index() {
                 </div>
               );
             }
+            if (block.blockType === 'imageBlock') {
+							return (
+								<div className='img-wrapper'>
+									<img className='' src={block.image[0].url}/>
+								</div>
+							);
+						}
           })}
         </div>
 

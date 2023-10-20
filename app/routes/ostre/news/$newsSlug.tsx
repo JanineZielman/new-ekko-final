@@ -46,9 +46,29 @@ export default function Index() {
 				<div className='text-block padding news-text-block'>
 					<br/>
 					{news.entry.complexContent?.map(block => {
+						console.log(block)
 						if (block.blockType === 'text') {
 							return (
 								<div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+							);
+						}
+						if (block.blockType === 'embed') {
+							return (
+								<div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>
+							);
+						}
+						if (block.blockType === 'video') {
+							return (
+								<div className='embed'>
+									<iframe src={block.videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/')}/>
+								</div>
+							);
+						}
+						if (block.blockType === 'imageBlock') {
+							return (
+								<div className='img-wrapper'>
+									<img className='' src={block.image[0].url}/>
+								</div>
 							);
 						}
 					})}

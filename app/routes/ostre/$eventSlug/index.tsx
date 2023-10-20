@@ -108,7 +108,13 @@ export default function Index() {
             
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
-              <p><span>Sted:</span> <span>{event.location[1].venue}{event.location[1].room && `, ${event.location[1].room}`}</span></p>
+              <p><span>Sted:</span> <span className='mutliple-locations'>
+                {event.location.map((item,i) => {
+                  return(
+                    <span key={`loc${i}`}>{item.venue}{item.room && `, ${item.room}`}<br/></span>
+                  )
+                })}
+              </span></p>
               {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
@@ -135,7 +141,7 @@ export default function Index() {
                           <>
                             <p className='cap'>{Moment(item).format("dddd D.M.")}</p>
                             <br/>
-                            <div className='location'>{event.location[1]?.title}</div>
+                            <div className='location'>{event.location[0]?.title}</div>
                           </>
                         }
                         <div className={`performances`}>

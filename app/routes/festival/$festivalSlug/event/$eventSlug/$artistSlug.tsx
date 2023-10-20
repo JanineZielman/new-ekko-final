@@ -50,7 +50,13 @@ export default function Index() {
               <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
               {/* <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p> */}
               <p><span>Tid:</span> <span className='cap'>{artist.time && `${Moment(artist.time).utcOffset('+0100').format("HH:mm")}`}</span></p>
-              <p><span>Sted:</span> <span>{artist.location[1].venue}{artist.location[1].room && `, ${artist.location[1].room}`}</span></p>
+              <p><span>Sted:</span> <span className='mutliple-locations'>
+                {artist.location.map((item,i) => {
+                  return(
+                    <span key={`loc${i}`}>{item.venue}{item.room && `, ${item.room}`}<br/></span>
+                  )
+                })}
+              </span></p>
               {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
               {artist.ekstraInfo && 
                 <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
@@ -100,6 +106,13 @@ export default function Index() {
                 </div>
               );
             }
+            if (block.blockType === 'imageBlock') {
+							return (
+								<div className='img-wrapper'>
+									<img className='' src={block.image[0].url}/>
+								</div>
+							);
+						}
           })}
         </div>
       </div>

@@ -31,6 +31,7 @@ export interface Event {
     | { blockType: 'text'; text: string }
     | { blockType: 'video'; videoUrl: string }
     | { blockType: 'embed'; code: string }
+    | { blockType: 'imageBlock'; image: {url: string}[] }
   )[];
   performances: {
     slug: string;
@@ -56,6 +57,7 @@ export interface Event {
         | { blockType: 'text'; text: string }
         | { blockType: 'video'; videoUrl: string }
         | { blockType: 'embed'; code: string }
+        | { blockType: 'imageBlock'; image: {url: string}[] }
       )[];
     }[];
   }[];
@@ -102,6 +104,12 @@ const eventFragment = gql`
         blockType: typeHandle
         code
       }
+      ... on complexContent_imageBlock_BlockType {
+        blockType: typeHandle
+        image {
+          url
+        }
+      }
     }
     performances {
       ... on performance_performance_Entry {
@@ -139,6 +147,12 @@ const eventFragment = gql`
               ... on complexContent_embed_BlockType {
                 blockType: typeHandle
                 code
+              }
+              ... on complexContent_imageBlock_BlockType {
+                blockType: typeHandle
+                image {
+                  url
+                }
               }
             }
           }
