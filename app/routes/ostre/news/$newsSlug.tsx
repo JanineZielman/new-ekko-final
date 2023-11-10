@@ -46,7 +46,6 @@ export default function Index() {
 				<div className='text-block padding news-text-block'>
 					<br/>
 					{news.entry.complexContent?.map(block => {
-						console.log(block)
 						if (block.blockType === 'text') {
 							return (
 								<div dangerouslySetInnerHTML={{ __html: block.text }}></div>

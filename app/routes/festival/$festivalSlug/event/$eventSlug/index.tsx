@@ -39,8 +39,6 @@ export default function Index() {
     }
   }  
 
-  console.log(event.location)
-
   return (
     <>
     <SEO
@@ -110,7 +108,7 @@ export default function Index() {
                   )
                 })}
               </span></p>
-              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
+              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>}
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
               }
@@ -155,9 +153,9 @@ export default function Index() {
                                 <div className='location location-time'>
                                   {item.location[0].venue}{item.location[0].room && `, ${item.location[0].room}`}
                                   <div className='time'>
-                                    {item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}
+                                    {item.time && Moment(item.time).format("HH:mm")}
                                     {!event.showArtistInfo && 
-                                    <> - {Moment(item.timeEnd).utcOffset('+0100').format("HH:mm")}</>
+                                    <> - {Moment(item.timeEnd).format("HH:mm")}</>
                                     }
                                   </div> 
                                 </div>

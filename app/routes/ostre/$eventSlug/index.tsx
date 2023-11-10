@@ -115,7 +115,7 @@ export default function Index() {
                   )
                 })}
               </span></p>
-              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).utcOffset('+0100').format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).utcOffset('+0100').format("HH:mm")}`}</span></p>}
+              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>}
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
               }
@@ -135,9 +135,10 @@ export default function Index() {
                     const filteredPerformance = event.performances.filter(performance => performance.date == item);
                     return(
                       <div className={`day ${event.singlePage}`}>
-                        {event.singlePage ?
+                        {event.singlePage &&
                           <p><br/>Tidsplan</p>
-                        :
+                        }
+                        {(!event.singlePage || event.isMultiDay) &&
                           <>
                             <p className='cap'>{Moment(item).format("dddd D.M.")}</p>
                             <br/>
@@ -146,9 +147,10 @@ export default function Index() {
                         }
                         <div className={`performances`}>
                           {filteredPerformance.map((item, i) => {
+
                             return(
                               <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
-                                <div className='time'>{item.time && Moment(item.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                <div className='time'>{item.time && Moment(item.time).format("HH:mm")}</div> 
                                 <div className='artist'>{item.artist[0].title}</div>
                               </a>
                             )

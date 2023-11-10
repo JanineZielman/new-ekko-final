@@ -46,8 +46,8 @@ export default function Index() {
   const mergedEvents = event.performances.concat(linkedPerformances)
 
   mergedEvents.sort(function (a, b) {
-    let first = parseFloat(Moment(a.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60);
-    let second = parseFloat(Moment(b.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60);
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
     
     if (first < 6){
       first = first + 24;
@@ -80,8 +80,6 @@ export default function Index() {
     }
   }
 
-  console.log(ticketDay)
-
 
   return (
     <>
@@ -109,7 +107,7 @@ export default function Index() {
           <br/><br/>
           <div className='info-text'>
             <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
-            <p><span>Tid:</span> <span>{Moment(artist.time).utcOffset('+0100').format("HH:mm")}</span></p>
+            <p><span>Tid:</span> <span>{Moment(artist.time).format("HH:mm")}</span></p>
             <p><span>Sted:</span> <span className='mutliple-locations'>
                 {artist.location.map((item,i) => {
                   return(
@@ -117,7 +115,7 @@ export default function Index() {
                   )
                 })}
               </span></p>
-            <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).utcOffset('+0100').format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).utcOffset('+0100').format("HH:mm")}`}</span></p>
+            <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).format("HH:mm")}`}</span></p>
             {artist.ekstraInfo && 
               <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
             }
@@ -175,7 +173,7 @@ export default function Index() {
                                     <>
                                       {item.date == performance.date && 
                                         <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
-                                          <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                          <div className='time'>{Moment(performance.time).format("HH:mm")}</div> 
                                           <div className='artist'>{performance.artist[0].title}</div>
                                         </a>
                                       }

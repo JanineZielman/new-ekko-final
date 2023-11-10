@@ -55,8 +55,8 @@ export default function Index() {
   const mergedEvents = event.performances.concat(linkedPerformances)
 
   mergedEvents.sort(function (a, b) {
-    let first = parseFloat(Moment(a.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60);
-    let second = parseFloat(Moment(b.time).utcOffset('+0100').format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60);
+    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
     
     if (first < 6){
       first = first + 24;
@@ -130,7 +130,7 @@ export default function Index() {
                                       <>
                                         {item.date == performance.date && 
                                           <a className='performance' href={`/festival/${slug}/${performance.slug}`}>
-                                            <div className='time'>{Moment(performance.time).utcOffset('+0100').format("HH:mm")}</div> 
+                                            <div className='time'>{Moment(performance.time).format("HH:mm")}</div> 
                                             <div className='artist'>{performance.fullTitle}</div>
                                           </a>
                                         }
@@ -201,7 +201,6 @@ export default function Index() {
               {item.url == "#billetter" && event.tickets.length > 0 &&
                 <div className='flex tickets'>
                   {event.tickets.map((ticket, i) => {
-                    console.log(ticket)
                     return(
                       <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
                         <h3>{ticket.description} <br/>

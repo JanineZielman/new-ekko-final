@@ -8,7 +8,7 @@ export default function KalenderItem({ item }: { item: any }) {
         <div className='indicator'>Dato</div>
         <p className="cap">
           {Moment(item.date).format("dddd D.M.")} {item.dateEnd && `- ${Moment(item.dateEnd)?.format("dddd D.M.")} `}
-          { item.openingTime && Moment(item.openingTime).utcOffset('+0100').format("HH:mm")}
+          { item.openingTime && Moment(item.openingTime).format("HH:mm")}
         </p>
       </div>
       {item.organizer?.[0]?.title ?
