@@ -19,6 +19,11 @@ export default function KalenderItem({ item }: { item: any }) {
         :
         <div className='title'></div>
       }
+      <div className="event-title">
+        <div className='indicator'>Title</div>
+        <p>{item.title}</p>
+      </div>
+
       <div className='artists'>
         {item.performances.length > 0 &&
           <>
@@ -42,16 +47,22 @@ export default function KalenderItem({ item }: { item: any }) {
           </>
         }
       </div>
-      <div className="ticket-info">
+      {/* <div className="ticket-info">
         <div dangerouslySetInnerHTML={{__html: item.ticketDescription}}></div>
-      </div>
+      </div> */}
       {item.ticketLink?.includes('https') ?
         <div className='ticket-button'>
           <a className='ticket-link button' href={item.ticketLink} target="_blank">Kjøp billetter</a>
+          <div className="ticket-info">
+            <div dangerouslySetInnerHTML={{__html: item.ticketDescription}}></div>
+          </div>
         </div>
         :
         <div className='ticket-button no-ticket'>
           <div className='ticket-link button'>Ingen forsalg</div>
+          <div className="ticket-info">
+            <div dangerouslySetInnerHTML={{__html: item.ticketDescription}}></div>
+          </div>
         </div>
       }
     </div>
