@@ -117,7 +117,7 @@ export default function Index() {
               </span></p>
               {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>}
               {event.ticketDescription && 
-                <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
+                <p> <span>Billetter:</span> <span dangerouslySetInnerHTML={{__html: event.ticketDescription}}></span></p>
               }
             </div>
           

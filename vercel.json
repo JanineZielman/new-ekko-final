@@ -1,0 +1,9 @@
+{
+  "redirects": [		
+    { "source": "/nyheter/:path*", "destination": "/ostre/news/:path*", "permanent": true },
+    { "source": "/events/:path*", "destination": "/ostre/:path*", "permanent": true },
+    { "source": "/om-oss", "destination": "/about", "permanent": true },
+    { "source": "/arkiv", "destination": "/archive", "permanent": true },
+    { "source": "/om-oestre", "destination": "/ostre", "permanent": true }
+  ]
+}

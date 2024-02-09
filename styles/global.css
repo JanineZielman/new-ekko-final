@@ -906,6 +906,9 @@ footer{
     margin-top: 10px;
     text-align: center;
     font-size: var(--small);
+    p{
+      font-size: var(--small);
+    }
   }
   & .ticket-button{
     width: 15%;

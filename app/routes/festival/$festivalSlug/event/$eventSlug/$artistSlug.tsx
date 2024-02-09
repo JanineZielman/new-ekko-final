@@ -62,7 +62,7 @@ export default function Index() {
                 <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
               }
               {event.ticketDescription && 
-                <p> <span>Billetter:</span> <span>{event.ticketDescription}</span></p>
+                <p> <span>Billetter:</span> <span dangerouslySetInnerHTML={{__html: event.ticketDescription}}></span></p>
               }
               
               

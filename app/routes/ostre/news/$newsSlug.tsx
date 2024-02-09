@@ -31,7 +31,7 @@ export default function Index() {
 				<div className='left-wrap'>
 					<div className="padding">
 							<h1>{news.entry.title}</h1> 
-							<h3><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
+							<p><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></p>
 					</div>
 
 					<div className='news-page-img'>
