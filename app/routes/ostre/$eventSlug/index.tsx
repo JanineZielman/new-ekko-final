@@ -184,8 +184,18 @@ export default function Index() {
             }
           </div>
         </div>
-      </div>     
-
+      </div>
+      <div className='fake-grid'>
+        {event.gallery.length > 0 && 
+          <Collapsible trigger={'Arkiv'} open={false} slug={'#'}>
+            <ImageSlider item={event.gallery}/>
+            <div className="grid">
+              <Spacer number={12} border={""}/>
+              <a className='show-all-button' href="/festival/archive"><h2>Vis fullt arkiv</h2></a>
+            </div>
+          </Collapsible>
+        }
+      </div>  
       <div className='grid'>
         <Spacer number={12} border=""/>
       </div>
