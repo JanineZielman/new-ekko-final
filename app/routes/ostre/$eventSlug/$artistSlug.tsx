@@ -49,7 +49,8 @@ export default function Index() {
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
               {/* <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p> */}
-              <p><span>Tid:</span> <span className='cap'>{artist.time && `${Moment(artist.time).format("HH:mm")}`}</span></p>
+              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>}
+              <p><span>Tid:</span> <span className='cap'>{artist.time && `${Moment(artist.time).format("HH:mm")}`} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</span></p>
               <p><span>Sted:</span> <span className='mutliple-locations'>
                 {artist.location.map((item,i) => {
                   return(
@@ -57,7 +58,6 @@ export default function Index() {
                   )
                 })}
               </span></p>
-              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>}
               {artist.ekstraInfo && 
                 <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
               }

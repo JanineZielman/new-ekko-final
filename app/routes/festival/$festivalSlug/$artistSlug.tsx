@@ -107,7 +107,8 @@ export default function Index() {
           <br/><br/>
           <div className='info-text'>
             <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
-            <p><span>Tid:</span> <span>{Moment(artist.time).format("HH:mm")}</span></p>
+            <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).format("HH:mm")}`}</span></p>
+            <p><span>Tid:</span> <span>{Moment(artist.time).format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</span></p>
             <p><span>Sted:</span> <span className='mutliple-locations'>
                 {artist.location.map((item,i) => {
                   return(
@@ -115,7 +116,6 @@ export default function Index() {
                   )
                 })}
               </span></p>
-            <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).format("HH:mm")}`}</span></p>
             {artist.ekstraInfo && 
               <p> <span>Ekstra info:</span> <span>{artist.ekstraInfo}</span></p>
             }
