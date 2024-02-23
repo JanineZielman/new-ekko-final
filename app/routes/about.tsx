@@ -29,7 +29,7 @@ export default function Index() {
   return (
     <>
     <SEO
-      title={`EKKO | ${about.entry.title}`}
+      title={`${about.entry.title}`}
       description={''}
       imageUrl={'/main-pic-festival-2016_web_160701_122022.jpg'}
     />

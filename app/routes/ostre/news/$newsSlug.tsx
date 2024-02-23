@@ -21,7 +21,7 @@ export default function Index() {
   return (
 		<>
 		<SEO
-      title={`EKKO | ${news.entry.title}`}
+      title={`${news.entry.title}`}
       description={news.entry.newsIntro ? news.entry.newsIntro.replace(/<[^>]+>/g, '') : ''}
       imageUrl={news.entry.newsPhoto[0]?.url ? news.entry.newsPhoto[0]?.url : news.entry.pagePhoto[0]?.url}
     />

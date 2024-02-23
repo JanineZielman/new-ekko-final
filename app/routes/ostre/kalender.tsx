@@ -39,7 +39,7 @@ export default function Index() {
   return (
     <>
     <SEO
-      title={`EKKO | Kalender`}
+      title={`Kalender`}
       description={''}
       imageUrl={''}
     />

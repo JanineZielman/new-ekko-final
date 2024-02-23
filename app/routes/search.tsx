@@ -33,7 +33,7 @@ export default function Search() {
   return (
     <>
     <SEO
-      title={`EKKO | Search`}
+      title={`Search`}
       description={''}
       imageUrl={''}
     />

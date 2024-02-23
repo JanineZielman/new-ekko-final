@@ -57,7 +57,7 @@ export default function Oestre() {
   return (
     <>
     <SEO
-      title={`EKKO | ${ostre.entry.title}`}
+      title={`${ostre.entry.title}`}
       description={ostre.entry.content ? ostre.entry.content.replace(/<[^>]+>/g, '') : ''}
       imageUrl={''}
     />

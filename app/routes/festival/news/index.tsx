@@ -22,7 +22,7 @@ export default function Index() {
   return (
     <>
     <SEO
-      title={`EKKO | News`}
+      title={`News`}
       description={''}
       imageUrl={''}
     />

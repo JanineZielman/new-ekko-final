@@ -84,7 +84,7 @@ export default function Index() {
   return (
     <>
     <SEO
-      title={`EKKO | ${artist.title}`}
+      title={`${artist.title}`}
       description={event.intro ? event.intro.replace(/<[^>]+>/g, '') : ''}
       imageUrl={artist.artist?.[0].featuredImage[0]?.url ? artist.artist?.[0].featuredImage[0]?.url : event.featuredImage[0]?.url}
     />

@@ -27,7 +27,7 @@ export default function Archive() {
   return (
     <>
     <SEO
-      title={`EKKO | Archive`}
+      title={`Archive`}
       description={''}
       imageUrl={''}
     />
