@@ -19,17 +19,23 @@ export default function Index() {
 
   const event = useLoaderData<Event>();
 
-  event.performances.sort(function (a, b) {
-    let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
-    let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
-    if (first < 6){
-      first = first + 24;
-    }
-    if (second < 6){
-      second = second + 24;
-    }
-    return first - second
+  event.performances.sort(function(a,b){
+    // Turn your strings into dates, and then subtract them
+    // to get a value that is either negative, positive, or zero.
+    return Moment(a.date) - Moment(b.date);
   });
+
+  // event.performances.sort(function (a, b) {
+  //   let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+  //   let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+  //   if (first < 6){
+  //     first = first + 24;
+  //   }
+  //   if (second < 6){
+  //     second = second + 24;
+  //   }
+  //   return first - second
+  // });
 
   function isDateInArray(needle:any, haystack:any) {
     for (var i = 0; i < haystack.length; i++) {
