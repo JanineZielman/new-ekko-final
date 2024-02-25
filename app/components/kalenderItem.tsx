@@ -31,9 +31,13 @@ export default function KalenderItem({ item }: { item: any }) {
             <h3>
               {item.performances?.map((performance:any,j:any) => {
                 return(
-                  <span>
-                    {performance.artist[0].title}
-                  </span>
+                  <>
+                  {item.performances[j - 1]?.artist[0].title != performance.artist[0].title &&
+                    <span>
+                      {performance.artist[0].title}
+                    </span>
+                  }
+                  </>
                 )
               })}
               {item.linkedEvents?.map((item:any, i:any) => {

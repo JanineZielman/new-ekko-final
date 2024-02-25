@@ -12,9 +12,14 @@ export default function ArchiveItem({ item }: { item: any }) {
       <h3 className='artists'>
         {item.performances?.map((performance:any,j:any) => {
           return(
-            <span>
-              {performance.artist[0].title}
-            </span>
+            <>
+            {item.performances[j - 1]?.artist[0].title != performance.artist[0].title &&
+              <span>
+                {performance.artist[0].title}
+              </span>
+            }
+            </>
+           
           )
         })}
       </h3>
