@@ -150,7 +150,7 @@ export default function Index() {
 
                             return(
                               <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
-                                <div className='time'>{item.time && Moment(item.time).format("HH:mm")}</div> 
+                                <div className='time'>{item.time && Moment(item.time).format("HH:mm")} {item.timeEnd && `- ${Moment(item.timeEnd).format("HH:mm")}`}</div> 
                                 <div className='artist'>{item.artist[0].title}</div>
                               </a>
                             )

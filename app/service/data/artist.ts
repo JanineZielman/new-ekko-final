@@ -7,6 +7,8 @@ export interface Artist {
   date: string;
   time: string;
   timeEnd: string;
+  openingTime: string;
+  closingTime: string;
   ekstraInfo: string;
   location: {
     title: string;
@@ -74,6 +76,8 @@ const query = gql`
       date
       time
       timeEnd
+      openingTime
+      closingTime
       ekstraInfo
       location {
         title

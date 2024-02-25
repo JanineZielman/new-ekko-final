@@ -39,6 +39,8 @@ export interface Event {
     date: string;
     time: string;
     timeEnd: string;
+    openingTime: string;
+    closingTime: string;
     location: {
       title: string;
       venue: string;
@@ -48,6 +50,8 @@ export interface Event {
       slug: string;
       title: string;
       artistMeta: string;
+      openingTime: string;
+    closingTime: string;
       featuredImage: { url: string }[];
       relatedLinks: {
         linkTitle: string;
@@ -118,6 +122,8 @@ const eventFragment = gql`
         date
         time
         timeEnd
+        openingTime
+        closingTime
         location {
           title
           venue
@@ -125,6 +131,8 @@ const eventFragment = gql`
         }
         artist {
           slug
+          openingTime
+          closingTime
           ... on artists_artist_Entry {
             title
             artistMeta

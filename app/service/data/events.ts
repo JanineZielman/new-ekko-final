@@ -28,6 +28,8 @@ export interface Event {
     date: string;
     time: string;
     timeEnd: string;
+    openingTime: string;
+    closingTime: string;
     location: {
       title: string;
       venue: string;
