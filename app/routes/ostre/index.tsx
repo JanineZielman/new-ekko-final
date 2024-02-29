@@ -65,32 +65,9 @@ export default function Oestre() {
       <div className="grid">
         <Spacer number={60} border={""}/>
         <div className='event-highlight'>
-          <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" />
+          {/* <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" /> */}
+          {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>}
         </div>
-        
-        {/* {filteredEvents.filter(item => item.type == 'event').slice(-1).map((item,i) => {
-          return(
-            <>
-              <Spacer number={72} border={""}/>
-              <a className='event-highlight' href={`/ostre/${item.slug}`}>
-                <img src={item.featuredImage?.[0]?.url} alt="" />
-                <div className='info-box'>
-                  <p className='time cap'>{Moment(item.date).format("dddd D.M.")} {item.openingTime && Moment(item.openingTime).format("HH:mm")}</p>
-                  <h2>{item.title}:</h2>
-                  <h2 className='artists'>
-                    {item.performances.map((performance,j) => {
-                      return(
-                        <span>
-                          {performance.artist[0].title}
-                        </span>
-                      )
-                    })}
-                  </h2>
-                </div>
-              </a>
-            </>
-          )
-        })} */}
       </div>
       {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
         return(
@@ -147,7 +124,7 @@ export default function Oestre() {
               }
               {item.url == '#arkiv' && 
                 <>
-                  {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>}
+                  {/* {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>} */}
                   <div className="grid">
                     <Spacer number={12} border={""}/>
                     <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>
