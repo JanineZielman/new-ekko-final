@@ -412,9 +412,9 @@
 		display: none
 	}
 
-	.spacer-60:nth-last-child(-n+25){
+	/* .spacer-60:nth-last-child(-n+25){
 		display: none
-	}
+	} */
 
 
 	/* .spacer-12:nth-last-child(-n+7){
