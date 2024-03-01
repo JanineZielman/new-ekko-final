@@ -412,6 +412,11 @@
 		display: none
 	}
 
+	.spacer-60:nth-last-child(-n+25){
+		display: none
+	}
+
+
 	/* .spacer-12:nth-last-child(-n+7){
 		display: none
 	} */

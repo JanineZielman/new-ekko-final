@@ -15,7 +15,7 @@ import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
 import KalenderItem from '~/components/kalenderItem';
-import ImageSlider from '~/components/imageSlider';
+import SimpleImageSlider from '~/components/SimpleImageSlider';
 import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({params}) => {
@@ -65,8 +65,8 @@ export default function Oestre() {
       <div className="grid">
         <Spacer number={60} border={""}/>
         <div className='event-highlight'>
-          <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" />
-          {/* {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>} */}
+          {/* <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" /> */}
+          {ostre.entry.linkedEvents.length > 0 && <SimpleImageSlider item={ostre.entry.linkedEvents}/>}
         </div>
       </div>
       {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
