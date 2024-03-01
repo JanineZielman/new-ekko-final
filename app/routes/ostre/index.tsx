@@ -15,7 +15,7 @@ import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
 import KalenderItem from '~/components/kalenderItem';
-import SimpleImageSlider from '~/components/SimpleImageSlider';
+import SimpleImageSlider from '~/components/simpleImageSlider';
 import SEO from '~/components/seo';
 
 export const loader: LoaderFunction = async ({params}) => {
