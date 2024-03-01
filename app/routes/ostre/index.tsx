@@ -65,8 +65,8 @@ export default function Oestre() {
       <div className="grid">
         <Spacer number={60} border={""}/>
         <div className='event-highlight'>
-          {/* <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" /> */}
-          {ostre.entry.linkedEvents.length > 0 && <SimpleImageSlider item={ostre.entry.linkedEvents}/>}
+          <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" />
+          {/* {ostre.entry.linkedEvents.length > 0 && <SimpleImageSlider item={ostre.entry.linkedEvents}/>} */}
         </div>
       </div>
       {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
