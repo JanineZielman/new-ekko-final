@@ -26,31 +26,34 @@ export default function Index() {
       imageUrl={news.entry.newsPhoto[0]?.url ? news.entry.newsPhoto[0]?.url : news.entry.pagePhoto[0]?.url}
     />
     <Container back={false}>
-      <div className="fake-grid news-page">
-
+			<div className="fake-grid news-page">
+        
 				<div className='left-wrap'>
 					<div className="padding">
 							<h1>{news.entry.title}</h1> 
-							<h3><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></h3>
+							<p><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></p>
+							{news.entry.complexContent?.map(block => {
+								if (block.blockType === 'text') {
+									return (
+										<div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+									);
+								}
+							})}
 					</div>
+					<br/>
+					
+				</div>
 
+
+				<div className='text-block padding news-text-block'>
+					<br/>
 					<div className='news-page-img'>
 						{news.entry.newsPhoto[0] ? 
 								<div className='img-wrapper'><img src={news.entry.newsPhoto[0]?.url} alt={news.entry.title} /></div>
 								: <div className='img-wrapper'><img src={news.entry.pagePhoto[0]?.url} alt={news.entry.title} /></div>
 							}
 					</div>
-				</div>
-
-
-				<div className='text-block padding news-text-block'>
-					<br/>
 					{news.entry.complexContent?.map(block => {
-						if (block.blockType === 'text') {
-							return (
-								<div dangerouslySetInnerHTML={{ __html: block.text }}></div>
-							);
-						}
 						if (block.blockType === 'embed') {
 							return (
 								<div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>

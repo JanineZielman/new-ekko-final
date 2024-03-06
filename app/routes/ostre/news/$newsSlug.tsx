@@ -46,6 +46,7 @@ export default function Index() {
 
 
 				<div className='text-block padding news-text-block'>
+					<br/>
 					<div className='news-page-img'>
 						{news.entry.newsPhoto[0] ? 
 								<div className='img-wrapper'><img src={news.entry.newsPhoto[0]?.url} alt={news.entry.title} /></div>
@@ -53,11 +54,6 @@ export default function Index() {
 							}
 					</div>
 					{news.entry.complexContent?.map(block => {
-						if (block.blockType === 'text') {
-							return (
-								<div dangerouslySetInnerHTML={{ __html: block.text }}></div>
-							);
-						}
 						if (block.blockType === 'embed') {
 							return (
 								<div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>
