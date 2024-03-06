@@ -170,6 +170,13 @@ export default function Index() {
             }
   
           </div>
+          {event.complexContent?.map(block => {
+              if (block.blockType === 'text') {
+                return (
+                  <div className='artist-text' dangerouslySetInnerHTML={{ __html: block.text }}></div>
+                );
+              }
+            })}
         </div>
         <div className='right-column'>
           <div className='img-wrapper'>
@@ -189,6 +196,27 @@ export default function Index() {
               </div>
             }
           </div>
+          {event.complexContent?.map(block => {
+            if (block.blockType === 'embed') {
+              return (
+                <div className='embed' dangerouslySetInnerHTML={{ __html: block.code }}></div>
+              );
+            }
+            if (block.blockType === 'video') {
+              return (
+                <div className='embed'>
+                  <iframe src={block.videoUrl.replace('youtube.com/watch?v=', 'youtube.com/embed/')}/>
+                </div>
+              );
+            }
+            if (block.blockType === 'imageBlock') {
+							return (
+								<div className='img-wrapper'>
+									<img  src={block.image[0].url}/>
+								</div>
+							);
+						}
+          })}
         </div>
       </div>
       <div className='fake-grid'>
