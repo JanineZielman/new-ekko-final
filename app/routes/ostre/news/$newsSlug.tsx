@@ -32,19 +32,26 @@ export default function Index() {
 					<div className="padding">
 							<h1>{news.entry.title}</h1> 
 							<p><div dangerouslySetInnerHTML={{ __html: news.entry.newsIntro }}></div></p>
+							{news.entry.complexContent?.map(block => {
+								if (block.blockType === 'text') {
+									return (
+										<div dangerouslySetInnerHTML={{ __html: block.text }}></div>
+									);
+								}
+							})}
 					</div>
+					<br/>
+					
+				</div>
 
+
+				<div className='text-block padding news-text-block'>
 					<div className='news-page-img'>
 						{news.entry.newsPhoto[0] ? 
 								<div className='img-wrapper'><img src={news.entry.newsPhoto[0]?.url} alt={news.entry.title} /></div>
 								: <div className='img-wrapper'><img src={news.entry.pagePhoto[0]?.url} alt={news.entry.title} /></div>
 							}
 					</div>
-				</div>
-
-
-				<div className='text-block padding news-text-block'>
-					<br/>
 					{news.entry.complexContent?.map(block => {
 						if (block.blockType === 'text') {
 							return (

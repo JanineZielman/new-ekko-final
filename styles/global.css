@@ -1087,6 +1087,7 @@ footer{
 
 .news-text-block{
   width: 48%;
+  box-sizing: border-box;
 }
 
 .Collapsible .content-parent .content, .contact{
