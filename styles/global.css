@@ -523,6 +523,27 @@ p a:hover, .social-links a:hover{
     }
 }
 
+.no-img.grid {
+  & .intro{
+    width: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    & p{
+      display: none;
+    }
+  }
+  & .item{
+    & .graphic-element{
+      display: none;
+    }
+    & .float.intro{
+      display: none;
+    }
+  }
+}
+
 .float.title{
   top: 215%;
   margin-top: 0.6vw;

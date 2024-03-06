@@ -84,7 +84,7 @@ export default function Index() {
       imageUrl={event.festivalSectionGraphicElements?.[0]?.url}
     />
     <Container back={false}>
-			<div className="grid festival-page-grid">
+			<div className={`grid festival-page-grid ${event.festivalSectionGraphicElements?.[0]?.url ? '' : 'no-img'}`}>
         <div className='item w1 overflow'>
           <div className='float graphic-element'>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
@@ -92,6 +92,9 @@ export default function Index() {
           </div>
           <h2 className='float intro' dangerouslySetInnerHTML={{ __html: event.intro }}></h2>
         </div>
+        {!event.festivalSectionGraphicElements?.[0]?.url &&
+          <h2 className='intro' dangerouslySetInnerHTML={{ __html: event.intro }}></h2>
+        }
         <Spacer number={59} border=""/>
 			</div>
 
