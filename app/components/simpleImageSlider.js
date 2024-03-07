@@ -5,8 +5,8 @@ export default function SimpleImageSlider({ item }) {
     dots: true,
     infinite: true,
     speed: 500,
-    centerMode: true,
-    centerPadding: "25%",
+    centerMode: false,
+    // centerPadding: "25%",
     slidesToShow: 1,
     slidesToScroll: 1,
     responsive: [
@@ -28,7 +28,7 @@ export default function SimpleImageSlider({ item }) {
         return(
           slide.gallery ?
             slide.gallery.map((slideItem, i) => (
-              <div className="slide-wrapper">
+              <div className="slide-wrapper2">
                 {/* <span className="credits">{slideItem.title}</span> */}
                 <img src={slideItem.url}/>
                 {/* <a className='info-box' href={`${slide.performances ? `/ostre/${slide.slug}` : `/festival/${slide.slug}`}`}>

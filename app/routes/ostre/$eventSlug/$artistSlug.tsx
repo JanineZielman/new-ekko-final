@@ -49,9 +49,9 @@ export default function Index() {
             <div className='info-text'>
               <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
               {/* <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p> */}
-              {event.openingTime &&
+              {/* {event.openingTime &&
                 <p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>
-              }
+              } */}
               {artist.openingTime &&
                 <p><span>Åpningstid:</span> <span>{Moment(artist.openingTime).format("HH:mm")} {artist.closingTime && `- ${Moment(artist.closingTime).format("HH:mm")}`}</span></p>
               }

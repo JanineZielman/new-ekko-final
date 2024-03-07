@@ -894,6 +894,22 @@ footer{
 
 /* agenda */
 
+.festival .agenda-item {
+  background-color: var(--festival_light);
+  & :hover{
+    background-color: var(--festival);
+  }
+  & .event-title{
+    width: 20%;
+  }
+  & .artists{
+    width: 50%;
+    & span:after{
+      content: "";
+    }
+  }
+}
+
 .agenda-item{
   background-color: var(--white);
   display: flex;
