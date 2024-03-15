@@ -53,7 +53,7 @@ export default function Archive() {
                 <div className='time'>
                   <div className='indicator'>Dato</div>
                   <p className="cap">
-                    {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.")}`} 
+                    {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.YYYY")}`} 
                   </p>
                 </div>
                 <div className="event-title">
@@ -62,7 +62,7 @@ export default function Archive() {
                 </div>
                 <div className='artists'>
                   <div className='indicator'>Artister</div>
-                  <h3  dangerouslySetInnerHTML={{ __html: item.artists }}></h3>
+                  <h3>{item.artists.replace(/\n/g, ", ")}</h3>
                 </div>
               </div>
             }

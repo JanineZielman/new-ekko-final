@@ -34,8 +34,6 @@ export default function Archive() {
     return itemDate.getTime() <= currentTime.getTime();
   });
 
-  console.log(archive)
-
   return (
     <>
     <SEO
@@ -65,7 +63,7 @@ export default function Archive() {
               <div className='time'>
                 <div className='indicator'>Dato</div>
                 <p className="cap">
-                  {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.")}`} 
+                  {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.YYYY")}`} 
                 </p>
               </div>
               <div className="event-title">
