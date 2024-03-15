@@ -10,7 +10,6 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import ArchiveItem from '~/components/archiveItem';
 
-
 export const loader: LoaderFunction = async () => {
   const [events, archive] = await Promise.all([
     fetchAllEvents(999),
