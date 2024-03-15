@@ -109,7 +109,7 @@ body {
       background-color: var(--festival)!important;
     }
     & .agenda-item:hover{
-      background-color: var(--festival_light);
+      background-color: var(--festival);
     }
   }
 }
@@ -896,9 +896,9 @@ footer{
 
 .festival .agenda-item {
   background-color: var(--festival_light);
-  & :hover{
+  /* & :hover{
     background-color: var(--festival);
-  }
+  } */
   & .event-title{
     width: 20%;
   }
@@ -1723,3 +1723,24 @@ footer{
     }
   }
 } */
+
+.fake-grid.black{
+  & .agenda-item:hover{
+    color: white;
+  }
+  & .archive-title{
+    border-color: black;
+  }
+}
+
+.fake-grid.yellow{
+  & .archive-title{
+    border-color: black;
+  }
+}
+
+.archive-title{
+  padding: 18px 2%;
+  border-bottom: 1px solid white;
+  margin: 0;
+}
