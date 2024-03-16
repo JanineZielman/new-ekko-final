@@ -84,7 +84,7 @@ export default function Oestre() {
               }
               {item.url == '#kalender' && 
                 <>
-                  {filteredEvents.filter(item => item.type == 'event').slice(-5).reverse().map((item,i) => {
+                  {filteredEvents.filter(item => item.type == 'event').slice(-20).reverse().map((item,i) => {
                     return(
                       <>
                       {item.linkedFestival.length == 0 &&
@@ -98,10 +98,10 @@ export default function Oestre() {
                     )
                   })}
                   
-                  <div className="grid">
+                  {/* <div className="grid">
                     <Spacer number={12} border={""}/>
                     <a className='show-all-button' href="/ostre/kalender"><h2>Full kalender</h2></a>
-                  </div>
+                  </div> */}
                 </>
               }
               {item.url == "#intro" && 

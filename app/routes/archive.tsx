@@ -32,7 +32,8 @@ export default function Archive() {
       imageUrl={''}
     />
     <Container back={false}>
-      <div className='fake-grid'>
+      <div className='fake-grid black'>
+        <h1 className='archive-title'>Archive</h1>
         {filteredEvents.map(event => (
           <>
             {event.type == 'festival' ?
