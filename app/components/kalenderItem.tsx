@@ -56,8 +56,7 @@ export default function KalenderItem({ item }: { item: any }) {
           <a className='ticket-link button' href={item.ticketLink} target="_blank">Kjøp billetter</a>
         </div>
         :
-        <div className='ticket-button'>
-          <div className='ticket-link button'>Kjøp billetter</div>
+        <div className='ticket-button no-ticket'>
         </div>
       }
     </div>

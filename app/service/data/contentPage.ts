@@ -25,13 +25,6 @@ export interface PageEntry {
         title: string;
       }[];
     }[];
-    pastEvents: {
-      eventTitle: string;
-      isFestival: boolean;
-      date: string;
-      dateEnd: string;
-      artists: string;
-    }[];
   };
 }
 
@@ -56,17 +49,6 @@ const query = gql`
           sectionBody
           images{
             url
-          }
-        }
-      }
-      ... on archive_archive_Entry{
-        pastEvents{
-          ... on pastEvents_event_BlockType{
-            eventTitle
-            isFestival
-            date
-            dateEnd
-            artists
           }
         }
       }
