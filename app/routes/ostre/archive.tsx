@@ -78,7 +78,6 @@ export default function Archive() {
           )
         })}
       </div>
-
       <div className="grid">
         <Spacer number={12} border={""}/>
       </div>
