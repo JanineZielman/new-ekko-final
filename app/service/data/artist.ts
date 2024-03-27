@@ -38,7 +38,7 @@ const artistFragment = gql`
     title
     artistMeta
     featuredImage: artistFeaturedPhoto {
-      url
+      url(transform: "optimised")
     }
     relatedLinks {
       linkTitle
@@ -60,7 +60,7 @@ const artistFragment = gql`
       ... on complexContent_imageBlock_BlockType {
         blockType: typeHandle
         image {
-          url
+          url(transform: "optimised")
         }
       }
     }

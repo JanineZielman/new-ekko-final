@@ -19,10 +19,10 @@ const query = gql`
       title
       newsIntro
 			newsPhoto {
-				url
+				url(transform: "optimised")
 			}
 			pagePhoto {
-				url
+				url(transform: "optimised")
 			}
     }
   }

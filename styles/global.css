@@ -1608,7 +1608,7 @@ footer{
     border-left: 2px solid var(--black);
   }
   border-left: 2px solid var(--white);
-  boz-sizing: border-box;
+  box-sizing: border-box;
   padding: 2vw;
   & .img-wrapper{
     width: 100%;

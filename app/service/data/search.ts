@@ -37,7 +37,7 @@ const query = gql`
       type: typeHandle
       ... on events_event_Entry {
         featuredImage: eventFeaturedPhoto {
-          url
+          url(transform: "optimised")
         }
         date
         performances {
@@ -55,7 +55,7 @@ const query = gql`
               title
               ... on artists_artist_Entry {
                 featuredImage: artistFeaturedPhoto{
-                  url
+                  url(transform: "optimised")
                 }
               }
             }
@@ -64,7 +64,7 @@ const query = gql`
       }
       ... on events_festival_Entry {
         featuredImage: eventFeaturedPhoto {
-          url
+          url(transform: "optimised")
         }
         date
         performances {
@@ -82,7 +82,7 @@ const query = gql`
               title
               ... on artists_artist_Entry {
                 featuredImage: artistFeaturedPhoto{
-                  url
+                  url(transform: "optimised")
                 }
               }
             }

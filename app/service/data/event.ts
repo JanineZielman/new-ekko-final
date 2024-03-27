@@ -73,7 +73,7 @@ const eventFragment = gql`
       title
     }
     featuredImage: eventFeaturedPhoto {
-      url
+      url(transform: "optimised")
     }
     isMultiDay
     singlePage
@@ -88,7 +88,7 @@ const eventFragment = gql`
       room
     }
     gallery{
-      url
+      url(transform: "optimised")
       title
     }
     intro
@@ -111,7 +111,7 @@ const eventFragment = gql`
       ... on complexContent_imageBlock_BlockType {
         blockType: typeHandle
         image {
-          url
+          url(transform: "optimised")
         }
       }
     }
@@ -137,7 +137,7 @@ const eventFragment = gql`
             title
             artistMeta
             featuredImage: artistFeaturedPhoto {
-              url
+              url(transform: "optimised")
             }
             relatedLinks {
               linkTitle
@@ -159,7 +159,7 @@ const eventFragment = gql`
               ... on complexContent_imageBlock_BlockType {
                 blockType: typeHandle
                 image {
-                  url
+                  url(transform: "optimised")
                 }
               }
             }

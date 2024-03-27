@@ -88,7 +88,7 @@ const query = gql`
         openingTime
         closingTime
         featuredImage: eventFeaturedPhoto {
-          url
+          url(transform: "optimised")
         }
         location {
           title
@@ -120,7 +120,7 @@ const query = gql`
               title
               ... on artists_artist_Entry {
                 featuredImage: artistFeaturedPhoto{
-                  url
+                  url(transform: "optimised")
                 }
               }
             }
@@ -129,7 +129,7 @@ const query = gql`
       }
       ... on events_festival_Entry {
         featuredImage: eventFeaturedPhoto {
-          url
+          url(transform: "optimised")
         }
         location {
           title
@@ -158,7 +158,7 @@ const query = gql`
               title
               ... on artists_artist_Entry {
                 featuredImage: artistFeaturedPhoto{
-                  url
+                  url(transform: "optimised")
                 }
               }
             }
@@ -175,7 +175,7 @@ const query = gql`
               fullTitle
             }
             featuredImage: artistFeaturedPhoto {
-              url
+              url(transform: "optimised")
             }
             performances {
               ... on performance_performance_Entry {
@@ -194,7 +194,7 @@ const query = gql`
                     title
                     artistMeta
                     featuredImage: artistFeaturedPhoto {
-                      url
+                      url(transform: "optimised")
                     }
                   }
                 }

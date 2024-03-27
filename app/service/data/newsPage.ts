@@ -27,10 +27,10 @@ const query = gql`
       slug
       title
 			newsPhoto {
-				url
+				url(transform: "optimised")
 			}
 			pagePhoto {
-				url
+				url(transform: "optimised")
 			}
 			newsIntro
 			complexContent {
@@ -49,7 +49,7 @@ const query = gql`
 				... on complexContent_imageBlock_BlockType {
 					blockType: typeHandle
 					image {
-						url
+						url(transform: "optimised")
 					}
 				}
 			}

@@ -47,7 +47,7 @@ const query = gql`
       content: pageContent
       ... on legal_legal_Entry {
         pagePhoto{
-          url
+          url(transform: "optimised")
         }
       }
       sections {
@@ -55,7 +55,7 @@ const query = gql`
           sectionTitle
           sectionBody
           images{
-            url
+            url(transform: "optimised")
           }
         }
       }
@@ -75,7 +75,7 @@ const query = gql`
         ... on events_event_Entry {
           slug
           gallery {
-            url
+            url(transform: "optimised")
             title
           }
           date
@@ -92,7 +92,7 @@ const query = gql`
         }
         ... on events_festival_Entry {
           gallery {
-            url
+            url(transform: "optimised")
             title
           }
           date

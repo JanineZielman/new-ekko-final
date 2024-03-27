@@ -7,7 +7,9 @@ export interface Event {
   url: string;
   organizer: { title: string }[];
   featuredImage: { url: string }[];
-  festivalSectionGraphicElements: { url: string }[];
+  festivalSectionGraphicElements: { 
+    url: string 
+  }[];
   isMultiDay: boolean;
   date: string;
   dateEnd: string;
@@ -118,21 +120,21 @@ const eventFragment = gql`
       title
       newsIntro
 			newsPhoto {
-				url
+				url(transform: "optimised")
 			}
 			pagePhoto {
-				url
+				url(transform: "optimised")
 			}
     }
     gallery {
-      url
+      url(transform: "optimised")
       title
     }
     featuredImage: eventFeaturedPhoto {
-      url
+      url(transform: "optimised")
     }
     festivalSectionGraphicElements{
-      url
+      url(transform: "optimised")
     }
     program {
       date
@@ -171,7 +173,7 @@ const eventFragment = gql`
         sectionTitle
         sectionBody
         images{
-          url
+          url(transform: "optimised")
         }
       }
     }
@@ -194,7 +196,7 @@ const eventFragment = gql`
             title
             artistMeta
 						featuredImage: artistFeaturedPhoto {
-							url
+							url(transform: "optimised")
 						}
           }
         }
@@ -212,7 +214,7 @@ const eventFragment = gql`
           room
         }
         featuredImage: artistFeaturedPhoto {
-          url
+          url(transform: "optimised")
         }
         performances {
           ... on performance_performance_Entry {
@@ -232,7 +234,7 @@ const eventFragment = gql`
                 title
                 artistMeta
                 featuredImage: artistFeaturedPhoto {
-                  url
+                  url(transform: "optimised")
                 }
               }
             }
