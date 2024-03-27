@@ -45,6 +45,9 @@ const query = gql`
       title
       contact
       content: pageContent
+      gallery {
+        url(transform: "optimised")
+      }
       ... on legal_legal_Entry {
         pagePhoto{
           url(transform: "optimised")

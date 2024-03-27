@@ -15,8 +15,8 @@ import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import News from '~/components/news';
 import KalenderItem from '~/components/kalenderItem';
-import SimpleImageSlider from '~/components/simpleImageSlider';
 import SEO from '~/components/seo';
+import ImageSlider from '~/components/imageSlider';
 
 export const loader: LoaderFunction = async ({params}) => {
   const [ostre, news, events, navigation] = await Promise.all([
@@ -53,6 +53,7 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
+  console.log(ostre.entry.gallery)
 
   return (
     <>
@@ -124,7 +125,7 @@ export default function Oestre() {
               }
               {item.url == '#arkiv' && 
                 <>
-                  {/* {ostre.entry.linkedEvents.length > 0 && <ImageSlider item={ostre.entry.linkedEvents}/>} */}
+                  {ostre.entry.gallery?.length > 0 && <ImageSlider item={ostre.entry.gallery}/>}
                   <div className="grid">
                     <Spacer number={12} border={""}/>
                     <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>

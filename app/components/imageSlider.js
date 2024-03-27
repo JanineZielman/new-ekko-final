@@ -1,59 +1,49 @@
-import Slider from "react-slick";
+import React, { useEffect, useState } from "react";
+import FsLightbox from "fslightbox-react";
 
 export default function ImageSlider({ item }) {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    centerMode: true,
-    centerPadding: "25%",
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 600,
-        settings: {
-          centerMode: false,
-        }
-      }
-     ]
-  };
+  const [lightboxController, setLightboxController] = useState({
+		toggler: false,
+		slide: 1
+	});
+
+	function openLightboxOnSlide(number) {
+		setLightboxController({
+			toggler: !lightboxController.toggler,
+			slide: number
+		});
+	}
+
 
   var Moment = require('moment');
   require('moment/locale/nb');
+
+  const [urls, setUrls] = useState([]);
+
+
+  useEffect(() => {
+    for (let i = 0; i < item.length; i++) {
+      urls.push(item[i].url)
+    }
+  }, [])
   
   return (
-    <Slider {...settings}>
+    <div className='grid gallery'>
       {item.map((slide, i) => {
         return(
-          slide.gallery ?
-            slide.gallery.map((slideItem, i) => (
-              <div className="slide-wrapper">
-                <span className="credits">{slideItem.title}</span>
-                <img src={slideItem.url}/>
-                <a className='info-box' href={`${slide.performances ? `/ostre/${slide.slug}` : `/festival/${slide.slug}`}`}>
-                  <p className='time cap'>{Moment(item.date).format("dddd D.M. yy")}</p>
-                  <h2>{slide.title}</h2>
-                  <h2 className='artists'>
-                    {slide.performances?.map((performance,j) => {
-                      return(
-                        <span>
-                          {performance.artist[0].title}
-                        </span>
-                      )
-                    })}
-                  </h2>
-                </a>
-              </div>
-            ))
-          :
-            <div className="slide-wrapper">
-              <span className="credits">{slide.title}</span>
-              <img src={slide.url}/>
-            </div>
-            
+          <div className="img-wrapper" onClick={() => openLightboxOnSlide(Number(i + 1))}>
+            <img src={slide.url}/>
+          </div>
         )
       })}
-    </Slider>
+
+      <FsLightbox
+        toggler={lightboxController.toggler}
+        sources={urls}
+        type={'image'}
+        slide={lightboxController.slide}
+      />
+
+    </div>
   );
 }
