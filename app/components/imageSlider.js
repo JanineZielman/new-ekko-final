@@ -15,9 +15,6 @@ export default function ImageSlider({ item }) {
 	}
 
 
-  var Moment = require('moment');
-  require('moment/locale/nb');
-
   const [urls, setUrls] = useState([]);
 
 

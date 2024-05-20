@@ -253,9 +253,15 @@ export default function Index() {
               {item.url == "#frivillig" && 
                 <div className='content flex' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
               }
+              {item.url == "#bilder" && 
+                <>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                  {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
+                </>
+              }
               {item.url == "#arkiv" && 
                 <>
-                  {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
+                 <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
                   <div className="grid">
                     <Spacer number={12} border={""}/>
                     <a className='show-all-button' href="/festival/archive"><h2>Vis fullt arkiv</h2></a>

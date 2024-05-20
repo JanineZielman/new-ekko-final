@@ -17,6 +17,8 @@ export interface Event {
   gallery: {
     url:string;
     title: string;
+    artistName: string
+    ekstraInfo: string
   }[];
   linkednews: {
     id: number;
@@ -129,6 +131,8 @@ const eventFragment = gql`
     gallery {
       url(transform: "optimised")
       title
+      artistName
+      ekstraInfo
     }
     featuredImage: eventFeaturedPhoto {
       url(transform: "optimised")

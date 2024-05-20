@@ -20,6 +20,8 @@ export interface Event {
   gallery: {
     url: string;
     title: string;
+    artistName: string
+    ekstraInfo: string
   }[];
   intro: string;
   description: string;
@@ -90,6 +92,8 @@ const eventFragment = gql`
     gallery{
       url(transform: "optimised")
       title
+      artistName
+      ekstraInfo
     }
     intro
     description

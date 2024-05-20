@@ -11,6 +11,8 @@ export interface PageEntry {
     gallery: {
       url: string
       title: string
+      artistName: string
+      ekstraInfo: string
     }[];
     linkedEvents: {
       slug: string;
@@ -47,6 +49,8 @@ const query = gql`
       content: pageContent
       gallery {
         url(transform: "optimised")
+        artistName
+        ekstraInfo
       }
       ... on legal_legal_Entry {
         pagePhoto{
@@ -80,6 +84,8 @@ const query = gql`
           gallery {
             url(transform: "optimised")
             title
+            artistName
+            ekstraInfo
           }
           date
           title
@@ -97,6 +103,8 @@ const query = gql`
           gallery {
             url(transform: "optimised")
             title
+            artistName
+            ekstraInfo
           }
           date
           title

@@ -53,7 +53,6 @@ export default function Oestre() {
     return itemDate.getTime() >= currentTime.getTime();
   });
 
-  console.log(ostre.entry.gallery)
 
   return (
     <>
@@ -67,7 +66,6 @@ export default function Oestre() {
         <Spacer number={60} border={""}/>
         <div className='event-highlight'>
           <img src="/main-pic-festival-2016_web_160701_122022.jpg" alt="" />
-          {/* {ostre.entry.linkedEvents.length > 0 && <SimpleImageSlider item={ostre.entry.linkedEvents}/>} */}
         </div>
       </div>
       {navigation.nodes.filter(word => word.navHandle == 'ostre').map((item, i) => {
@@ -123,9 +121,15 @@ export default function Oestre() {
                   {ostre.entry.content && <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.content }}></div>}
                 </div>
               }
+              {item.url == '#bilder' && 
+                <>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                  {ostre.entry.gallery?.length > 0 && <ImageSlider item={ostre.entry.gallery}/>}
+                </>
+              }
               {item.url == '#arkiv' && 
                 <>
-                  {ostre.entry.gallery?.length > 0 && <ImageSlider item={ostre.entry.gallery}/>}
+                  <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
                   <div className="grid">
                     <Spacer number={12} border={""}/>
                     <a className='show-all-button' href="/ostre/archive"><h2>Vis fullt arkiv</h2></a>

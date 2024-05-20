@@ -1747,6 +1747,7 @@ footer{
 
 .grid.gallery{
   /* margin-top: 1px; */
+  border: none;
   & .img-wrapper{
     border: 1px solid black;
   }
