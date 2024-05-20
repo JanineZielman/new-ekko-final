@@ -12,15 +12,30 @@ export default function ImageSlider({ item }) {
 			toggler: !lightboxController.toggler,
 			slide: number
 		});
+   
+    setTimeout(() => {
+      for (let i = 0; i < item.length; i++) {
+        const caption = document.createElement("p");
+        caption.classList.add('caption-img')
+        caption.innerHTML = document.getElementById('slide-img' + (i + 1)).alt;
+        document.getElementById('slide-img' + (i + 1)).parentElement.appendChild(caption);
+      }
+    }, 1000);
+
 	}
 
 
   const [urls, setUrls] = useState([]);
+  const [captions, setCaptions] = useState([]);
 
 
   useEffect(() => {
     for (let i = 0; i < item.length; i++) {
       urls.push(item[i].url)
+      captions.push({
+        alt: item[i].artistName + ', ' + item[i].ekstraInfo,
+        id: 'slide-img' + (i + 1)
+      })
     }
   }, [])
   
@@ -28,7 +43,7 @@ export default function ImageSlider({ item }) {
     <div className='grid gallery'>
       {item.map((slide, i) => {
         return(
-          <div className="img-wrapper" onClick={() => openLightboxOnSlide(Number(i + 1))}>
+          <div id={`slide${i+1}`} className="img-wrapper" onClick={() => openLightboxOnSlide(Number(i + 1))}>
             <img src={slide.url}/>
           </div>
         )
@@ -39,6 +54,7 @@ export default function ImageSlider({ item }) {
         sources={urls}
         type={'image'}
         slide={lightboxController.slide}
+        customAttributes={captions}
       />
 
     </div>

@@ -256,7 +256,7 @@ export default function Index() {
               {item.url == "#bilder" && 
                 <>
                   <div className='content' dangerouslySetInnerHTML={{ __html: event.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
-                  {event.gallery.length > 0 && <ImageSlider item={event.gallery}/>}
+                  {ekko_festival_info.entry.gallery.length > 0 && <ImageSlider item={ekko_festival_info.entry.gallery}/>}
                 </>
               }
               {item.url == "#arkiv" && 

@@ -49,6 +49,7 @@ const query = gql`
       content: pageContent
       gallery {
         url(transform: "optimised")
+        title
         artistName
         ekstraInfo
       }

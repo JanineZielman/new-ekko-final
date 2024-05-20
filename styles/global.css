@@ -1752,3 +1752,8 @@ footer{
     border: 1px solid black;
   }
 }
+
+.caption-img{
+  color: white;
+  text-align: center;
+}
