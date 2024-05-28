@@ -1669,7 +1669,12 @@ footer{
         justify-content: space-between;
       }
       & .time {
-        width: 30%;
+        width: fit-content;
+        white-space: nowrap;
+        padding-right: 14px;
+      }
+      &.artist{
+        width: 100%;
       }
     }
   }

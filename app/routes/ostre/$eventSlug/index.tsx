@@ -139,6 +139,17 @@ export default function Index() {
                 <div className='dagens-program'>
                   {uniqueDates.map((item, i) => {
                     const filteredPerformance = event.performances.filter(performance => performance.date == item);
+                    filteredPerformance.sort(function (a, b) {
+                      let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
+                      let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
+                      if (first < 6){
+                        first = first + 24;
+                      }
+                      if (second < 6){
+                        second = second + 24;
+                      }
+                      return first - second
+                    });
                     return(
                       <div className={`day ${event.singlePage}`}>
                         {event.singlePage &&
