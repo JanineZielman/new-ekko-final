@@ -104,10 +104,10 @@ export default function Index() {
             <>
               {item.url == '#nyheter' && event.linkednews.length > 0 &&
                 <>
-                  <News news={event.linkednews} page={`festival`}/>
+                  <News news={event.linkednews.slice(0,4)} page={`festival/${slug}`}/>
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href="/festival/news"><h2>Show all</h2></a>
+                    <a className='show-all-button' href={`/festival/${slug}/news`}><h2>Show all</h2></a>
                   </div>
                 </>
               }

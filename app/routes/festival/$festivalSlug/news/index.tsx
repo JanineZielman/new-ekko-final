@@ -8,16 +8,21 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import SEO from '~/components/seo';
 
-export const loader: LoaderFunction = async () => {
-  const [news] = await Promise.all([
-    fetchRecentNews(25),
+import { fetchEvent } from '~/service/data/festival';
+import type { Event } from '~/service/data/festival';
+
+export const loader: LoaderFunction = async ({params}) => {
+  const [event] = await Promise.all([
+    fetchEvent(params.festivalSlug!),
   ]);
 
-  return { news };
+  const slug = params.festivalSlug;
+
+  return { event, slug };
 };
 
 export default function Index() {
-  const { news } = useLoaderData<{ news: RecentNews }>();
+  const { event, slug } = useLoaderData<{ event: Event,  slug: String }>();
 
   return (
     <>
@@ -28,9 +33,9 @@ export default function Index() {
     />
     <Container back={false}>
       <div className="fake-grid news-section">
-        {news?.events?.map((item, i) => {
+        {event.linkednews?.map((item, i) => {
           return (
-            <Link to={`/festival/news/${item.slug}`} key={`news-${i}`} className="news-grid-item">
+            <Link to={`/festival/${slug}/news/${item.slug}`} key={`news-${i}`} className="news-grid-item">
               <div className='img-wrapper'><img src={item.pagePhoto[0]?.url} alt={item.title} /></div>
               <div className="flex space-between padding">
                  <h3>{item.title}</h3>
