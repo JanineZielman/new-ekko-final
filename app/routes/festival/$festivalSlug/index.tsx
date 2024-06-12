@@ -84,7 +84,7 @@ export default function Index() {
       imageUrl={event.festivalSectionGraphicElements?.[0]?.url}
     />
     <Container back={false}>
-			<div className={`grid festival-page-grid ${event.festivalSectionGraphicElements?.[0]?.url ? '' : 'no-img'}`}>
+			<div className={`grid festival-page-grid ${event.slug} ${event.festivalSectionGraphicElements?.[0]?.url ? '' : 'no-img'}`}>
         <div className='item w1 overflow'>
           <div className='float graphic-element'>
             <img src={event.festivalSectionGraphicElements?.[0]?.url}/>
