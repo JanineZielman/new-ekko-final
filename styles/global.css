@@ -572,10 +572,16 @@ body.festival .festival-page-grid{
 
 .ekko-xxi .float.intro{
   color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  width: 1100%;
+  left: 50%;
+  z-index: 9;
 }
 
 .ekko-xxi.grid .item .graphic-element img{
   width: 100%;
+  margin-top: -1vw;
   &:nth-child(2){
     display: none;
   }

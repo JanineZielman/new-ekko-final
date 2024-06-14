@@ -583,6 +583,13 @@
 		width: 100%;
 	}
 
+	.ekko-xxi.grid .float.graphic-element img{
+		object-position: left center;
+		margin-left: -15%;
+		width: 115%;
+		margin-top: 1vw;
+	}
+
 	.ekko-xxi .float.intro{
 		left: 0;
 		transform: translate(-50%, -50%);
@@ -590,6 +597,8 @@
 		left: 50%;
 		font-size: 6vw;
 		position: absolute;
+		width: 135%;
+		margin-left: 24%;
 		& p{
 			font-size: 6vw;
 		}
