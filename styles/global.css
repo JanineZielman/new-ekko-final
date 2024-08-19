@@ -1,8 +1,8 @@
 :root {
   --black: #000;
   --white: rgb(230,230,230);
-  --festival: #FFD800;
-  --festival_light: #EFDA6A;
+  --festival: #ff6e37;
+  --festival_light: #ff7e46;
   --ostre: #000;
   --ostre_light: #111;
 
@@ -390,7 +390,7 @@ body {
   position: fixed;
   width: 100vw;
   background-color: inherit;
-  z-index: 3;
+  z-index: 10;
   top: 0;
   padding: 10px 0;
 
@@ -568,6 +568,23 @@ p a:hover, .social-links a:hover{
 
 body.festival .festival-page-grid{
   margin-bottom: -2px;
+}
+
+.ekko-xxi .float.intro{
+  color: #fafafa;
+  display: flex;
+  justify-content: space-between;
+  width: 1100%;
+  left: 50%;
+  z-index: 9;
+}
+
+.ekko-xxi.grid .item .graphic-element img{
+  width: 100%;
+  margin-top: -1vw;
+  &:nth-child(2){
+    display: none;
+  }
 }
 
 .animation{
