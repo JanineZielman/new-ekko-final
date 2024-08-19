@@ -20,7 +20,7 @@ export default function KalenderItem({ item }: { item: any }) {
         <div className='title'></div>
       }
       <div className="event-title">
-        <div className='indicator'>Title</div>
+        <div className='indicator'>Tittel</div>
         <p>{item.title}</p>
       </div>
 

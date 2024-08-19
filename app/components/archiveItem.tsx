@@ -13,7 +13,7 @@ export default function ArchiveItem({ item }: { item: any }) {
       </div>
      
       <div className="event-title">
-        <div className='indicator'>Title</div>
+        <div className='indicator'>Tittel</div>
         <p>{item.title}</p>
       </div>
       <div className='artists'>

@@ -67,7 +67,7 @@ export default function Archive() {
                 </p>
               </div>
               <div className="event-title">
-                <div className='indicator'>Title</div>
+                <div className='indicator'>Tittel</div>
                 <p>{item.eventTitle}</p>
               </div>
               <div className='artists'>
