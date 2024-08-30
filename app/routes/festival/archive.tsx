@@ -34,7 +34,7 @@ export default function Archive() {
   return (
     <Container back={false}>
       <div className='fake-grid yellow'>
-        <h1 className='archive-title'>Archive</h1>
+        <h1 className='archive-title'>Arkiv</h1>
         {filteredEvents.map(event => (
           <>
             {event.type == 'festival' &&

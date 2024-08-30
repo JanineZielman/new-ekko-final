@@ -43,7 +43,7 @@ export default function Archive() {
     />
     <Container back={'/ostre'}>
       <div className='fake-grid'>
-        <h1 className='archive-title'>Archive</h1>
+        <h1 className='archive-title'>Arkiv</h1>
         {filteredEvents.map(event => (
           <>
             {event.type == 'festival' ?

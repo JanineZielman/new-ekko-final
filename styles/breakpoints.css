@@ -611,3 +611,10 @@
 		display: none;
 	}
 }
+
+
+.hide-for-desktop{
+	& .search-link{
+		padding-right: 10px;
+	}
+}

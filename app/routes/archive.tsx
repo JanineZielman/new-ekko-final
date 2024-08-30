@@ -27,13 +27,13 @@ export default function Archive() {
   return (
     <>
     <SEO
-      title={`Archive`}
+      title={`Arkiv`}
       description={''}
       imageUrl={''}
     />
     <Container back={false}>
       <div className='fake-grid black'>
-        <h1 className='archive-title'>Archive</h1>
+        <h1 className='archive-title'>Arkiv</h1>
         {filteredEvents.map(event => (
           <>
             {event.type == 'festival' ?

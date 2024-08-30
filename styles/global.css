@@ -73,6 +73,12 @@ body {
   &.ostre{
     background-color: var(--ostre);
     color: var(--white);
+    & .open-menu{
+      background-color: var(--white);
+    }
+    & .close-menu{
+      color: var(--white);
+    }
     & .toggle-menu{
       background-color: var(--white);
     }
