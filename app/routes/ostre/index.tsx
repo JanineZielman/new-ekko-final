@@ -77,7 +77,7 @@ export default function Oestre() {
                   <News news={news.events} page={`ostre`}/>
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href="/ostre/news"><h2>Show all</h2></a>
+                    <a className='show-all-button' href="/ostre/news"><h2>Vis alt</h2></a>
                   </div>
                 </>
               }

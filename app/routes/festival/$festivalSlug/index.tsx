@@ -107,7 +107,7 @@ export default function Index() {
                   <News news={event.linkednews.slice(0,4)} page={`festival/${slug}`}/>
                   <div className="grid">
                     <Spacer number={12} border={""}/>
-                    <a className='show-all-button' href={`/festival/${slug}/news`}><h2>Show all</h2></a>
+                    <a className='show-all-button' href={`/festival/${slug}/news`}><h2>Vis alt</h2></a>
                   </div>
                 </>
               }
