@@ -25,18 +25,6 @@ export default function Index() {
     return Moment(a.date) - Moment(b.date);
   });
 
-  // event.performances.sort(function (a, b) {
-  //   let first = parseFloat(Moment(a.time).format("HH")) + (parseFloat(Moment(a.time).format("mm")) / 60) ;
-  //   let second = parseFloat(Moment(b.time).format("HH")) + (parseFloat(Moment(b.time).format("mm")) / 60);
-  //   if (first < 6){
-  //     first = first + 24;
-  //   }
-  //   if (second < 6){
-  //     second = second + 24;
-  //   }
-  //   return first - second
-  // });
-
   function isDateInArray(needle:any, haystack:any) {
     for (var i = 0; i < haystack.length; i++) {
       if (needle === haystack[i]) {
@@ -113,7 +101,7 @@ export default function Index() {
             }
             
             <div className='info-text'>
-              <p><span>Dato:</span> <span className='cap'>{Moment(event.date)?.format("dddd D.M.")} {event.dateEnd && `- ${Moment(event.dateEnd)?.format("dddd D.M.")}`}</span></p>
+              <p><span>Dato:</span> <span className='cap'>{new Date(event.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })} {event.dateEnd && `- ${new Date(event.dateEnd).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}`}</span></p>
               <p><span>Sted:</span> <span className='mutliple-locations'>
                 {event.location.map((item,i) => {
                   return(
@@ -121,7 +109,7 @@ export default function Index() {
                   )
                 })}
               </span></p>
-              {event.openingTime &&<p><span>Åpningstid:</span> <span>{Moment(event.openingTime).format("HH:mm")} {event.closingTime && `- ${Moment(event.closingTime).format("HH:mm")}`}</span></p>}
+              {event.openingTime &&<p><span>Åpningstid:</span> <span>{new Date(event.openingTime).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })} {event.closingTime && `- ${new Date(event.closingTime).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}`}</span></p>}
               {event.ticketDescription && 
                 <p> <span>Billetter:</span> <span dangerouslySetInnerHTML={{__html: event.ticketDescription}}></span></p>
               }
@@ -157,7 +145,7 @@ export default function Index() {
                         }
                         {(!event.singlePage || event.isMultiDay) &&
                           <>
-                            <p className='cap'>{Moment(item).format("dddd D.M.")}</p>
+                            <p className='cap'>{new Date(item).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}</p>
                             <br/>
                             <div className='location'>{event.location[0]?.title}</div>
                           </>
@@ -167,7 +155,7 @@ export default function Index() {
 
                             return(
                               <a className='performance' href={`/ostre/${event.slug}/${item.slug}`}>
-                                <div className='time'>{item.time && Moment(item.time).format("HH:mm")} {item.timeEnd && `- ${Moment(item.timeEnd).format("HH:mm")}`}</div> 
+                                <div className='time'>{item.time && new Date(item.time).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })} {item.timeEnd && `- ${new Date(item.timeEnd).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}`}</div> 
                                 <div className='artist'>{item.artist[0].title}</div>
                               </a>
                             )

@@ -106,9 +106,9 @@ export default function Index() {
           })}
           <br/><br/>
           <div className='info-text'>
-            <p><span>Dato:</span> <span className='cap'>{Moment(artist.date)?.format("dddd D.M.")}</span></p>
-            <p><span>Åpningstid:</span> <span>{Moment(festivalDay[0]?.startTime).format("HH:mm")} {festivalDay[0]?.endTime && `- ${Moment(festivalDay[0]?.endTime).format("HH:mm")}`}</span></p>
-            <p><span>Tid:</span> <span>{Moment(artist.time).format("HH:mm")} {artist.timeEnd && `- ${Moment(artist.timeEnd).format("HH:mm")}`}</span></p>
+            <p><span>Dato:</span> <span className='cap'>{new Date(artist.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}</span></p>
+            <p><span>Åpningstid:</span> <span>{new Date(festivalDay[0]?.startTime).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}  {festivalDay[0]?.endTime && `- ${new Date(festivalDay[0]?.endTime).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}`}</span></p>
+            <p><span>Tid:</span> <span>{new Date(artist.time).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })} {artist.timeEnd && `- ${new Date(artist.timeEnd).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}`}</span></p>
             <p><span>Sted:</span> <span className='mutliple-locations'>
                 {artist.location.map((item,i) => {
                   return(
@@ -173,7 +173,7 @@ export default function Index() {
                                     <>
                                       {item.date == performance.date && 
                                         <a className='performance' href={`/festival/${event.slug}/${performance.slug}`}>
-                                          <div className='time'>{Moment(performance.time).format("HH:mm")}</div> 
+                                          <div className='time'>{new Date(performance.time).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}</div> 
                                           <div className='artist'>{performance.artist[0].title}</div>
                                         </a>
                                       }

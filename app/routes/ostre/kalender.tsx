@@ -2,7 +2,6 @@ import type { LoaderFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
-// import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';

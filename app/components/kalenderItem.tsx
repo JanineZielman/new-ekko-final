@@ -1,14 +1,11 @@
 export default function KalenderItem({ item }: { item: any }) {
-  var Moment = require('moment');
-  require('moment/locale/nb');
-
   return (
     <div className='agenda-item'>
       <div className='time'>
         <div className='indicator'>Dato</div>
         <p className="cap">
-          {Moment(item.date).format("dddd D.M.")} {item.dateEnd && `- ${Moment(item.dateEnd)?.format("dddd D.M.")} `}
-          { item.openingTime && Moment(item.openingTime).format("HH:mm")}
+        {new Date(item.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })} {item.dateEnd && `- ${new Date(item.dateEnd).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })} `}
+          { item.openingTime && new Date(item.openingTime).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}
         </p>
       </div>
       {item.organizer?.[0]?.title ?

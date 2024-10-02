@@ -114,10 +114,12 @@ export default function Index() {
               {item.url == "#spilleplan" && event.program.length > 0 &&
                 <div className='program'>
                   {event.program.map((item, i) => {
+                    
                     return(
                       <>
                       <div className='program-day'>
-                        {item.date && <h3 className='date cap'>{Moment(item.date).format("dddd D.M.")}</h3>}
+                        {item.date && <h3 className='date cap'>{new Date(item.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}</h3>}
+                       
                         {locations.map((location, i) => {
                           const filteredEvents = mergedEvents.filter(performance => (`${performance.location?.[0]?.title}` == location));
                           const filteredPerformance = filteredEvents.filter(performance => performance.date == item.date);
@@ -133,7 +135,7 @@ export default function Index() {
                                       <>
                                         {item.date == performance.date && 
                                           <a className='performance' href={`/festival/${slug}/${performance.slug}`}>
-                                            <div className='time'>{Moment(performance.time).format("HH:mm")}</div> 
+                                            <div className='time'>{new Date(performance.time).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}</div> 
                                             <div className='artist'>{performance.fullTitle}</div>
                                           </a>
                                         }

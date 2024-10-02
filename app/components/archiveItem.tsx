@@ -7,8 +7,8 @@ export default function ArchiveItem({ item }: { item: any }) {
       <div className='time'>
         <div className='indicator'>Dato</div>
         <p className="cap">
-          {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.")}`} 
-          {Moment(item.date).format("Y")} {item.openingTime && Moment(item.openingTime).utcOffset('+0000').format("HH:mm")}
+          {new Date(item.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}{item.dateEnd && ` - ${new Date(item.dateEnd).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}`} 
+          {Moment(item.date).format("Y")} {item.openingTime && new Date(item.openingTime).toLocaleTimeString("nb", {timeZone: 'Europe/Oslo', hour: "2-digit", minute: "2-digit" })}
         </p>
       </div>
      

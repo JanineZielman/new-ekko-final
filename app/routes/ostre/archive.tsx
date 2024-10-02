@@ -9,7 +9,6 @@ import Container from '~/components/container';
 import Spacer from '~/components/spacer';
 import ArchiveItem from '~/components/archiveItem';
 import SEO from '~/components/seo';
-import Moment from 'moment';
 
 
 export const loader: LoaderFunction = async () => {
@@ -63,7 +62,7 @@ export default function Archive() {
               <div className='time'>
                 <div className='indicator'>Dato</div>
                 <p className="cap">
-                  {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.YYYY")}`} 
+                {new Date(item.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}{item.dateEnd && ` - ${new Date(item.dateEnd).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}`} 
                 </p>
               </div>
               <div className="event-title">

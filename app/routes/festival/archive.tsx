@@ -4,7 +4,6 @@ import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
 import { fetchContentPage } from '~/service/data/contentPage';
 import type { PageEntry } from '~/service/data/contentPage';
-import Moment from 'moment';
 
 import Container from '~/components/container';
 import Spacer from '~/components/spacer';
@@ -52,7 +51,7 @@ export default function Archive() {
                 <div className='time'>
                   <div className='indicator'>Dato</div>
                   <p className="cap">
-                    {Moment(item.date).format("dddd D.M.")}{item.dateEnd && ` - ${Moment(item.dateEnd)?.format("dddd D.M.YYYY")}`} 
+                  {new Date(item.date).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric' })}{item.dateEnd && ` - ${new Date(item.dateEnd).toLocaleDateString("nb", {timeZone: 'Europe/Oslo', weekday: 'long', month: 'numeric', day: 'numeric', year: 'numeric' })}`} 
                   </p>
                 </div>
                 <div className="event-title">
