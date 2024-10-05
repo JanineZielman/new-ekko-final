@@ -208,18 +208,25 @@ export default function Index() {
                 </>
               }
               {item.url == "#billetter" && event.tickets.length > 0 &&
-                <div className='flex tickets'>
-                  {event.tickets.map((ticket, i) => {
-                    return(
-                      <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
-                        <h3>{ticket.description} <br/>
-                          <p>{ticket.subdescription}</p>
-                        </h3>
+                <div className='tickets'>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: event.tickets.filter(el => el.textContent?.length > 0)?.[0]?.textContent }}></div>
+                  <div className='flex'>
+                    {event.tickets.map((ticket, i) => {
+                      return(
+                        <>
+                        {ticket.ticketLink &&
+                          <a className='ticket' href={`${ticket.ticketLink}`} target="_blank">
+                            <h3>{ticket.description} <br/>
+                              <p>{ticket.subdescription}</p>
+                            </h3>
 
-                        <p className='price-label'>{ticket.price} Kr</p>
-                      </a>
-                    )
-                  })}
+                            <p className='price-label'>{ticket.price} Kr</p>
+                          </a>
+                        }
+                        </>
+                      )
+                    })}
+                  </div>
                 </div>
               }
               {item.url == "#info" && 

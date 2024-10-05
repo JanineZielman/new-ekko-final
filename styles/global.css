@@ -858,6 +858,10 @@ body.festival .festival-page-grid{
   border-top: 1px solid var(--black);
   margin-left: -1px;
   margin-right: -1px;
+  & .flex{
+    width: 100%!important;
+  }
+
   & .ticket{
     background-color: transparent;
     width: 33.3%;
