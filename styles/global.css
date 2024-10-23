@@ -1789,3 +1789,22 @@ footer{
   color: white;
   text-align: center;
 }
+
+.radio-player{
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 999;
+  filter: contrast(2);
+  height: 68px;
+  overflow: hidden;
+  border: 1px solid white;
+  box-sizing: border-box;
+  background: black;
+  width: fit-content;
+  /* padding: 5px 0; */
+}
+
+.radio-player iframe{
+  margin-top: -50px;
+}

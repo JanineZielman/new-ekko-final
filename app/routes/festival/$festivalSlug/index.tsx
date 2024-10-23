@@ -83,6 +83,10 @@ export default function Index() {
       description={event.intro ? event.intro.replace(/<[^>]+>/g, '') : ''}
       imageUrl={event.festivalSectionGraphicElements?.[0]?.url}
     />
+
+    <div className='radio-player'>
+      <iframe id="embed_player" frameBorder="0" width="280" height="216" src="https://ekko.airtime.pro/embed/player?stream=auto&skin=1"/>
+    </div>
     <Container back={false}>
 			<div className={`grid festival-page-grid ${event.slug} ${event.festivalSectionGraphicElements?.[0]?.url ? '' : 'no-img'}`}>
         <div className='item w1 overflow'>
@@ -281,7 +285,6 @@ export default function Index() {
           </Collapsible>
         )
       })}
-
       <div className='grid'>
         <Spacer number={12} border=""/>
       </div>
