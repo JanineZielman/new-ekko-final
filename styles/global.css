@@ -1795,16 +1795,19 @@ footer{
   right: 14px;
   bottom: 14px;
   z-index: 999;
-  filter: contrast(2);
   height: 68px;
   overflow: hidden;
-  border: 1px solid white;
+  border: 1px solid black;
   box-sizing: border-box;
-  background: black;
-  width: fit-content;
+  /* background: black; */
+  background: var(--festival_light);
+  width: 270px;
   /* padding: 5px 0; */
 }
 
 .radio-player iframe{
   margin-top: -50px;
+  margin-left: -10px;
+  mix-blend-mode: multiply;
+  filter: invert(1) contrast(2);
 }
