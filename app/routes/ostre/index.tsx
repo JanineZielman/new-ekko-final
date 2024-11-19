@@ -107,6 +107,13 @@ export default function Oestre() {
                   </div> */}
                 </>
               }
+
+              {item.url == "#tilgjengelighet" && 
+                <>
+                  <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
+                  
+                </>
+              }
               {item.url == "#intro" && 
                 <div className='arena-flex'>
                   <div className='content' dangerouslySetInnerHTML={{ __html: ostre.entry.sections.filter(el => el.sectionTitle == item.title)?.[0]?.sectionBody }}></div>
