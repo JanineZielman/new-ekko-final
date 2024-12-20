@@ -39,6 +39,7 @@ export default function Oestre() {
   let filteredEvents = [];
   var currentTime = new Date();
   currentTime.setDate(currentTime.getDate() - 1);
+  currentTime.setHours(0, 0, 0, 0);
 
   filteredEvents = events.events.filter((item: any) => {
     var itemDate;

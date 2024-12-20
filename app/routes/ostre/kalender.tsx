@@ -4,7 +4,6 @@ import { fetchAllEvents } from '~/service/data/events';
 import type { AllEvents } from '~/service/data/events';
 
 import Container from '~/components/container';
-import Spacer from '~/components/spacer';
 import Collapsible from '~/components/collapsible';
 import KalenderItem from '~/components/kalenderItem';
 import SEO from '~/components/seo';
@@ -22,6 +21,7 @@ export default function Index() {
   let filteredEvents: any[] = [];
   var currentTime = new Date();
   currentTime.setDate(currentTime.getDate() - 1);
+  currentTime.setHours(0, 0, 0, 0);
   let months = ["januar", "februar", "mars", "april", "mai", "juni",
   "juli", "august", "september", "oktober", "november", "desember"];
 

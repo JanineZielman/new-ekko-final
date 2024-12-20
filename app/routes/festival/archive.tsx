@@ -24,6 +24,7 @@ export default function Archive() {
   let filteredEvents: any[] = [];
   var currentTime = new Date();
   currentTime.setDate(currentTime.getDate() - 1);
+  currentTime.setHours(0, 0, 0, 0);
 
   filteredEvents = events.events.filter((item: any) => {
     var itemDate = new Date(item.date);
